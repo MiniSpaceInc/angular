@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Event} from "../../../core/model/Event";
 
 @Component({
   selector: 'app-events-list',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './events-list.component.scss'
 })
 export class EventsListComponent {
-
+  @Input() events: Event[] = [];
 }

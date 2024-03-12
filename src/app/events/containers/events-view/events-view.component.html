@@ -1,7 +1,9 @@
 <div>
   @if(mode === "list") {
       <div class="position-absolute top-50 start-50 translate-middle">
-        <app-events-list/>
+        @if(search | async; as events) {
+          <app-events-list [events]="events"/>
+        }
         <button class="btn btn-success" (click)="mode = 'edit'">Dodaj wydarzenie</button>
       </div>
   }
