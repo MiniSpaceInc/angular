@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {EventsListComponent} from "../../components/events-list/events-list.component";
-import {EventEditorComponent} from "../event-editor/event-editor.component";
+import {EventEditorComponent} from "../../components/event-editor/event-editor.component";
 
 @Component({
   selector: 'app-events-view',
