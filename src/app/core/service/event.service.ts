@@ -7,7 +7,11 @@ import {mockEvents} from "./mockEvents";
 })
 export class EventService {
 
-  getEvents() {
-    return of(mockEvents);
+  getEvents(page: number, itemsPerPage: number) {
+    return of(mockEvents.slice(page * itemsPerPage, (page + 1) * itemsPerPage));
+  }
+
+  countEvents() {
+    return of(mockEvents.length);
   }
 }
