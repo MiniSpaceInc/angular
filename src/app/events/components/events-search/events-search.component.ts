@@ -4,6 +4,7 @@ import {PaginationComponent} from "../../../core/components/pagination/paginatio
 import {EventService} from "../../../core/service/event.service";
 import {AsyncPipe} from "@angular/common";
 import {EventSearchDetails} from "../../../core/model/EventSearchDetails";
+import {EventSearchDetailsFactory} from "../../../core/model/factory/EventSearchDetailsFactory";
 
 @Component({
   selector: 'app-events-search',
@@ -20,15 +21,10 @@ export class EventsSearchComponent {
   protected readonly Math = Math;
 
   eventService = inject(EventService);
+  eventSearchDetailsFactory = inject(EventSearchDetailsFactory).createEventSearchDetails;
+
   eventsPerPage = 4;
-  eventSearchDetails: EventSearchDetails = {
-    name: '',
-    organizer: '',
-    date: '',
-    page: 0,
-    itemsOnPage: this.eventsPerPage,
-    sortBy: ''
-  };
+  eventSearchDetails = this.eventSearchDetailsFactory(this.eventsPerPage);
 
   countEvents = this.eventService.countEvents(this.eventSearchDetails);
   searchEvents = this.eventService.getEvents(this.eventSearchDetails);
