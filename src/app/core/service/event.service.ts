@@ -9,7 +9,6 @@ import {EventSearchDetails} from "../model/EventSearchDetails";
 export class EventService {
 
   getEvents(eventSearchDetails: EventSearchDetails) {
-    console.log(eventSearchDetails.page);
     return of(mockEvents.slice(eventSearchDetails.page * eventSearchDetails.itemsOnPage, eventSearchDetails.page * eventSearchDetails.itemsOnPage + eventSearchDetails.itemsOnPage));
   }
 
