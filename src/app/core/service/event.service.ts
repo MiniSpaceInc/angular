@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import {mockEvents} from "./mockEvents";
+import {EventSearchDetails} from "../model/EventSearchDetails";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  getEvents(page: number, itemsPerPage: number) {
-    return of(mockEvents.slice(page * itemsPerPage, (page + 1) * itemsPerPage));
+  getEvents(eventSearchDetails: EventSearchDetails) {
+    console.log(eventSearchDetails.page);
+    return of(mockEvents.slice(eventSearchDetails.page * eventSearchDetails.itemsOnPage, eventSearchDetails.page * eventSearchDetails.itemsOnPage + eventSearchDetails.itemsOnPage));
   }
 
-  countEvents() {
+  countEvents(eventSearchDetails: EventSearchDetails) {
     return of(mockEvents.length);
   }
 }

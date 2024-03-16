@@ -1,9 +1,9 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, ViewChild} from '@angular/core';
 import {EventsListComponent} from "../events-list/events-list.component";
-import {Event} from "../../../core/model/Event";
 import {PaginationComponent} from "../../../core/components/pagination/pagination.component";
 import {EventService} from "../../../core/service/event.service";
 import {AsyncPipe} from "@angular/common";
+import {EventSearchDetails} from "../../../core/model/EventSearchDetails";
 
 @Component({
   selector: 'app-events-search',
@@ -18,9 +18,24 @@ import {AsyncPipe} from "@angular/common";
 })
 export class EventsSearchComponent {
   protected readonly Math = Math;
-  events: Event[] = [];
+
   eventService = inject(EventService);
-  eventsPerPage = 2;
-  countEvents = this.eventService.countEvents();
-  searchEvents = this.eventService.getEvents(0, this.eventsPerPage);
+  eventsPerPage = 4;
+  eventSearchDetails: EventSearchDetails = {
+    name: '',
+    organizer: '',
+    date: '',
+    page: 0,
+    itemsOnPage: this.eventsPerPage,
+    sortBy: ''
+  };
+
+  countEvents = this.eventService.countEvents(this.eventSearchDetails);
+  searchEvents = this.eventService.getEvents(this.eventSearchDetails);
+
+  @ViewChild('eventsList') eventsList!: EventsListComponent;
+
+  search() {
+    this.eventService.getEvents(this.eventSearchDetails).subscribe(data => this.eventsList.events = data);
+  }
 }

@@ -1,6 +1,7 @@
 @if(searchEvents | async; as events) {
-  <app-events-list [events]="events"/>
+  <app-events-list [events]="events" #eventsList/>
 }
 @if(countEvents | async; as eventCount) {
-  <app-pagination [pageCount]="Math.ceil(eventCount / eventsPerPage)"/>
+  <app-pagination [pageCount]="Math.ceil(eventCount / eventsPerPage)"
+                  (pageChange)="eventSearchDetails.page = $event; search()"/>
 }
