@@ -1,7 +1,16 @@
+<form [formGroup]="searchForm">
+  <div class="input-group">
+    <input type="text"
+           formControlName="name"
+           class="form-control"
+           placeholder="Szukaj po nazwie..."/>
+  </div>
+</form>
 @if(searchEvents | async; as events) {
   <app-events-list [events]="events" #eventsList/>
 }
 @if(countEvents | async; as eventCount) {
-  <app-pagination [pageCount]="Math.ceil(eventCount / eventsPerPage)"
-                  (pageChange)="eventSearchDetails.page = $event; search()"/>
+  <app-pagination [pageCount]="calculatePageCount(eventCount)"
+                  (pageChange)="eventSearchDetails.page = $event; search()"
+                  #pagination/>
 }
