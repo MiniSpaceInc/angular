@@ -3,7 +3,6 @@ import {EventsListComponent} from "../events-list/events-list.component";
 import {PaginationComponent} from "../../../core/components/pagination/pagination.component";
 import {EventService} from "../../../core/service/event.service";
 import {AsyncPipe} from "@angular/common";
-import {EventSearchDetails} from "../../../core/model/EventSearchDetails";
 import {EventSearchDetailsFactory} from "../../../core/model/factory/EventSearchDetailsFactory";
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs";
