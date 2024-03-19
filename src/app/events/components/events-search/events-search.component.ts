@@ -23,11 +23,11 @@ export class EventsSearchComponent implements OnInit{
   protected readonly Math = Math;
 
   eventService = inject(EventService);
-  eventSearchDetailsFactory = inject(EventSearchDetailsFactory).createEventSearchDetails;
+  eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
   formBuilder = inject(FormBuilder);
 
   eventsPerPage = 4;
-  eventSearchDetails = this.eventSearchDetailsFactory(this.eventsPerPage);
+  eventSearchDetails = this.eventSearchDetailsFactory.createEmptyEventSearchDetails(this.eventsPerPage);
 
   searchForm = this.createForm();
 
@@ -44,8 +44,15 @@ export class EventsSearchComponent implements OnInit{
     ).subscribe(value => {
       this.eventSearchDetails.name = value ? value : '';
       this.search();
-      console.log(value);
     });
+
+    this.searchForm.get('organizer')?.valueChanges.pipe(
+      debounceTime(500),
+      distinctUntilChanged()
+    ).subscribe(value => {
+      this.eventSearchDetails.organizer = value ? value : '';
+      this.search();
+    })
   }
 
   search() {
@@ -58,7 +65,8 @@ export class EventsSearchComponent implements OnInit{
 
   createForm() {
     return this.formBuilder.group({
-      name: this.formBuilder.control('')
+      name: this.formBuilder.control(''),
+      organizer: this.formBuilder.control('')
     });
   }
 

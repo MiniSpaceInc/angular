@@ -9,7 +9,7 @@ import {EventSearchDetails} from "../model/EventSearchDetails";
 export class EventService {
 
   getEvents(eventSearchDetails: EventSearchDetails) {
-    return of(this.filterMockEvents(eventSearchDetails).slice(eventSearchDetails.page * eventSearchDetails.itemsOnPage, eventSearchDetails.page * eventSearchDetails.itemsOnPage + eventSearchDetails.itemsOnPage));
+    return of(this.filterMockEvents(eventSearchDetails).slice(eventSearchDetails.page * eventSearchDetails.itemsPerPage, eventSearchDetails.page * eventSearchDetails.itemsPerPage + eventSearchDetails.itemsPerPage));
   }
 
   countEvents(eventSearchDetails: EventSearchDetails) {
@@ -17,6 +17,8 @@ export class EventService {
   }
 
   filterMockEvents(eventSearchDetails: EventSearchDetails) {
-    return mockEvents.filter(event => event.name.toLowerCase().includes(eventSearchDetails.name.toLowerCase()));
+    return mockEvents
+      .filter(event => event.name.toLowerCase().includes(eventSearchDetails.name.toLowerCase()))
+      .filter(event => event.organizer.toLowerCase().includes(eventSearchDetails.organizer.toLowerCase()))
   }
 }

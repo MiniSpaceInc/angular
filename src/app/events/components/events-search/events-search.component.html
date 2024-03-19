@@ -1,9 +1,21 @@
 <form [formGroup]="searchForm">
   <div class="input-group">
-    <input type="text"
-           formControlName="name"
-           class="form-control"
-           placeholder="Szukaj po nazwie..."/>
+    <div class="column">
+      <div class="row">
+        <input type="text"
+               formControlName="name"
+               class="form-control"
+               placeholder="Szukaj po nazwie..."/>
+      </div>
+      <div class="row">
+<!--        <div class="column">-->
+          <input type="text"
+                 formControlName="organizer"
+                 class="form-control"
+                 placeholder="Szukaj po organizatorze..."/>
+<!--        </div>-->
+      </div>
+    </div>
   </div>
 </form>
 @if(searchEvents | async; as events) {

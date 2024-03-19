@@ -4,13 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EventSearchDetailsFactory {
-  createEventSearchDetails(itemsPerPage: number) {
+  createEmptyEventSearchDetails(itemsPerPage: number) {
     return {
       name: '',
       organizer: '',
-      date: '',
+      dateFrom: '',
+      dateTo: '',
       page: 0,
-      itemsOnPage: itemsPerPage,
+      itemsPerPage: itemsPerPage,
       sortBy: ''
     };
   }

@@ -1,8 +1,9 @@
 export interface EventSearchDetails {
   name: string;
   organizer: string;
-  date: string;
+  dateFrom: string;
+  dateTo: string;
   page: number;
-  itemsOnPage: number;
+  itemsPerPage: number;
   sortBy: string;
 }
