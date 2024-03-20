@@ -1,30 +1,13 @@
-<form [formGroup]="searchForm">
-  <div class="input-group">
-    <div class="column">
-      <div class="row">
-        <input type="text"
-               formControlName="name"
-               class="form-control"
-               placeholder="Szukaj po nazwie..."/>
-      </div>
-      <div class="row">
-<!--        <div class="column">-->
-        <input type="text"
-               formControlName="organizer"
-               class="form-control"
-               placeholder="Szukaj po organizatorze..."/>
-<!--        </div>-->
-        <p-calendar formControlName="dateFrom" placeholder="Data od" [dateFormat]="'dd.mm.yy'"/>
-        <p-calendar formControlName="dateTo" placeholder="Data do" [dateFormat]="'dd.mm.yy'"/>
-      </div>
-    </div>
-  </div>
-</form>
+<app-events-search-form #searchForm
+                        (valueChanged)="search()"/>
+
 @if(searchEvents | async; as events) {
-  <app-events-list [events]="events" #eventsList/>
+  <app-events-list #eventsList
+                   [events]="events"/>
 }
+
 @if(countEvents | async; as eventCount) {
-  <app-pagination [pageCount]="calculatePageCount(eventCount)"
-                  (pageChange)="eventSearchDetails.page = $event; search()"
-                  #pagination/>
+  <app-pagination #pagination
+                  [pageCount]="calculatePageCount(eventCount)"
+                  (pageChange)="search()"/>
 }
