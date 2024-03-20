@@ -1,13 +1,13 @@
-<div>
+<div class="d-flex justify-content-center">
   @if(mode === "list") {
-      <div class="position-absolute top-50 start-50 translate-middle">
-        <app-events-search/>
-        <button class="btn btn-success" (click)="mode = 'edit'">Dodaj wydarzenie</button>
-      </div>
+    <div class="column">
+      <app-events-search/>
+      <button class="btn btn-success" (click)="mode = 'edit'">Dodaj wydarzenie</button>
+    </div>
   }
 
   @if(mode === "edit") {
-    <div class="position-absolute top-50 start-50 translate-middle">
+    <div class="column">
       <app-event-editor/>
       <button class="btn btn-danger" (click)="mode = 'list'">Anuluj</button>
     </div>

@@ -2,10 +2,11 @@ import {Component, inject, OnInit, ViewChild} from '@angular/core';
 import {EventsListComponent} from "../events-list/events-list.component";
 import {PaginationComponent} from "../../../core/components/pagination/pagination.component";
 import {EventService} from "../../../core/service/event.service";
-import {AsyncPipe} from "@angular/common";
+import {AsyncPipe, JsonPipe} from "@angular/common";
 import {EventSearchDetailsFactory} from "../../../core/model/factory/EventSearchDetailsFactory";
-import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
+import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs";
+import {CalendarModule} from "primeng/calendar";
 
 @Component({
   selector: 'app-events-search',
@@ -14,14 +15,15 @@ import {debounceTime, distinctUntilChanged} from "rxjs";
     EventsListComponent,
     PaginationComponent,
     AsyncPipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CalendarModule,
+    FormsModule,
+    JsonPipe
   ],
   templateUrl: './events-search.component.html',
   styleUrl: './events-search.component.scss'
 })
 export class EventsSearchComponent implements OnInit{
-  protected readonly Math = Math;
-
   eventService = inject(EventService);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
   formBuilder = inject(FormBuilder);
@@ -53,6 +55,20 @@ export class EventsSearchComponent implements OnInit{
       this.eventSearchDetails.organizer = value ? value : '';
       this.search();
     })
+
+    this.searchForm.get('dateFrom')?.valueChanges.pipe(
+      distinctUntilChanged()
+    ).subscribe(value => {
+      this.eventSearchDetails.dateFrom = value ? value : '';
+      this.search();
+    });
+
+    this.searchForm.get('dateTo')?.valueChanges.pipe(
+      distinctUntilChanged()
+    ).subscribe(value => {
+      this.eventSearchDetails.dateTo = value ? value : '';
+      this.search();
+    });
   }
 
   search() {
@@ -65,8 +81,10 @@ export class EventsSearchComponent implements OnInit{
 
   createForm() {
     return this.formBuilder.group({
-      name: this.formBuilder.control(''),
-      organizer: this.formBuilder.control('')
+      name: this.formBuilder.control(this.eventSearchDetails.name),
+      organizer: this.formBuilder.control(''),
+      dateFrom: this.formBuilder.control(this.eventSearchDetails.dateFrom),
+      dateTo: this.formBuilder.control(this.eventSearchDetails.dateTo)
     });
   }
 
