@@ -1,0 +1,27 @@
+<form [formGroup]="eventForm" class="event-form">
+    <p-card Header="Edytor wydarzenia">
+        <div class="form-group">
+            <div class="column">
+                <div class="row flex-container">
+                    <div style="padding: 0%;">
+                        <p-calendar
+                            formControlName="date"
+                            placeholder="Data"
+                            [dateFormat]="'dd.mm.yy'"/>
+                    </div>
+                    <input 
+                        type="text"
+                        pInputText
+                        formControlName="name"
+                        placeholder="Tytuł..."/>
+                    <textarea 
+                        rows = "5"
+                        cols = "50"
+                        pInputTextarea
+                        formControlName="description"
+                        placeholder="Opis..."></textarea>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</form>

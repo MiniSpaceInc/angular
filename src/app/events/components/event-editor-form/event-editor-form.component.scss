@@ -1,0 +1,15 @@
+.event-form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.flex-container {
+    display: flex;
+    gap: 10px;
+}
+
+::ng-deep .p-calendar {
+    margin-left: 0;
+    padding: 0px;
+}
