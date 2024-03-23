@@ -1,12 +1,13 @@
 import {Component, inject, ViewChild} from '@angular/core';
 import {EventsListComponent} from "../events-list/events-list.component";
 import {PaginationComponent} from "../../../core/components/pagination/pagination.component";
-import {EventService} from "../../../core/service/event.service";
+import {EventMockService} from "../../../core/service/event/event-mock.service";
 import {AsyncPipe, JsonPipe} from "@angular/common";
 import {EventSearchDetailsFactory} from "../../../core/model/factory/EventSearchDetailsFactory";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CalendarModule} from "primeng/calendar";
 import {EventsSearchFormComponent} from "../events-search-form/events-search-form.component";
+import {EventService} from "../../../core/service/event/event.service";
 
 @Component({
   selector: 'app-events-search',
@@ -25,7 +26,7 @@ import {EventsSearchFormComponent} from "../events-search-form/events-search-for
   styleUrl: './events-search.component.scss'
 })
 export class EventsSearchComponent {
-  eventService = inject(EventService);
+  eventService: EventService = inject(EventMockService);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
 
   eventsPerPage = 4;
