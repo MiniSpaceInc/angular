@@ -1,23 +1,16 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  ValidationErrors,
-  ValidatorFn,
-  Validators
+  ReactiveFormsModule
 } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { EventFactory } from '../../../core/model/factory/EventFactory';
-import { Event } from '../../../core/model/Event';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ImageModule } from 'primeng/image';
-import { ButtonModule } from 'primeng/button';
 import {EventMockService} from "../../../core/service/event/event-mock.service";
 import {EventService} from "../../../core/service/event/event.service";
 
