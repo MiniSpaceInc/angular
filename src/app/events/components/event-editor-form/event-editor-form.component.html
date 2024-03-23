@@ -2,24 +2,44 @@
     <p-card Header="Edytor wydarzenia">
         <div class="form-group">
             <div class="column">
-                <div class="row flex-container">
+                <div class="row event-form-container">
+
+                    <div style="padding: 0%;">
+                        <p-fileUpload
+                            [multiple]="false"
+                            [showUploadButton]="false"
+                            [showCancelButton]="false">
+                            <ng-template let-file pTemplate="file">
+                                <p-image [src]="file.objectURL"></p-image>
+                            </ng-template>
+                        </p-fileUpload>
+                    </div>
+
                     <div style="padding: 0%;">
                         <p-calendar
                             formControlName="date"
                             placeholder="Data"
                             [dateFormat]="'dd.mm.yy'"/>
                     </div>
+
                     <input 
                         type="text"
                         pInputText
                         formControlName="name"
                         placeholder="Tytuł..."/>
+
                     <textarea 
                         rows = "5"
                         cols = "50"
                         pInputTextarea
                         formControlName="description"
-                        placeholder="Opis..."></textarea>
+                        placeholder="Opis...">
+                    </textarea>
+
+                    <div class="save-button">
+                        <button class="btn btn-success" (click)="saveEvent()">Zapisz</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>

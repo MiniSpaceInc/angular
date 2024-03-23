@@ -4,12 +4,12 @@
     width: 100%;
 }
 
-.flex-container {
+.event-form-container {
     display: flex;
     gap: 10px;
 }
 
-::ng-deep .p-calendar {
-    margin-left: 0;
-    padding: 0px;
+.save-button {
+    display: flex;
+    justify-content: flex-end;
 }
