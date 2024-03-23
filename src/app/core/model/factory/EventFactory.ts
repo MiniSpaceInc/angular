@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Event } from '../Event';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventFactory {
-  createEmptyEvent() {
+  createEmptyEvent(): Event {
     return {
         id: 0,
         uuid: '',
