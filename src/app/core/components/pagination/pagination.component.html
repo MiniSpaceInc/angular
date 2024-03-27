@@ -1,0 +1,21 @@
+<nav aria-label="..." #navigationBar>
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage === 0">
+      <button class="page-link" (click)="previousPage()">&laquo;</button>
+    </li>
+
+    @for(i of Array.from(Array(pageCount).keys()); track i) {
+      <li class="page-item"
+          [class.active]="currentPage === i">
+        <button class="page-link"
+                (click)="changePage(i)">
+          {{i + 1}}
+        </button>
+      </li>
+    }
+
+    <li class="page-item" [class.disabled]="currentPage === pageCount - 1">
+      <button class="page-link" (click)="nextPage()">&raquo;</button>
+    </li>
+  </ul>
+</nav>

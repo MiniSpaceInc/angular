@@ -1,0 +1,20 @@
+<form [formGroup]="searchForm">
+  <div class="input-group">
+    <div class="column">
+      <div class="row">
+        <input type="text"
+               formControlName="name"
+               class="form-control"
+               placeholder="Szukaj po nazwie..."/>
+      </div>
+      <div class="row">
+        <input type="text"
+               formControlName="organizer"
+               class="form-control"
+               placeholder="Szukaj po organizatorze..."/>
+        <p-calendar formControlName="dateFrom" placeholder="Data od" [dateFormat]="'dd.mm.yy'"/>
+        <p-calendar formControlName="dateTo" placeholder="Data do" [dateFormat]="'dd.mm.yy'"/>
+      </div>
+    </div>
+  </div>
+</form>

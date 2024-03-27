@@ -1,0 +1,9 @@
+<div class="list-group">
+  @for(event of events; track event.id) {
+    <div class="p-listbox">
+      <h4>{{event.name}}</h4>
+      <p>{{event.organizer}}</p>
+      <b>Data: </b><p>{{event.date}}</p>
+    </div>
+  }
+</div>
