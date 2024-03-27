@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
+import {PageableFactory} from "./PageableFactory";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventSearchDetailsFactory {
+  pageableFactory = inject(PageableFactory);
+
   createEmptyEventSearchDetails(itemsPerPage: number) {
     return {
       name: '',
       organizer: '',
       dateFrom: '',
       dateTo: '',
-      page: 0,
-      itemsPerPage: itemsPerPage,
-      sortBy: ''
+      pageable: this.pageableFactory.createPageableWithNoSorting(itemsPerPage)
     };
   }
 }

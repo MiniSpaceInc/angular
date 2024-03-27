@@ -13,7 +13,7 @@ export class EventRestService implements EventService {
   http = inject(HttpClient);
 
   addEvent(event: Event): Observable<any> {
-    return this.http.post('/api/event', event);
+    return this.http.post('/api/events/add', event);
   }
 
   getEventsPage(eventSearchDetails: EventSearchDetails): Observable<ObjectPageDto<Event>> {
