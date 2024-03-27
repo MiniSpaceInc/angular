@@ -13,6 +13,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ImageModule } from 'primeng/image';
 import {EventMockService} from "../../../core/service/event/event-mock.service";
 import {EventService} from "../../../core/service/event/event.service";
+import {EventRestService} from "../../../core/service/event/event-rest.service";
 
 @Component({
   selector: 'app-event-editor',
@@ -34,15 +35,15 @@ export class EventEditorComponent {
 
   eventFactory = inject(EventFactory);
   eventForm = this.createForm();
-  eventService: EventService = inject(EventMockService);
+  eventService: EventService = inject(EventRestService);
 
   createForm(): FormGroup {
     return inject(FormBuilder).group(this.eventFactory.createEmptyEvent());
   }
 
   saveEvent(): void {
-    this.eventService.addEvent(this.eventForm.value).subscribe(() => {
-      console.log("Event saved!");
+    this.eventService.addEvent(this.eventForm.value).subscribe(response => {
+      console.log(response);
       this.eventSaved.emit();
     });
   }

@@ -12,9 +12,8 @@ import {HttpClient} from "@angular/common/http";
 export class EventRestService implements EventService {
   http = inject(HttpClient);
 
-  addEvent(event: Event): Observable<number> {
-    console.log('Created event' + event);
-    return of(1);
+  addEvent(event: Event): Observable<any> {
+    return this.http.post('/api/event', event);
   }
 
   getEventsPage(eventSearchDetails: EventSearchDetails): Observable<ObjectPageDto<Event>> {

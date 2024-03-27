@@ -5,5 +5,5 @@ import {ObjectPageDto} from "../../model/dto/ObjectPageDto";
 
 export interface EventService {
     getEventsPage(eventSearchDetails: EventSearchDetails): Observable<ObjectPageDto<Event>>;
-    addEvent(event: Event): Observable<number>;
+    addEvent(event: Event): Observable<any>;
 }
