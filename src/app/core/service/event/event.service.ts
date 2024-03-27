@@ -1,9 +1,9 @@
 import {EventSearchDetails} from "../../model/EventSearchDetails";
 import {Event} from "../../model/Event";
 import {Observable} from "rxjs";
+import {ObjectPageDto} from "../../model/dto/ObjectPageDto";
 
 export interface EventService {
-    getEvents(eventSearchDetails: EventSearchDetails): Observable<Event[]>;
-    countEvents(eventSearchDetails: EventSearchDetails): Observable<number>;
+    getEventsPage(eventSearchDetails: EventSearchDetails): Observable<ObjectPageDto<Event>>;
     addEvent(event: Event): Observable<number>;
 }

@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CalendarModule} from "primeng/calendar";
 import {EventsSearchFormComponent} from "../events-search-form/events-search-form.component";
 import {EventService} from "../../../core/service/event/event.service";
+import {EventRestService} from "../../../core/service/event/event-rest.service";
 
 @Component({
   selector: 'app-events-search',
@@ -26,35 +27,28 @@ import {EventService} from "../../../core/service/event/event.service";
   styleUrl: './events-search.component.scss'
 })
 export class EventsSearchComponent {
-  eventService: EventService = inject(EventMockService);
+  eventService: EventService = inject(EventRestService);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
 
   eventsPerPage = 4;
-
-  countEvents = this.eventService.countEvents(
-    this.eventSearchDetailsFactory.createEmptyEventSearchDetails(this.eventsPerPage)
-  );
-
-  searchEvents = this.eventService.getEvents(
-    this.eventSearchDetailsFactory.createEmptyEventSearchDetails(this.eventsPerPage)
-  );
 
   @ViewChild('searchForm') searchForm!: EventsSearchFormComponent;
   @ViewChild('eventsList') eventsList!: EventsListComponent;
   @ViewChild('pagination') pagination!: PaginationComponent;
 
+  firstSearch = this.eventService.getEventsPage(
+    this.eventSearchDetailsFactory.createEmptyEventSearchDetails(this.eventsPerPage)
+  );
+
   search() {
     this.searchForm.eventSearchDetails.itemsPerPage = this.eventsPerPage;
     this.searchForm.eventSearchDetails.page = this.pagination.currentPage;
 
-    this.eventService.countEvents(this.searchForm.eventSearchDetails)
-      .subscribe(data => this.pagination.pageCount = this.calculatePageCount(data));
-
-    this.eventService.getEvents(this.searchForm.eventSearchDetails)
-      .subscribe(data => this.eventsList.events = data);
-  }
-
-  calculatePageCount(count: number) {
-    return Math.ceil(count / this.eventsPerPage);
+    this.eventService.getEventsPage(this.searchForm.eventSearchDetails).subscribe(
+      page => {
+        this.eventsList.events = page.content;
+        this.pagination.pageCount = page.totalPages;
+      }
+    );
   }
 }

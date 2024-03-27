@@ -1,13 +1,10 @@
 <app-events-search-form #searchForm
                         (valueChanged)="search()"/>
 
-@if(searchEvents | async; as events) {
+@if(firstSearch | async; as eventsPage) {
   <app-events-list #eventsList
-                   [events]="events"/>
-}
-
-@if(countEvents | async; as eventCount) {
+                   [events]="eventsPage.content"/>
   <app-pagination #pagination
-                  [pageCount]="calculatePageCount(eventCount)"
+                  [pageCount]="eventsPage.totalPages"
                   (pageChange)="search()"/>
 }
