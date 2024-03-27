@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {EventService} from "./event.service";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {EventSearchDetails} from "../../model/EventSearchDetails";
 import {ObjectPageDto} from "../../model/dto/ObjectPageDto";
 import {Event} from "../../model/Event";
