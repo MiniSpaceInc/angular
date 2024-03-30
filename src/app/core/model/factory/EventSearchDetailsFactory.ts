@@ -9,6 +9,8 @@ export class EventSearchDetailsFactory {
 
   createEmptyEventSearchDetails(itemsPerPage: number) {
     return {
+      itemsPerPage: itemsPerPage,
+      page: 0,
       name: '',
       organizer: '',
       dateFrom: '',
