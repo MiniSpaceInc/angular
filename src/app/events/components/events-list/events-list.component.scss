@@ -1,3 +1,8 @@
 div, h4, p, b {
   margin: 5px;
 }
+
+:host ::ng-deep .p-card:hover {
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}

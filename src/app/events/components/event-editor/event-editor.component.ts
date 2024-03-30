@@ -11,8 +11,8 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ImageModule } from 'primeng/image';
-import {EventService} from "../../../core/service/event/event.service";
-import {EventRestService} from "../../../core/service/event/event-rest.service";
+import { EventService } from "../../../core/service/event/event.service";
+import { EventRestService } from "../../../core/service/event/event-rest.service";
 
 @Component({
   selector: 'app-event-editor',
