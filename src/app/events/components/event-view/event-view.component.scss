@@ -1,0 +1,18 @@
+.event-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.details-column {
+    width: 60%;
+    margin: 15px;
+}
+
+.posts-column {
+    width : 40%;
+    margin: 15px;
+    margin-left: 0px;
+}
