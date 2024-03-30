@@ -1,4 +1,4 @@
-import {Component, inject, ViewChild} from '@angular/core';
+import {Component, EventEmitter, inject, Output, ViewChild} from '@angular/core';
 import {EventsListComponent} from "../events-list/events-list.component";
 import {PaginationComponent} from "../../../core/components/pagination/pagination.component";
 import {AsyncPipe, JsonPipe} from "@angular/common";
@@ -27,6 +27,8 @@ import { EventMockService } from '../../../core/service/event/event-mock.service
   styleUrl: './events-search.component.scss'
 })
 export class EventsSearchComponent {
+  @Output() eventSelected = new EventEmitter<Event>();
+
   eventService: EventService = inject(EventMockService);
   //eventService: EventService = inject(EventRestService);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
@@ -51,5 +53,10 @@ export class EventsSearchComponent {
         this.pagination.pageCount = page.totalPages;
       }
     );
+  }
+
+  onEventSelected(event: any) {
+    this.eventSelected.emit(event);
+    console.log("go to event view");
   }
 }

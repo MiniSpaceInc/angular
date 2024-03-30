@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Event } from "../../../core/model/Event";
 import { AsyncPipe, NgFor } from "@angular/common";
 import { CardModule } from 'primeng/card';
@@ -22,9 +22,10 @@ import {
 })
 export class EventsListComponent {
   @Input() events: Event[] = [];
+  @Output() eventSelected = new EventEmitter<Event>();
 
-  onCardClick(event: Event) {
-    console.log(event);
+  onEventClick(event: Event) {
+    this.eventSelected.emit(event);
   }
   
 }
