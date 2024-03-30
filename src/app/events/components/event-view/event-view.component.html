@@ -9,13 +9,18 @@
                 <p>{{event.date}}</p>
             </ng-template>
             <ng-template pTemplate="footer">
-                <ng-container>
-                    <p-toggleButton [onLabel]="'Wypisz się'" [offLabel]="'Zapisz się'"></p-toggleButton>
-                </ng-container>
+                <p-toggleButton [onLabel]="'Wypisz się'" [offLabel]="'Zapisz się'"></p-toggleButton>
             </ng-template>
         </p-card>
     </div>
     <div class="posts-column">
-        <p-card header="Posty:"></p-card>
+        <div *ngFor="let post of posts">
+            <p-card header="{{post.author}}" subheader="{{post.date}}">
+                <ng-template pTemplate="content">
+                    <p>{{post.content}}</p>
+                </ng-template>
+            </p-card>
+            <div style="height: 10px;"></div>
+        </div>
     </div>
 </div>

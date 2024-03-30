@@ -17,5 +17,8 @@
 }
 
 @if(mode === "view") {
+  <div style="margin: 15px; margin-bottom: 0px">
+    <button class="btn btn-danger" (click)="mode = 'list'">Wróć</button>
+  </div>
   <app-event-view [event]="selectedEvent"/>
 }
