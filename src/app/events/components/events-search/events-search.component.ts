@@ -40,8 +40,8 @@ export class EventsSearchComponent {
   );
 
   search() {
-    this.searchForm.eventSearchDetails.itemsPerPage = this.eventsPerPage;
-    this.searchForm.eventSearchDetails.page = this.pagination.currentPage;
+    this.searchForm.eventSearchDetails.pageable.size = this.eventsPerPage;
+    this.searchForm.eventSearchDetails.pageable.page = this.pagination.currentPage;
 
     this.eventService.getEventsPage(this.searchForm.eventSearchDetails).subscribe(
       page => {
