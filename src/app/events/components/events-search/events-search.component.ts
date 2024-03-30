@@ -57,6 +57,5 @@ export class EventsSearchComponent {
 
   onEventSelected(event: any) {
     this.eventSelected.emit(event);
-    console.log("go to event view");
   }
 }
