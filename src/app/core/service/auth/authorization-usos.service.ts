@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {DOCUMENT} from "@angular/common";
 import {RequestTokenDto} from "../../model/dto/RequestTokenDto";
 import {map} from "rxjs";
