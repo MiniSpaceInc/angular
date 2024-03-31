@@ -1,6 +1,6 @@
 export interface RequestTokenDto {
-  requestToken: string;
-  requestTokenSecret: string;
+  token: string;
+  tokenSecret: string;
   redirectUrl: string;
   verifier: string;
 }

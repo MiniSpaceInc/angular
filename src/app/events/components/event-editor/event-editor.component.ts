@@ -42,7 +42,6 @@ export class EventEditorComponent {
 
   saveEvent(): void {
     this.eventService.addEvent(this.eventForm.value).subscribe(response => {
-      console.log(response);
       this.eventSaved.emit();
     });
   }

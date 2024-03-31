@@ -1,8 +1,8 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {DOCUMENT} from "@angular/common";
 import {RequestTokenDto} from "../../model/dto/RequestTokenDto";
-import {ActivatedRoute} from "@angular/router";
-import {DOCUMENT, Location} from "@angular/common";
+import {map} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,10 @@ export class AuthorizationUsosService {
   }
 
   public getJwt(requestTokenDto: RequestTokenDto) {
-    return this.http.post<string>('/api/auth/usos/jwt', requestTokenDto);
+    return this.http.post<{accessToken: string}>('/api/auth/usos/jwt', requestTokenDto)
+      .pipe(
+        map(response => response.accessToken)
+      );
   }
 
   private prepareCallbackUrl() {
