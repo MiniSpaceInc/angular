@@ -9,6 +9,7 @@ import {
   REQUEST_TOKEN_STORAGE_KEY
 } from "../../../tokens";
 import {jwtDecode} from "jwt-decode";
+import {AuthService} from "../../../service/auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -18,16 +19,15 @@ import {jwtDecode} from "jwt-decode";
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  private authService = inject(AuthorizationUsosService);
+  private authUsosService = inject(AuthorizationUsosService);
   private document = inject(DOCUMENT);
   localStorage = inject(LocalStorageService);
+  authService = inject(AuthService);
   requestTokenKey = inject(REQUEST_TOKEN_STORAGE_KEY);
   requestTokenSecretKey = inject(REQUEST_TOKEN_SECRET_STORAGE_KEY);
-  decodedJwtKey = inject(DECODED_JWT_STORAGE_KEY);
-  jwtKey = inject(JWT_STORAGE_KEY);
 
   redirect(): void {
-    this.authService.requestToken().subscribe(response => {
+    this.authUsosService.requestToken().subscribe(response => {
         this.localStorage.saveData(this.requestTokenKey, response.token);
         this.localStorage.saveData(this.requestTokenSecretKey, response.tokenSecret);
         this.document.location.href = response.redirectUrl;
@@ -36,7 +36,6 @@ export class LoginComponent {
   }
 
   logout(): void {
-    this.localStorage.removeData(this.decodedJwtKey);
-    this.localStorage.removeData(this.jwtKey);
+    this.authService.removeAccessToken();
   }
 }

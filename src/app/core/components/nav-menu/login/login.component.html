@@ -1,4 +1,4 @@
-@if(localStorage.getData(decodedJwtKey); as jwt) {
+@if(authService.getDecodedAccessToken(); as jwt) {
   <span>{{jwt['firstName']}} {{jwt['lastName']}}</span>
   <button class="btn btn-danger" (click)="logout()">
     Wyloguj
