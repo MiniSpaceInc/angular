@@ -1,0 +1,12 @@
+@if(authService.getDecodedAccessToken(); as jwt) {
+  <span>{{jwt['firstName']}} {{jwt['lastName']}}</span>
+  <button class="btn btn-danger" (click)="logout()">
+    Wyloguj
+  </button>
+}
+@else {
+  <button class="btn btn-toolbar"
+          (click)="redirect()">
+    Zaloguj
+  </button>
+}
