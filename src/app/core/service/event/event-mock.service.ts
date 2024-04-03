@@ -1,14 +1,21 @@
-import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-import {mockEvents} from "./mockEvents";
 import {EventSearchDetails} from "../../model/EventSearchDetails";
-import {Event} from "../../model/Event";
+import { EventFactory } from '../../model/factory/EventFactory';
+import { inject, Injectable } from '@angular/core';
 import {EventService} from "./event.service";
+import {mockEvents} from "./mockEvents";
+import {Event} from "../../model/Event";
+import { of } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventMockService implements EventService {
+  eventFactory = inject(EventFactory);
+
+  getEvent(uuid: string): Event {
+    var event = mockEvents.find(event => event.uuid === uuid);
+    return event ? event : this.eventFactory.createEmptyEvent();
+  }
 
   getEventsPage(eventSearchDetails: EventSearchDetails) {
     const events = this.filterMockEvents(eventSearchDetails)
