@@ -1,7 +1,7 @@
 @if(mode === "list") {
   <div class="d-flex justify-content-center">
     <div class="column">
-      <app-events-search (eventSelected)="onEventSelected($event)"/>
+      <app-events-search/>
       <button class="btn btn-success" (click)="mode = 'edit'">Dodaj wydarzenie</button>
     </div>
   </div>
@@ -14,11 +14,4 @@
       <button class="btn btn-danger" (click)="mode = 'list'">Anuluj</button>
     </div>
   </div>
-}
-
-@if(mode === "view") {
-  <div style="margin: 15px; margin-bottom: 0px">
-    <button class="btn btn-danger" (click)="mode = 'list'">Wróć</button>
-  </div>
-  <app-event-view [event]="selectedEvent"/>
 }

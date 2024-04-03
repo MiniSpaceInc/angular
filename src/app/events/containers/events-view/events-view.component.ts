@@ -19,12 +19,7 @@ import {EventViewComponent} from '../../components/event-view/event-view.compone
   styleUrl: './events-view.component.scss'
 })
 export class EventsViewComponent {
-  mode: 'list' | 'edit' | 'view' = 'list';
+  mode: 'list' | 'edit' = 'list';
   
   selectedEvent: any;
-
-  onEventSelected(event: any) {
-    this.selectedEvent = event;
-    this.mode = 'view';
-  }
 }

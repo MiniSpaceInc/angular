@@ -54,8 +54,4 @@ export class EventsSearchComponent {
       }
     );
   }
-
-  onEventSelected(event: any) {
-    this.eventSelected.emit(event);
-  }
 }
