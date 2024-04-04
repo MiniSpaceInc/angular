@@ -30,7 +30,6 @@ import {EventRestService} from "../../../core/service/event/event-rest.service";
 })
 export class EventViewComponent {
   eventService: EventService = inject(EventRestService);
-  event: Event = inject(EventFactory).createEmptyEvent();
   route: ActivatedRoute = inject(ActivatedRoute);
 
   getEvent = this.route.params.pipe(

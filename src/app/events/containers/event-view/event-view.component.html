@@ -1,8 +1,10 @@
-@if (getEvent | async; as event) {
-  <div class="event-container">
-    <app-event-details [event]="event"/>
-    <div class="posts-column">
-      <app-posts-list [eventId]="1"/>
+@defer {
+  @if (getEvent | async; as event) {
+    <div class="event-container">
+      <app-event-details [event]="event"/>
+      <div class="posts-column">
+        <app-posts-list [eventId]="1"/>
+      </div>
     </div>
-  </div>
+  }
 }

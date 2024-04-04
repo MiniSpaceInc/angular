@@ -13,7 +13,7 @@ export class EventRestService implements EventService {
   http = inject(HttpClient);
 
   getEventByUuid(uuid: string): Observable<Event> {
-    throw this.http.get<Event>('/api/events' + uuid);
+    return this.http.get<Event>('/api/events/' + uuid);
   }
 
   addEvent(event: Event): Observable<any> {
