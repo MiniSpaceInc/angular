@@ -29,7 +29,7 @@ import { EventMockService } from '../../../core/service/event/event-mock.service
 export class EventsSearchComponent {
   @Output() eventSelected = new EventEmitter<Event>();
 
-  eventService: EventService = inject(EventMockService);
+  eventService: EventService = inject(EventRestService);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
 
   eventsPerPage = 4;

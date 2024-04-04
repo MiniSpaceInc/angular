@@ -1,0 +1,11 @@
+@if (getPosts | async; as posts) {
+  @for (post of posts; track post.id) {
+    <div class="post-card">
+      <p-card header="{{post.author}}" subheader="{{post.date}}">
+        <ng-template pTemplate="content">
+          <p>{{post.content}}</p>
+        </ng-template>
+      </p-card>
+    </div>
+  }
+}

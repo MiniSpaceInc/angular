@@ -1,26 +1,8 @@
-<div class="event-container">
-    <div class="details-column">
-        <p-card header="{{event.name}}" subheader="{{event.organizer}}">
-            <ng-template pTemplate="header">
-                <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
-            </ng-template>
-            <ng-template pTemplate="content">
-                <p>{{event.description}}</p>
-                <p>{{event.date}}</p>
-            </ng-template>
-            <ng-template pTemplate="footer">
-                <p-toggleButton [onLabel]="'Wypisz się'" [offLabel]="'Zapisz się'"></p-toggleButton>
-            </ng-template>
-        </p-card>
-    </div>
+@if (getEvent | async; as event) {
+  <div class="event-container">
+    <app-event-details [event]="event"/>
     <div class="posts-column">
-        <div *ngFor="let post of posts">
-            <p-card header="{{post.author}}" subheader="{{post.date}}">
-                <ng-template pTemplate="content">
-                    <p>{{post.content}}</p>
-                </ng-template>
-            </p-card>
-            <div style="height: 10px;"></div>
-        </div>
+      <app-posts-list [eventId]="1"/>
     </div>
-</div>
+  </div>
+}

@@ -1,5 +1,6 @@
 import { Post } from "../../model/Post";
+import {Observable} from "rxjs";
 
 export interface PostService {
-    getPosts(): Post[];
+    getPostsForEvent(eventId: number): Observable<Post[]>;
 }

@@ -8,8 +8,11 @@ import { Event } from '../../../core/model/Event';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../../core/model/Post';
 import { CardModule } from 'primeng/card';
-import { NgFor } from '@angular/common';
+import {AsyncPipe, NgFor} from '@angular/common';
 import {mergeMap} from "rxjs";
+import {EventDetailsComponent} from "../../components/event-details/event-details.component";
+import {PostsListComponent} from "../../../posts/components/posts-list/posts-list.component";
+import {EventRestService} from "../../../core/service/event/event-rest.service";
 
 @Component({
   selector: 'app-event-view',
@@ -18,21 +21,19 @@ import {mergeMap} from "rxjs";
     CardModule,
     ToggleButtonModule,
     NgFor,
+    EventDetailsComponent,
+    PostsListComponent,
+    AsyncPipe,
   ],
   templateUrl: './event-view.component.html',
   styleUrl: './event-view.component.scss'
 })
-export class EventViewComponent implements OnInit {
-  posts: Post[] = inject(PostMockService).getPosts();
-  eventService: EventService = inject(EventMockService);
+export class EventViewComponent {
+  eventService: EventService = inject(EventRestService);
   event: Event = inject(EventFactory).createEmptyEvent();
   route: ActivatedRoute = inject(ActivatedRoute);
 
-  ngOnInit() {
-    this.route.params.pipe(
-      mergeMap(params => this.eventService.getEventByUuid(params['uuid']))
-    ).subscribe(
-      event => this.event = event
-    )
-  }
+  getEvent = this.route.params.pipe(
+    mergeMap(params => this.eventService.getEventByUuid(params['uuid']))
+  );
 }
