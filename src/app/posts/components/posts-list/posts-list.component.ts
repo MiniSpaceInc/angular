@@ -1,5 +1,4 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
-import {PostMockService} from "../../../core/service/post/post-mock.service";
 import {CardModule} from "primeng/card";
 import {AsyncPipe} from "@angular/common";
 import {PostRestService} from "../../../core/service/post/post-rest.service";

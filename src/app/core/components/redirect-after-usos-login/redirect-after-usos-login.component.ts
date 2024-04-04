@@ -3,12 +3,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {LocalStorageService} from "../../service/local-storage.service";
 import {AuthorizationUsosService} from "../../service/auth/authorization-usos.service";
 import {
-  DECODED_JWT_STORAGE_KEY,
-  JWT_STORAGE_KEY,
   REQUEST_TOKEN_SECRET_STORAGE_KEY,
   REQUEST_TOKEN_STORAGE_KEY
 } from "../../tokens";
-import {jwtDecode} from "jwt-decode";
 import {AuthService} from "../../service/auth/auth.service";
 import {isPlatformBrowser} from "@angular/common";
 
