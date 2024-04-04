@@ -3,7 +3,7 @@ import { EventMockService } from '../../../core/service/event/event-mock.service
 import { PostMockService } from '../../../core/service/post/post-mock.service';
 import { EventFactory } from '../../../core/model/factory/EventFactory';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { Event } from '../../../core/model/Event';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../../../core/model/Post';
