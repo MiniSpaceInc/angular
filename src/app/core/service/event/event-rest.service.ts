@@ -10,8 +10,8 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class EventRestService implements EventService {
-  getEvent(uuid: string): Event {
-    throw new Error('Method not implemented.');
+  getEventByUuid(uuid: string): Observable<Event> {
+    throw this.http.get<Event>('/api/events/' + uuid);
   }
   http = inject(HttpClient);
 

@@ -1,4 +1,4 @@
-import { EventViewComponent } from "./events/components/event-view/event-view.component";
+import { EventViewComponent } from "./events/containers/event-view/event-view.component";
 import { EventsViewComponent } from "./events/containers/events-view/events-view.component";
 import { Routes } from '@angular/router';
 import {
@@ -16,7 +16,7 @@ export const routes: Routes = [
     component: EventsViewComponent
   },
   {
-    path: 'events/:id',
+    path: 'events/:uuid',
     component: EventViewComponent
   },
   {

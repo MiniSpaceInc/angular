@@ -4,7 +4,7 @@ import { inject, Injectable } from '@angular/core';
 import {EventService} from "./event.service";
 import {mockEvents} from "./mockEvents";
 import {Event} from "../../model/Event";
-import { of } from "rxjs";
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,9 @@ import { of } from "rxjs";
 export class EventMockService implements EventService {
   eventFactory = inject(EventFactory);
 
-  getEvent(uuid: string): Event {
-    var event = mockEvents.find(event => event.uuid === uuid);
-    return event ? event : this.eventFactory.createEmptyEvent();
+  getEventByUuid(uuid: string): Observable<Event> {
+    const event = mockEvents.find(event => event.uuid === uuid);
+    return of(event ? event : this.eventFactory.createEmptyEvent());
   }
 
   getEventsPage(eventSearchDetails: EventSearchDetails) {

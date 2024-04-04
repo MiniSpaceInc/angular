@@ -27,7 +27,7 @@ export class EventsListComponent {
   router: Router = inject(Router);
 
   onEventClick(event: Event) {
-    this.router.navigate(['/events', event.id]);
+    this.router.navigate(['/events', event.uuid]);
   }
-  
+
 }

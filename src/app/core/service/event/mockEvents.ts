@@ -3,7 +3,7 @@ import {Event} from "../../model/Event";
 export const mockEvents: Event[] = [
   {
     id: 1,
-    uuid: '1',
+    uuid: '155bbe547-0b8c-4576-ae92-38e11e63fa7a',
     name: 'CodeCrunch: The Tech Symposium',
     organizer: 'ByteBusters Inc.',
     date: '2024-04-10',
@@ -11,7 +11,7 @@ export const mockEvents: Event[] = [
   },
   {
     id: 2,
-    uuid: '2',
+    uuid: 'e7bd8e31-0abe-4b47-85ed-6b91a40da45f',
     name: 'PixelFest: Designers Unite',
     organizer: 'Creative Collective Co.',
     date: '2024-04-15',
@@ -19,7 +19,7 @@ export const mockEvents: Event[] = [
   },
   {
     id: 3,
-    uuid: '3',
+    uuid: '39f53b21-3db6-437e-9fa5-bee68cd63d30',
     name: 'InnoHack: Hackathon Extravaganza',
     organizer: 'Innovation Wizards Ltd.',
     date: '2024-04-20',
@@ -27,7 +27,7 @@ export const mockEvents: Event[] = [
   },
   {
     id: 4,
-    uuid: '4',
+    uuid: 'fcb70abc-cfc6-45c8-87ed-7104bf43f16f',
     name: 'AetherCon: The Virtual Reality Summit',
     organizer: 'DreamTech Innovations',
     date: '2024-04-25',
@@ -35,7 +35,7 @@ export const mockEvents: Event[] = [
   },
   {
     id: 5,
-    uuid: '5',
+    uuid: '42c63bdf-b334-44bf-b08c-66158042cf53',
     name: 'ArtisanCraft: The Handmade Expo',
     organizer: 'Crafty Creations Co.',
     date: '2024-05-01',
@@ -43,7 +43,7 @@ export const mockEvents: Event[] = [
   },
   {
     id: 6,
-    uuid: '6',
+    uuid: 'd663150b-325f-439a-b08f-3a75ef6bbce5',
     name: 'MindMeld: The AI Symposium',
     organizer: 'Neural Networks Unlimited',
     date: '2024-05-05',
