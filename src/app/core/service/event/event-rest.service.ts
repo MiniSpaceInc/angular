@@ -12,11 +12,15 @@ import {HttpClient} from "@angular/common/http";
 export class EventRestService implements EventService {
   http = inject(HttpClient);
 
+  getEventByUuid(uuid: string): Observable<Event> {
+    return this.http.get<Event>('/api/events/' + uuid);
+  }
+
   addEvent(event: Event): Observable<any> {
-    return this.http.post('/api/events/add', event);
+    return this.http.post('/api/events', event);
   }
 
   getEventsPage(eventSearchDetails: EventSearchDetails): Observable<ObjectPageDto<Event>> {
-    return this.http.post<ObjectPageDto<Event>>('/api/events', eventSearchDetails);
+    return this.http.post<ObjectPageDto<Event>>('/api/events/search', eventSearchDetails);
   }
 }

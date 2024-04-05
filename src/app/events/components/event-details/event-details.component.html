@@ -1,0 +1,14 @@
+<div>
+  <p-card header="{{event.name}}" subheader="{{event.organizer}}">
+    <ng-template pTemplate="header">
+      <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+    </ng-template>
+    <ng-template pTemplate="content">
+      <p>{{event.description}}</p>
+      <p>{{event.date}}</p>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <p-toggleButton [onLabel]="'Wypisz się'" [offLabel]="'Zapisz się'"></p-toggleButton>
+    </ng-template>
+  </p-card>
+</div>

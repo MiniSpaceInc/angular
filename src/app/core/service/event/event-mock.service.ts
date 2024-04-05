@@ -1,28 +1,35 @@
-import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-import {mockEvents} from "./mockEvents";
 import {EventSearchDetails} from "../../model/EventSearchDetails";
-import {Event} from "../../model/Event";
+import { EventFactory } from '../../model/factory/EventFactory';
+import { inject, Injectable } from '@angular/core';
 import {EventService} from "./event.service";
+import {mockEvents} from "./mockEvents";
+import {Event} from "../../model/Event";
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventMockService implements EventService {
+  eventFactory = inject(EventFactory);
+
+  getEventByUuid(uuid: string): Observable<Event> {
+    const event = mockEvents.find(event => event.uuid === uuid);
+    return of(event ? event : this.eventFactory.createEmptyEvent());
+  }
 
   getEventsPage(eventSearchDetails: EventSearchDetails) {
     const events = this.filterMockEvents(eventSearchDetails)
-      .slice(eventSearchDetails.page * eventSearchDetails.itemsPerPage, (eventSearchDetails.page + 1) * eventSearchDetails.itemsPerPage);
+      .slice(eventSearchDetails.pageable.page * eventSearchDetails.pageable.size, (eventSearchDetails.pageable.page + 1) * eventSearchDetails.pageable.size);
 
     return of({
       content: events,
       totalElements: mockEvents.length,
-      totalPages: Math.ceil(mockEvents.length / eventSearchDetails.itemsPerPage),
+      totalPages: Math.ceil(mockEvents.length / eventSearchDetails.pageable.size),
       size: events.length,
-      number: eventSearchDetails.page,
+      number: eventSearchDetails.pageable.page,
       numberOfElements: mockEvents.length,
-      first: eventSearchDetails.page === 0,
-      last: eventSearchDetails.page === Math.ceil(mockEvents.length / eventSearchDetails.itemsPerPage) - 1,
+      first: eventSearchDetails.pageable.page === 0,
+      last: eventSearchDetails.pageable.page === Math.ceil(mockEvents.length / eventSearchDetails.pageable.size) - 1,
       empty: mockEvents.length === 0
     });
   }

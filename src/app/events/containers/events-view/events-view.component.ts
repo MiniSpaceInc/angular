@@ -3,6 +3,7 @@ import {EventsListComponent} from "../../components/events-list/events-list.comp
 import {EventEditorComponent} from "../../components/event-editor/event-editor.component";
 import {AsyncPipe} from "@angular/common";
 import {EventsSearchComponent} from "../../components/events-search/events-search.component";
+import {EventViewComponent} from '../event-view/event-view.component';
 
 @Component({
   selector: 'app-events-view',
@@ -11,11 +12,14 @@ import {EventsSearchComponent} from "../../components/events-search/events-searc
     EventsListComponent,
     EventEditorComponent,
     AsyncPipe,
-    EventsSearchComponent
+    EventsSearchComponent,
+    EventViewComponent,
   ],
   templateUrl: './events-view.component.html',
   styleUrl: './events-view.component.scss'
 })
 export class EventsViewComponent {
   mode: 'list' | 'edit' = 'list';
+
+  selectedEvent: any;
 }

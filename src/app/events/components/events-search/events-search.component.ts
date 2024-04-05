@@ -1,4 +1,4 @@
-import {Component, inject, ViewChild} from '@angular/core';
+import {Component, EventEmitter, inject, Output, ViewChild} from '@angular/core';
 import {EventsListComponent} from "../events-list/events-list.component";
 import {PaginationComponent} from "../../../core/components/pagination/pagination.component";
 import {AsyncPipe, JsonPipe} from "@angular/common";
@@ -26,6 +26,8 @@ import {EventRestService} from "../../../core/service/event/event-rest.service";
   styleUrl: './events-search.component.scss'
 })
 export class EventsSearchComponent {
+  @Output() eventSelected = new EventEmitter<Event>();
+
   eventService: EventService = inject(EventRestService);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
 

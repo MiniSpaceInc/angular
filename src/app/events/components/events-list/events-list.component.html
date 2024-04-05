@@ -1,9 +1,7 @@
-<div class="list-group">
-  @for(event of events; track event.id) {
-    <div class="p-listbox">
-      <h4>{{event.name}}</h4>
-      <p>{{event.organizer}}</p>
-      <b>Data: </b><p>{{event.date}}</p>
-    </div>
-  }
+<div *ngFor="let event of events">
+  <p-card (click)="onEventClick(event)" header="{{event.name}}" subheader="{{event.organizer}}">
+    <ng-template pTemplate="content">
+      <b>Data: </b>{{event.date}}
+    </ng-template>
+  </p-card>
 </div>
