@@ -1,0 +1,5 @@
+<p-tree [value]="treeNodes"
+        [lazy]="true"
+        [filter]="true"
+        [loading]="loading"
+        (onNodeExpand)="nodeExpand($event.node)"/>
