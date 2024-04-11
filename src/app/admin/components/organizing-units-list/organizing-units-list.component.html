@@ -2,4 +2,15 @@
         [lazy]="true"
         [filter]="true"
         [loading]="loading"
-        (onNodeExpand)="nodeExpand($event.node)"/>
+        (onNodeExpand)="nodeExpand($event.node)">
+  <ng-template let-node pTemplate="default">
+    <b>{{node.label}}</b>
+    @if(interactionButtonText) {
+      <button class="btn btn-success btn-sm"
+              (click)="organizingUnitButtonClick.emit(node.data)">
+        {{interactionButtonText}}
+      </button>
+    }
+  </ng-template>
+</p-tree>
+

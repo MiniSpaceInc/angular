@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {OrganizingUnitMockService} from "../../../core/service/organizing-unit/organizing-unit-mock.service";
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
 import {JsonPipe} from "@angular/common";
@@ -14,7 +14,9 @@ import {TreeNode} from "primeng/api";
   templateUrl: './organizing-units-list.component.html',
   styleUrl: './organizing-units-list.component.scss'
 })
-export class OrganizingUnitsListComponent {
+export class OrganizingUnitsListComponent implements OnInit {
+  @Input() interactionButtonText?: string;
+  @Output() organizingUnitButtonClick = new EventEmitter<OrganizingUnit>();
   organizingUnitService = inject(OrganizingUnitMockService);
   treeNodes: TreeNode<OrganizingUnit>[] = [];
   loading = false;
