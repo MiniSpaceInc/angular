@@ -20,4 +20,14 @@ export class OrganizingUnitMockService implements OrganizingUnitService {
     return of(organizingUnitsMock.filter(ou => ou.parentId === null));
   }
 
+  saveOrganizingUnit(organizingUnit: OrganizingUnit): Observable<any> {
+    organizingUnit.id = organizingUnitsMock.length + 1;
+    organizingUnitsMock.push(organizingUnit);
+    const parent = organizingUnitsMock.filter(ou => ou.id === organizingUnit.parentId)[0];
+    if(parent) {
+      parent.isLeaf = false;
+    }
+    return of(1);
+  }
+
 }

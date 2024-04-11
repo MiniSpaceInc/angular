@@ -5,4 +5,5 @@ export interface OrganizingUnitService {
   createNewOrganizingUnit(): Observable<any>;
   getRootOrganizingUnits(): Observable<OrganizingUnit[]>;
   getChildren(parentId: number): Observable<OrganizingUnit[]>;
+  saveOrganizingUnit(organizingUnit: OrganizingUnit): Observable<any>;
 }

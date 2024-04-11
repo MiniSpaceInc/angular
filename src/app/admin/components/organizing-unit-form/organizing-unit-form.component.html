@@ -1,1 +1,26 @@
-<p>organizing-unit-form works!</p>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <input #name="ngModel"
+             type="text"
+             class="form-control"
+             placeholder="Nazwa jednostki..."
+             [(ngModel)]="organizingUnit.name"
+             name="name"
+             required
+             minlength="3">
+    </div>
+
+    <button type="button"
+           class="btn btn-success float-end"
+           (click)="saveOrganizingUnit()"
+           [disabled]="name.invalid">
+      Zapisz
+    </button>
+
+    @if (name.invalid && (name.dirty || name.touched)) {
+      <div class="alert alert-danger">Nazwa jednostki jest wymagana i musi mieć co najmniej 3 znaki.</div>
+    }
+
+  </form>
+</div>

@@ -1,7 +1,13 @@
-<button class="btn btn-success" (click)="showDialog()">+ Dodaj nową jednostkę</button>
-<app-organizing-units-list interactionButtonText="+ Dodaj podjednostkę" (organizingUnitButtonClick)="showDialog()"/>
-<p-dialog header="Dodaj jednostkę"
-          [(visible)]="displayAddUnitDialog"
-          [modal]="true">
-  <app-organizing-unit-form/>
-</p-dialog>
+<button class="btn btn-success" (click)="showDialog(undefined)">+ Dodaj nową jednostkę</button>
+<app-organizing-units-list interactionButtonText="+ Dodaj podjednostkę"
+                           (organizingUnitButtonClick)="showDialog($event)"
+                           #unitsList/>
+@if (displayAddUnitDialog)  {
+  <p-dialog header="Dodaj jednostkę"
+            [modal]="true"
+            [(visible)]="displayAddUnitDialog"
+            [style]="{width: '60vw'}">
+    <app-organizing-unit-form (save)="displayAddUnitDialog = false; unitsList.ngOnInit()"
+                              [parentUnit]="parentUnit"/>
+  </p-dialog>
+}
