@@ -2,7 +2,9 @@
   <p-tabPanel header="Jednostki organizujące">
     <app-organizing-units-tab/>
   </p-tabPanel>
-  <p-tabPanel header="Testowy">
-    <p>Hello, World!</p>
+  <p-tabPanel header="Użytkownicy">
+    <ng-template pTemplate="content">
+      <app-users-tab/>
+    </ng-template>
   </p-tabPanel>
 </p-tabView>

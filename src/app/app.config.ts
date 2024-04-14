@@ -1,6 +1,6 @@
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { provideClientHydration } from '@angular/platform-browser';
-import { ApplicationConfig } from '@angular/core';
+import {ApplicationConfig} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import {provideHttpClient, withFetch, withInterceptors} from "@angular/common/http";
@@ -11,9 +11,11 @@ import {
   REQUEST_TOKEN_STORAGE_KEY
 } from "./core/tokens";
 import {authInterceptor} from "./core/interceptors/auth.interceptor";
+import {MessageService} from "primeng/api";
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    MessageService,
     provideRouter(routes),
     provideClientHydration(),
     provideAnimations(),

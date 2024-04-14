@@ -1,0 +1,22 @@
+/* Custom CSS to make success messages smaller */
+.p-messages .ui-messages-success {
+  font-size: 6px; /* Adjust font size for success messages */
+}
+
+.p-messages .ui-messages-success .ui-messages-summary {
+  font-size: 6px; /* Adjust font size of summary for success messages */
+}
+
+.p-messages .ui-messages-success .ui-messages-detail {
+  font-size: 6px; /* Adjust font size of detail for success messages */
+}
+
+/* Adjust padding and margins as needed */
+.p-messages .ui-messages-success {
+  padding: 5px;
+  margin: 5px;
+}
+
+.p-message-wrapper {
+  padding: 5px !important;
+}

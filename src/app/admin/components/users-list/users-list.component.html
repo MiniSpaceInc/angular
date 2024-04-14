@@ -1,0 +1,26 @@
+<p-table [value]="users"
+         [lazy]="true"
+         (onLazyLoad)="loadUsers($event)"
+         [paginator]="true"
+         [rows]="usersPerPage"
+         [totalRecords]="totalUsers"
+         [loading]="loading">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 12%">Imię i nazwisko</th>
+      <th style="width: 10%">Numer albumu</th>
+      <th>Organizator</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+    <tr>
+      <td>{{user.firstName}} {{user.lastName}}</td>
+      <td>{{user.studentNumber}}</td>
+      <td>
+        <p-checkbox [binary]="true"
+                    [ngModel]="user.isOrganizer"
+                    (onChange)="setUserOrganizerRole(user, $event.checked)"/>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
