@@ -19,12 +19,13 @@
         </th>
       </tr>
       <tr>
-          <th>
-            <input type="text" formControlName="name" class="form-control"/>
-          </th>
-          <th>
-            <input type="text" formControlName="studentNumber" class="form-control"/>
-          </th>
+        <th>
+          <input type="text" formControlName="name" class="form-control"/>
+        </th>
+        <th>
+          <input type="text" formControlName="studentNumber" class="form-control"/>
+        </th>
+        <th></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
@@ -36,8 +37,13 @@
                       [ngModel]="user.isOrganizer"
                       [ngModelOptions]="{standalone: true}"
                       (onChange)="setUserOrganizerRole(user, $event.checked)"/>
+          <button class="btn btn-outline-secondary btn-sm"
+                  (click)="usersOrganizingUnitsDialog.show(user)">
+            Zarządzaj
+          </button>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </form>
+<app-users-organizing-units-dialog #usersOrganizingUnitsDialog/>

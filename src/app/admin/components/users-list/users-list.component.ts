@@ -11,6 +11,11 @@ import {UserSearchDetails} from "../../../core/model/UserSearchDetails";
 import {UserSearchDetailsFactory} from "../../../core/model/factory/UserSearchDetailsFactory";
 import {debounceTime, distinctUntilChanged} from "rxjs";
 import {InputTextModule} from "primeng/inputtext";
+import {DialogModule} from "primeng/dialog";
+import {
+  UsersOrganizingUnitsDialogComponent
+} from "../users-organizing-units-dialog/users-organizing-units-dialog.component";
+import {ButtonModule} from "primeng/button";
 
 @Component({
   selector: 'app-users-list',
@@ -22,23 +27,28 @@ import {InputTextModule} from "primeng/inputtext";
     JsonPipe,
     ToastModule,
     ReactiveFormsModule,
-    InputTextModule
+    InputTextModule,
+    DialogModule,
+    UsersOrganizingUnitsDialogComponent,
+    ButtonModule
   ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss'
 })
 export class UsersListComponent implements OnInit {
-  DEFAULT_USERS_PER_PAGE = 10;
-  userService = inject(UserMockService);
-  messageService = inject(MessageService);
-  usersFiltersForm = this.createForm();
-  userSearchDetails: UserSearchDetails = inject(UserSearchDetailsFactory)
+  private DEFAULT_USERS_PER_PAGE = 10;
+  private userService = inject(UserMockService);
+  private messageService = inject(MessageService);
+  private userSearchDetails: UserSearchDetails = inject(UserSearchDetailsFactory)
     .createEmptyUserSearchDetails(this.DEFAULT_USERS_PER_PAGE)
 
+  usersFiltersForm = this.createForm();
   users: User[] = [];
   totalUsers = 0;
   loading = true;
   usersPerPage = this.DEFAULT_USERS_PER_PAGE;
+
+  usersOrganizingUnitsDialogUser?: User;
 
   ngOnInit() {
     this.usersFiltersForm.get('name')!.valueChanges.pipe(

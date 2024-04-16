@@ -15,7 +15,10 @@ import {TreeNode} from "primeng/api";
   styleUrl: './organizing-units-list.component.scss'
 })
 export class OrganizingUnitsListComponent implements OnInit {
+  @Input() interactionButton: boolean = false;
   @Input() interactionButtonText?: string;
+  @Input() checkbox: boolean = false;
+  @Input() checkedOrganizingUnits: OrganizingUnit[] = [];
   @Output() organizingUnitButtonClick = new EventEmitter<OrganizingUnit>();
   organizingUnitService = inject(OrganizingUnitMockService);
   treeNodes: TreeNode<OrganizingUnit>[] = [];

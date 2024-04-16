@@ -1,0 +1,7 @@
+@if(user) {
+  <p-dialog [modal]="true"
+            [(visible)]="visible"
+            [header]="'Jednostki organizujące użytkownika ' + user.firstName + ' ' + user.lastName">
+    <app-organizing-units-list/>
+  </p-dialog>
+}

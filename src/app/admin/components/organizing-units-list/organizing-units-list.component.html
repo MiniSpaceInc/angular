@@ -11,6 +11,10 @@
         {{interactionButtonText}}
       </button>
     }
+
+    @if(checkbox) {
+      <input type="checkbox" [checked]="checkedOrganizingUnits.includes(node.data)"/>
+    }
   </ng-template>
 </p-tree>
 

@@ -1,5 +1,6 @@
 <button class="btn btn-success" (click)="showDialog(undefined)">+ Dodaj nową jednostkę</button>
-<app-organizing-units-list interactionButtonText="+ Dodaj podjednostkę"
+<app-organizing-units-list [interactionButton]="true"
+                           interactionButtonText="+ Dodaj podjednostkę"
                            (organizingUnitButtonClick)="showDialog($event)"
                            #unitsList/>
 @if (displayAddUnitDialog)  {

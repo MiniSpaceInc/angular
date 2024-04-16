@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {UserService} from "./user.service";
 import {delay, Observable, of} from "rxjs";
 import {UserSearchDetails} from "../../model/UserSearchDetails";
@@ -38,12 +38,12 @@ export class UserMockService implements UserService {
     return usersMock.filter(user => {
       const studentNumberOk = !userSearchDetails.studentNumber || user.studentNumber.toString().includes(userSearchDetails.studentNumber.toString());
       let nameOk = true;
-      for(let name of userSearchDetails.name.split(' ')) {
-        if(name === '\t' || name === '\n') {
+      for (let name of userSearchDetails.name.split(' ')) {
+        if (name === '\t' || name === '\n') {
           continue;
         }
 
-        if(!user.firstName.toLowerCase().includes(name.toLowerCase()) && !user.lastName.toLowerCase().includes(name.toLowerCase())) {
+        if (!user.firstName.toLowerCase().includes(name.toLowerCase()) && !user.lastName.toLowerCase().includes(name.toLowerCase())) {
           nameOk = false;
           break;
         }
