@@ -13,7 +13,8 @@
     }
 
     @if(checkbox) {
-      <input type="checkbox" [checked]="checkedOrganizingUnits.includes(node.data)"/>
+      <p-checkbox [binary]="true"
+                  [ngModel]="checkedOrganizingUnitsIds.includes(node.data.id)"/>
     }
   </ng-template>
 </p-tree>

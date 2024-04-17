@@ -14,3 +14,15 @@ export const organizingUnitsMock: OrganizingUnit[] = [
   { id: 11, parentId: 4, parent: null, isLeaf: true, name: 'Child 1 of Parent 4' },
   { id: 12, parentId: null, parent: null, isLeaf: true, name: 'Parent 5' },
 ];
+
+export const organizingUnitsMembershipMock: { userId: number, organizingUnitId: number}[] = [
+  { userId: 1, organizingUnitId: 1 },
+  { userId: 1, organizingUnitId: 2 },
+  { userId: 1, organizingUnitId: 4 },
+  { userId: 2, organizingUnitId: 1 },
+  { userId: 2, organizingUnitId: 3 },
+  { userId: 2, organizingUnitId: 6 },
+  { userId: 2, organizingUnitId: 11 },
+  { userId: 2, organizingUnitId: 12 },
+  { userId: 2, organizingUnitId: 10 }
+]

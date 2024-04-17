@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {OrganizingUnitService} from "./organizing-unit.service";
 import {Observable, of} from "rxjs";
 import {OrganizingUnit} from "../../model/OrganizingUnit";
-import {organizingUnitsMock} from "./organizingUnitsMock";
+import {organizingUnitsMembershipMock, organizingUnitsMock} from "./organizingUnitsMock";
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +30,14 @@ export class OrganizingUnitMockService implements OrganizingUnitService {
     return of(1);
   }
 
+  getUsersOrganizingUnits(userId: number): Observable<OrganizingUnit[]> {
+    const unitsIds = organizingUnitsMembershipMock
+      .filter(
+        oum => oum.userId === userId
+      ).map(
+        oum => oum.organizingUnitId
+      );
+
+    return of(organizingUnitsMock.filter(ou => unitsIds.includes(ou.id)));
+  }
 }

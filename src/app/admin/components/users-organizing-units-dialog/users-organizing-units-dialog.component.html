@@ -2,6 +2,8 @@
   <p-dialog [modal]="true"
             [(visible)]="visible"
             [header]="'Jednostki organizujące użytkownika ' + user.firstName + ' ' + user.lastName">
-    <app-organizing-units-list/>
+    <app-organizing-units-list [checkbox]="true"
+                               [checkedOrganizingUnitsIds]="organizingUnitsIds"
+                               (checkboxChange)="changeMembership($event)"/>
   </p-dialog>
 }

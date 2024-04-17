@@ -4,12 +4,16 @@ import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
 import {JsonPipe} from "@angular/common";
 import {TreeModule} from "primeng/tree";
 import {TreeNode} from "primeng/api";
+import {CheckboxModule} from "primeng/checkbox";
+import {FormsModule} from "@angular/forms";
 @Component({
   selector: 'app-organizing-units-list',
   standalone: true,
   imports: [
     JsonPipe,
-    TreeModule
+    TreeModule,
+    CheckboxModule,
+    FormsModule
   ],
   templateUrl: './organizing-units-list.component.html',
   styleUrl: './organizing-units-list.component.scss'
@@ -18,8 +22,9 @@ export class OrganizingUnitsListComponent implements OnInit {
   @Input() interactionButton: boolean = false;
   @Input() interactionButtonText?: string;
   @Input() checkbox: boolean = false;
-  @Input() checkedOrganizingUnits: OrganizingUnit[] = [];
+  @Input() checkedOrganizingUnitsIds: number[] = [];
   @Output() organizingUnitButtonClick = new EventEmitter<OrganizingUnit>();
+  @Output() checkboxChange = new EventEmitter<OrganizingUnit>();
   organizingUnitService = inject(OrganizingUnitMockService);
   treeNodes: TreeNode<OrganizingUnit>[] = [];
   loading = false;
