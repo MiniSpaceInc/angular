@@ -14,7 +14,8 @@
 
     @if(checkbox) {
       <p-checkbox [binary]="true"
-                  [ngModel]="checkedOrganizingUnitsIds.includes(node.data.id)"/>
+                  [ngModel]="checkedOrganizingUnitsIds.includes(node.data.id)"
+                  (onChange)="checkboxChange.emit(node.data)"/>
     }
   </ng-template>
 </p-tree>

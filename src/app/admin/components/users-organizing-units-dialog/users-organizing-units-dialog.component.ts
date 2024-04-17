@@ -5,6 +5,7 @@ import {OrganizingUnitsListComponent} from "../organizing-units-list/organizing-
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
 import {OrganizingUnitMockService} from "../../../core/service/organizing-unit/organizing-unit-mock.service";
 import {JsonPipe} from "@angular/common";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-users-organizing-units-dialog',
@@ -20,6 +21,7 @@ import {JsonPipe} from "@angular/common";
 export class UsersOrganizingUnitsDialogComponent {
   @Input() user?: User;
   private organizingUnitService = inject(OrganizingUnitMockService);
+  private messageService = inject(MessageService);
 
   visible = false;
   organizingUnitsIds: number[] = [];
@@ -33,6 +35,22 @@ organizingUnits => this.organizingUnitsIds = organizingUnits.map(ou => ou.id)
   }
 
   changeMembership(organizingUnit: OrganizingUnit) {
-    console.log('Changing membership for user', this.user, 'to organizing unit', organizingUnit);
+    const add = !this.organizingUnitsIds.includes(organizingUnit.id);
+
+    this.organizingUnitService.changeUserMembership(organizingUnit.id, this.user!.id, add)
+      .subscribe(() => {
+        if (this.organizingUnitsIds.includes(organizingUnit.id)) {
+          this.organizingUnitsIds.splice(this.organizingUnitsIds.indexOf(organizingUnit.id), 1);
+        } else {
+          this.organizingUnitsIds.push(organizingUnit.id);
+        }
+
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Sukces',
+          detail: 'Użytkownikowi ' + this.user!.firstName + ' ' + this.user!.lastName
+            + (add ? ' dodano' : ' usunięto') + ' jednostkę organizacyjną ' + organizingUnit.name + '.'
+        })
+      });
   }
 }

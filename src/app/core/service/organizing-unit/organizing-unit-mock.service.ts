@@ -40,4 +40,21 @@ export class OrganizingUnitMockService implements OrganizingUnitService {
 
     return of(organizingUnitsMock.filter(ou => unitsIds.includes(ou.id)));
   }
+
+  changeUserMembership(organizingUnitId: number, userId: number, add: boolean): Observable<any> {
+    if(add) {
+      organizingUnitsMembershipMock.push({
+        userId: userId,
+        organizingUnitId: organizingUnitId
+      });
+    } else {
+      organizingUnitsMembershipMock.splice(
+        organizingUnitsMembershipMock.findIndex(
+          oum => oum.organizingUnitId === organizingUnitId && oum.userId === userId
+        ), 1
+      );
+    }
+
+    return of(1);
+  }
 }

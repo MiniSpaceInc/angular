@@ -7,4 +7,5 @@ export interface OrganizingUnitService {
   getChildren(parentId: number): Observable<OrganizingUnit[]>;
   saveOrganizingUnit(organizingUnit: OrganizingUnit): Observable<any>;
   getUsersOrganizingUnits(userId: number): Observable<OrganizingUnit[]>;
+  changeUserMembership(organizingUnitId: number, userId: number, add: boolean): Observable<any>;
 }
