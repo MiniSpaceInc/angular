@@ -1,8 +1,10 @@
+import {OrganizingUnit} from "./OrganizingUnit";
+
 export interface Event {
   id: number;
   uuid: string;
   name: string;
-  organizer: string;
+  organizingUnit: OrganizingUnit;
   date: string;
   description: string;
 }

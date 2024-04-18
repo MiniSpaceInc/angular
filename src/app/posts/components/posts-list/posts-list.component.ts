@@ -3,6 +3,7 @@ import {CardModule} from "primeng/card";
 import {AsyncPipe} from "@angular/common";
 import {PostRestService} from "../../../core/service/post/post-rest.service";
 import {Post} from "../../../core/model/Post";
+import {PostMockService} from "../../../core/service/post/post-mock.service";
 
 @Component({
   selector: 'app-posts-list',
@@ -17,7 +18,7 @@ import {Post} from "../../../core/model/Post";
 export class PostsListComponent implements OnInit {
   @Input() eventId!: number;
 
-  postService = inject(PostRestService);
+  postService = inject(PostMockService);
   posts: Post[] = [];
 
   ngOnInit() {

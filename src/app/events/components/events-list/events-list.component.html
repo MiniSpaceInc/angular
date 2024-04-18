@@ -1,5 +1,5 @@
 <div *ngFor="let event of events">
-  <p-card (click)="onEventClick(event)" header="{{event.name}}" subheader="{{event.organizer}}">
+  <p-card (click)="onEventClick(event)" header="{{event.name}}" subheader="{{event.organizingUnit.name}}">
     <ng-template pTemplate="content">
       <b>Data: </b>{{event.date}}
     </ng-template>
