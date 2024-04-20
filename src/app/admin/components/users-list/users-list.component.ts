@@ -16,6 +16,8 @@ import {
   UsersOrganizingUnitsDialogComponent
 } from "../users-organizing-units-dialog/users-organizing-units-dialog.component";
 import {ButtonModule} from "primeng/button";
+import {UserRestService} from "../../../core/service/user/user-rest.service";
+import {Role} from "../../../core/model/Role";
 
 @Component({
   selector: 'app-users-list',
@@ -37,7 +39,7 @@ import {ButtonModule} from "primeng/button";
 })
 export class UsersListComponent implements OnInit {
   private DEFAULT_USERS_PER_PAGE = 10;
-  private userService = inject(UserMockService);
+  private userService = inject(UserRestService);
   private messageService = inject(MessageService);
   private userSearchDetails: UserSearchDetails = inject(UserSearchDetailsFactory)
     .createEmptyUserSearchDetails(this.DEFAULT_USERS_PER_PAGE)
@@ -69,7 +71,11 @@ export class UsersListComponent implements OnInit {
   }
 
   setUserOrganizerRole(user: User, active: boolean) {
-    this.userService.setOrganizerRole(user.id, active).subscribe(
+    const changeRole = active
+      ? this.userService.assignRole(user.id, Role.ORGANIZER)
+      : this.userService.removeRole(user.id, Role.ORGANIZER);
+
+    changeRole.subscribe(
       () => this.messageService.add({
         severity: 'success',
         summary: 'Sukces',
@@ -105,4 +111,6 @@ export class UsersListComponent implements OnInit {
       studentNumber: [null as number | null]
     })
   }
+
+  protected readonly Role = Role;
 }

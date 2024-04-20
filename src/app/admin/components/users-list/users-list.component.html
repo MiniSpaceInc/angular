@@ -8,10 +8,10 @@
            [loading]="loading">
     <ng-template pTemplate="header">
       <tr>
-        <th style="min-width:10rem">
+        <th style="width:20rem">
           Imię i nazwisko
         </th>
-        <th style="min-width:10rem">
+        <th style="width:10rem">
           Numer albumu
         </th>
         <th>
@@ -34,7 +34,7 @@
         <td>{{user.studentNumber}}</td>
         <td>
           <p-checkbox [binary]="true"
-                      [ngModel]="user.isOrganizer"
+                      [ngModel]="user.roles.includes(Role.ORGANIZER)"
                       [ngModelOptions]="{standalone: true}"
                       (onChange)="setUserOrganizerRole(user, $event.checked)"
                       #isOrganizerCheckbox/>

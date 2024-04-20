@@ -8,9 +8,6 @@ import {organizingUnitsMembershipMock, organizingUnitsMock} from "./organizingUn
   providedIn: 'root'
 })
 export class OrganizingUnitMockService implements OrganizingUnitService {
-  createNewOrganizingUnit(): Observable<any> {
-    return of(1);
-  }
 
   getChildren(parentId: number): Observable<OrganizingUnit[]> {
     return of(organizingUnitsMock.filter(ou => ou.parentId === parentId));

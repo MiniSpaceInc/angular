@@ -3,6 +3,7 @@ import {OrganizingUnitFactory} from "../../../core/model/factory/OrganizingUnitF
 import {OrganizingUnitMockService} from "../../../core/service/organizing-unit/organizing-unit-mock.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
+import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";
 
 @Component({
   selector: 'app-organizing-unit-form',
@@ -18,7 +19,7 @@ export class OrganizingUnitFormComponent implements OnInit {
   @Input() parentUnit?: OrganizingUnit;
   @Output() save = new EventEmitter<void>();
   organizingUnitFactory = inject(OrganizingUnitFactory);
-  organizingUnitService = inject(OrganizingUnitMockService);
+  organizingUnitService = inject(OrganizingUnitRestService);
   organizingUnit = this.organizingUnitFactory.createEmptyOrganizingUnit();
 
   ngOnInit() {

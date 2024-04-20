@@ -6,6 +6,7 @@ import {TreeModule} from "primeng/tree";
 import {TreeNode} from "primeng/api";
 import {CheckboxModule} from "primeng/checkbox";
 import {FormsModule} from "@angular/forms";
+import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";
 @Component({
   selector: 'app-organizing-units-list',
   standalone: true,
@@ -25,7 +26,7 @@ export class OrganizingUnitsListComponent implements OnInit {
   @Input() checkedOrganizingUnitsIds: number[] = [];
   @Output() organizingUnitButtonClick = new EventEmitter<OrganizingUnit>();
   @Output() checkboxChange = new EventEmitter<OrganizingUnit>();
-  organizingUnitService = inject(OrganizingUnitMockService);
+  organizingUnitService = inject(OrganizingUnitRestService);
   treeNodes: TreeNode<OrganizingUnit>[] = [];
   loading = false;
 

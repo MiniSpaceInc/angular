@@ -5,14 +5,19 @@ import {UserSearchDetails} from "../../model/UserSearchDetails";
 import {ObjectPageDto} from "../../model/dto/ObjectPageDto";
 import {User} from "../../model/User";
 import {usersMock} from "./usersMock";
+import {Role} from "../../model/Role";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserMockService implements UserService {
-  setOrganizerRole(userId: number, active: boolean): Observable<any> {
-    usersMock.filter(user => user.id === userId)[0].isOrganizer = active;
-    return of({});
+
+  assignRole(userId: number, role: Role): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
+
+  removeRole(userId: number, role: Role): Observable<any> {
+    throw new Error('Method not implemented.');
   }
 
   searchForUsers(searchDetails: UserSearchDetails): Observable<ObjectPageDto<User>> {

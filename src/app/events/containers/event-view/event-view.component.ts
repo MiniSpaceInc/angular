@@ -25,7 +25,7 @@ import {EventMockService} from "../../../core/service/event/event-mock.service";
   styleUrl: './event-view.component.scss'
 })
 export class EventViewComponent {
-  eventService: EventService = inject(EventMockService);
+  eventService: EventService = inject(EventRestService);
   route: ActivatedRoute = inject(ActivatedRoute);
 
   getEvent = this.route.params.pipe(

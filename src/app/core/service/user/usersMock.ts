@@ -1,4 +1,5 @@
 import {User} from "../../model/User";
+import {Role} from "../../model/Role";
 
 const firstNames = ['John', 'Jane', 'Oliver', 'Emma', 'Noah', 'Ava', 'Liam', 'Sophia', 'Ethan', 'Isabella',
   'Michael', 'Emily', 'Jacob', 'Madison', 'Joshua', 'Amanda', 'Matthew', 'Sarah', 'Andrew', 'Stephanie'];
@@ -11,5 +12,5 @@ export const usersMock: User[] = Array.from({ length: 20 }, (_, i) => ({
   lastName: lastNames[i],
   studentNumber: Math.floor(Math.random() * 900000) + 100000,
   usosId: 2000 + i,
-  isOrganizer: Math.floor(Math.random() * 100000) % 2 === 0
+  roles: Math.floor(Math.random() * 100000) % 2 === 0 ? [Role.ORGANIZER] : []
 }));

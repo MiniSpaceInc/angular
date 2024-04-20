@@ -6,6 +6,7 @@ import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
 import {OrganizingUnitMockService} from "../../../core/service/organizing-unit/organizing-unit-mock.service";
 import {JsonPipe} from "@angular/common";
 import {MessageService} from "primeng/api";
+import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";
 
 @Component({
   selector: 'app-users-organizing-units-dialog',
@@ -20,7 +21,7 @@ import {MessageService} from "primeng/api";
 })
 export class UsersOrganizingUnitsDialogComponent {
   @Input() user?: User;
-  private organizingUnitService = inject(OrganizingUnitMockService);
+  private organizingUnitService = inject(OrganizingUnitRestService);
   private messageService = inject(MessageService);
 
   visible = false;
