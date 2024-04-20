@@ -1,6 +1,6 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output, PLATFORM_ID} from '@angular/core';
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
-import {isPlatformBrowser, isPlatformServer, JsonPipe} from "@angular/common";
+import {isPlatformServer, JsonPipe} from "@angular/common";
 import {TreeModule} from "primeng/tree";
 import {TreeNode} from "primeng/api";
 import {CheckboxModule} from "primeng/checkbox";
