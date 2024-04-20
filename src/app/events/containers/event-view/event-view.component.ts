@@ -8,7 +8,6 @@ import {mergeMap} from "rxjs";
 import {EventDetailsComponent} from "../../components/event-details/event-details.component";
 import {PostsListComponent} from "../../../posts/components/posts-list/posts-list.component";
 import {EventRestService} from "../../../core/service/event/event-rest.service";
-import {EventMockService} from "../../../core/service/event/event-mock.service";
 
 @Component({
   selector: 'app-event-view',

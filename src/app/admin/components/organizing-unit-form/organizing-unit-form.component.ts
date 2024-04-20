@@ -1,6 +1,5 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {OrganizingUnitFactory} from "../../../core/model/factory/OrganizingUnitFactory";
-import {OrganizingUnitMockService} from "../../../core/service/organizing-unit/organizing-unit-mock.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
 import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";

@@ -3,7 +3,6 @@ import {User} from "../../../core/model/User";
 import {DialogModule} from "primeng/dialog";
 import {OrganizingUnitsListComponent} from "../organizing-units-list/organizing-units-list.component";
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
-import {OrganizingUnitMockService} from "../../../core/service/organizing-unit/organizing-unit-mock.service";
 import {JsonPipe} from "@angular/common";
 import {MessageService} from "primeng/api";
 import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";

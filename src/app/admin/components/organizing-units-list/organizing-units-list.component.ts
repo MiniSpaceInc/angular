@@ -1,7 +1,6 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
-import {OrganizingUnitMockService} from "../../../core/service/organizing-unit/organizing-unit-mock.service";
+import {Component, EventEmitter, inject, Input, OnInit, Output, PLATFORM_ID} from '@angular/core';
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
-import {JsonPipe} from "@angular/common";
+import {isPlatformBrowser, isPlatformServer, JsonPipe} from "@angular/common";
 import {TreeModule} from "primeng/tree";
 import {TreeNode} from "primeng/api";
 import {CheckboxModule} from "primeng/checkbox";
@@ -27,10 +26,15 @@ export class OrganizingUnitsListComponent implements OnInit {
   @Output() organizingUnitButtonClick = new EventEmitter<OrganizingUnit>();
   @Output() checkboxChange = new EventEmitter<OrganizingUnit>();
   organizingUnitService = inject(OrganizingUnitRestService);
+  platformId = inject(PLATFORM_ID);
   treeNodes: TreeNode<OrganizingUnit>[] = [];
   loading = false;
 
   ngOnInit() {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     this.organizingUnitService.getRootOrganizingUnits().subscribe(units =>
       this.treeNodes = units.map(this.toTreeNode)
     );

@@ -4,7 +4,6 @@ import { User } from '../../../core/model/User';
 import {CheckboxModule} from "primeng/checkbox";
 import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {JsonPipe} from "@angular/common";
-import {UserMockService} from "../../../core/service/user/user-mock.service";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {UserSearchDetails} from "../../../core/model/UserSearchDetails";

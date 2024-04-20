@@ -15,7 +15,6 @@ import { EventService } from "../../../core/service/event/event.service";
 import { EventRestService } from "../../../core/service/event/event-rest.service";
 import {DropdownModule} from "primeng/dropdown";
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
-import {OrganizingUnitMockService} from "../../../core/service/organizing-unit/organizing-unit-mock.service";
 import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";
 
 @Component({
