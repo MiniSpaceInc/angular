@@ -1,0 +1,52 @@
+<form [formGroup]="usersFiltersForm">
+  <p-table [value]="users"
+           [lazy]="true"
+           (onLazyLoad)="loadUsers($event)"
+           [paginator]="true"
+           [rows]="usersPerPage"
+           [totalRecords]="totalUsers"
+           [loading]="loading">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:20rem">
+          Imię i nazwisko
+        </th>
+        <th style="width:10rem">
+          Numer albumu
+        </th>
+        <th>
+          Organizator
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <input type="text" formControlName="name" class="form-control"/>
+        </th>
+        <th>
+          <input type="text" formControlName="studentNumber" class="form-control"/>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.studentNumber}}</td>
+        <td>
+          <p-checkbox [binary]="true"
+                      [ngModel]="user.roles.includes(Role.ORGANIZER)"
+                      [ngModelOptions]="{standalone: true}"
+                      (onChange)="setUserOrganizerRole(user, $event.checked)"
+                      #isOrganizerCheckbox/>
+          @if (isOrganizerCheckbox.checked()) {
+            <button class="btn btn-outline-secondary btn-sm"
+                    (click)="usersOrganizingUnitsDialog.show(user)">
+              Zarządzaj
+            </button>
+          }
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</form>
+<app-users-organizing-units-dialog #usersOrganizingUnitsDialog/>

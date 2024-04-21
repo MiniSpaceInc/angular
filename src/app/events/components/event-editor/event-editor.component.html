@@ -28,6 +28,18 @@
             formControlName="name"
             placeholder="Tytuł..."/>
 
+          <p-dropdown [options]="usersOrganizingUnits"
+                      placeholder="Wybierz jednostkę organizującą"
+                      formControlName="organizingUnit"
+                      [style]="{'width':'300px', 'padding':'0 0 0 0'}">
+            <ng-template pTemplate="selectedItem" let-organizingUnit>
+              <span>{{organizingUnit.name}}</span>
+            </ng-template>
+            <ng-template pTemplate="item" let-organizingUnit>
+              <span>{{organizingUnit.name}}</span>
+            </ng-template>
+          </p-dropdown>
+
           <textarea
             rows = "5"
             cols = "50"

@@ -42,7 +42,7 @@ export class EventMockService implements EventService {
   filterMockEvents(eventSearchDetails: EventSearchDetails) {
     return mockEvents
       .filter(event => event.name.toLowerCase().includes(eventSearchDetails.name.toLowerCase()))
-      .filter(event => event.organizer.toLowerCase().includes(eventSearchDetails.organizer.toLowerCase()))
+      .filter(event => event.organizingUnit.name.toLowerCase().includes(eventSearchDetails.organizer.toLowerCase()))
       .filter(event => (eventSearchDetails.dateFrom || eventSearchDetails.dateFrom === '') ? true : event.date >= eventSearchDetails.dateFrom)
       .filter(event => (eventSearchDetails.dateTo || eventSearchDetails.dateTo === '') ? true : event.date <= eventSearchDetails.dateTo)
   }

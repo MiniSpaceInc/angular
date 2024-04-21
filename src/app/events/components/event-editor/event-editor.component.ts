@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -13,6 +13,9 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ImageModule } from 'primeng/image';
 import { EventService } from "../../../core/service/event/event.service";
 import { EventRestService } from "../../../core/service/event/event-rest.service";
+import {DropdownModule} from "primeng/dropdown";
+import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
+import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";
 
 @Component({
   selector: 'app-event-editor',
@@ -25,16 +28,26 @@ import { EventRestService } from "../../../core/service/event/event-rest.service
     ImageModule,
     InputTextModule,
     InputTextareaModule,
+    DropdownModule,
   ],
   templateUrl: './event-editor.component.html',
   styleUrl: './event-editor.component.scss'
 })
-export class EventEditorComponent {
+export class EventEditorComponent implements OnInit {
   @Output() eventSaved = new EventEmitter<void>();
 
   eventFactory = inject(EventFactory);
   eventForm = this.createForm();
   eventService: EventService = inject(EventRestService);
+  organizingUnitService = inject(OrganizingUnitRestService);
+
+  usersOrganizingUnits: OrganizingUnit[] = [];
+
+  ngOnInit() {
+    this.organizingUnitService.getUsersOrganizingUnits(1).subscribe(
+      organizingUnits => this.usersOrganizingUnits = organizingUnits
+    )
+  }
 
   createForm(): FormGroup {
     return inject(FormBuilder).group(this.eventFactory.createEmptyEvent());
