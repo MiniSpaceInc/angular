@@ -3,6 +3,9 @@
     <div class="event-container">
       <div class="details-column">
         <app-event-details [event]="event"/>
+        @if (getComments | async; as comments) {
+          <app-comments [comments]="comments"/>
+        }
       </div>
       <div class="posts-column">
         <app-posts-list [eventId]="event.id"/>
