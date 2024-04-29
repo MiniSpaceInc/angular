@@ -14,4 +14,16 @@ export class CommentFactory {
 			author: '',
 		};
 	}
+
+	createMockCommentFromData(content: string): Comment {
+		return {
+			id: 0,
+			uuid: '',
+			content: content,
+			date: '12.12.2020',
+			author: 'Bartosz Olszewski',
+		};
+	}
+
+
 }

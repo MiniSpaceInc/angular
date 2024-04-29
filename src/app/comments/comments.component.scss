@@ -24,7 +24,6 @@
     width: 100%;
 }
 
-.input {
+:host ::ng-deep input[pInputText] {
     width: 100%;
-    margin-right: 10px;
-}
+  }

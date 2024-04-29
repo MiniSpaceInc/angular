@@ -13,7 +13,11 @@
     <div class="comment-container">
         <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
         <div class="comment-input-container">
-            <input type="text" placeholder="Napisz komentarz..." pInputText [(ngModel)]="content" />
+            <input 
+                type="text" 
+                placeholder="Napisz komentarz..."
+                (keydown.enter)="onEnterPressed()" 
+                pInputText [(ngModel)]="content" />
         </div>
     </div>
 </p-card>
