@@ -10,11 +10,19 @@ import { Comment } from '../../model/Comment';
 })
 export class CommentMockService implements CommentService {
   commentFactory = inject(CommentFactory);
+  comments: Comment[] = [...mockComments];
 
   addComment(comment: Comment): void {
-    mockComments.push(comment);
+    this.comments.push(comment);
   }
+
+  deleteCommentByUuid(uuid: string): void {
+    var commentIndex: number = this.comments.findIndex(comment => comment.uuid == uuid)
+    if(commentIndex < 0 || commentIndex >= this.comments.length) return;
+    this.comments.splice(commentIndex,1)
+  }
+
   getCommentsByEventUuid(uuid: string): Observable<Comment[]> {
-    return of(mockComments);
+    return of(this.comments);
   }
 }

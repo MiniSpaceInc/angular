@@ -13,6 +13,13 @@
   display: flex;
   flex-direction: column;
   align-items: left;
+  width: 100%;
+}
+
+.list-box-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .font-bold {

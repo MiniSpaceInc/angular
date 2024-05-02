@@ -7,6 +7,7 @@
                 <span class="font-bold">{{comment.author}}</span>
                 <p class="m-0">{{comment.content}}</p>
             </div>
+            <p-button (click)="toggleOverlay($event, comment)" icon="pi pi-ellipsis-v" [text]="true"/>
         </div>
         <div class="spacer"></div>
     </div>
@@ -20,4 +21,24 @@
                 pInputText [(ngModel)]="content" />
         </div>
     </div>
+    <p-overlayPanel #op
+        (onHide)="hideOverlay($event)">
+        <ng-template pTemplate="content">
+            <div class="list-box-container">
+                <p-button 
+                    (click)="deleteComment($event)" 
+                    label="Delete" 
+                    icon="pi pi-times" 
+                    [text]="true" 
+                    severity="danger"
+                />
+                <p-button 
+                    (click)="op.toggle($event)" 
+                    label="Edit"
+                    icon="pi pi-pencil" 
+                    [text]="true"
+                />
+            </div>
+        </ng-template>
+    </p-overlayPanel>
 </p-card>
