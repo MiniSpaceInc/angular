@@ -1,4 +1,3 @@
-import { EventService } from '../../../core/service/event/event.service';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import {Component, inject} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -7,7 +6,7 @@ import {AsyncPipe, NgFor} from '@angular/common';
 import {mergeMap} from "rxjs";
 import {EventDetailsComponent} from "../../components/event-details/event-details.component";
 import {PostsListComponent} from "../../../posts/components/posts-list/posts-list.component";
-import {EventRestService} from "../../../core/service/event/event-rest.service";
+import {EVENT_SERVICE} from "../../../core/tokens";
 
 @Component({
   selector: 'app-event-view',
@@ -24,8 +23,8 @@ import {EventRestService} from "../../../core/service/event/event-rest.service";
   styleUrl: './event-view.component.scss'
 })
 export class EventViewComponent {
-  eventService: EventService = inject(EventRestService);
-  route: ActivatedRoute = inject(ActivatedRoute);
+  eventService = inject(EVENT_SERVICE);
+  route = inject(ActivatedRoute);
 
   getEvent = this.route.params.pipe(
     mergeMap(params => this.eventService.getEventByUuid(params['uuid']))
