@@ -3,6 +3,7 @@ import {CardModule} from "primeng/card";
 import {SharedModule} from "primeng/api";
 import {ToggleButtonModule} from "primeng/togglebutton";
 import {Event} from "../../../core/model/Event";
+import {ReactionsComponent} from "../../../core/components/reactions/reactions.component";
 
 @Component({
   selector: 'app-event-details',
@@ -10,7 +11,8 @@ import {Event} from "../../../core/model/Event";
   imports: [
     CardModule,
     SharedModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    ReactionsComponent
   ],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss'

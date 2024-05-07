@@ -1,12 +1,13 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Event } from "../../../core/model/Event";
-import { AsyncPipe, NgFor } from "@angular/common";
+import {AsyncPipe, NgFor, NgOptimizedImage} from "@angular/common";
 import { CardModule } from 'primeng/card';
 import { RippleModule } from 'primeng/ripple';
 import { Router } from '@angular/router';
 import {
   PaginationComponent
 } from "../../../core/components/pagination/pagination.component";
+import {ReactionsComponent} from "../../../core/components/reactions/reactions.component";
 
 @Component({
   selector: 'app-events-list',
@@ -16,7 +17,9 @@ import {
     NgFor,
     PaginationComponent,
     RippleModule,
-    CardModule
+    CardModule,
+    NgOptimizedImage,
+    ReactionsComponent
   ],
   templateUrl: './events-list.component.html',
   styleUrl: './events-list.component.scss'
@@ -29,5 +32,4 @@ export class EventsListComponent {
   onEventClick(event: Event) {
     this.router.navigate(['/events', event.uuid]);
   }
-
 }

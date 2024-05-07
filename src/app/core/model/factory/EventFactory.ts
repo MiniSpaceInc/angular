@@ -16,6 +16,7 @@ export class EventFactory {
         organizingUnit: this.organizingUnitFactory.createEmptyOrganizingUnit(),
         date: '',
         description: '',
+        reactionsList: []
     };
   }
 }

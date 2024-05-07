@@ -8,7 +8,15 @@
       <p>{{event.date}}</p>
     </ng-template>
     <ng-template pTemplate="footer">
-      <p-toggleButton [onLabel]="'Wypisz się'" [offLabel]="'Zapisz się'"></p-toggleButton>
+      <div class="row">
+        <div class="col">
+          <p-toggleButton onLabel="Wypisz się"
+                          offLabel="Zapisz się"/>
+        </div>
+        <div class="col-4">
+          <app-reactions [object]="event" style="margin: 5px;"/>
+        </div>
+      </div>
     </ng-template>
   </p-card>
 </div>
