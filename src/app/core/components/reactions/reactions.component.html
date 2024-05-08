@@ -1,9 +1,13 @@
 @for(reactions of object.reactionsList; track reactions.type) {
-  <span style="margin-right: 20px">
-  <img [ngSrc]="'assets/reactionType_' + ReactionTypeNameMap.get(reactions.type) + '.svg'"
-       height="30"
-       width="30"
-       alt=""/>
-  <b>{{reactions.count}}</b>
-</span>
+  <div style="display: inline-block; margin-right: 10px">
+    <div [class]="object.userReaction === reactions.type ? 'marked' : ''">
+      <span style="margin-right: 20px">
+        <img [ngSrc]="'assets/reactionType_' + ReactionTypeNameMap.get(reactions.type) + '.svg'"
+             height="30"
+             width="30"
+             alt=""/>
+        <b>{{reactions.count}}</b>
+      </span>
+    </div>
+  </div>
 }

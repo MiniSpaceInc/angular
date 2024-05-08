@@ -23,7 +23,8 @@ export const mockEvents: Event[] = [
         type: ReactionType.WOW,
         count: 7
       }
-    ]
+    ],
+    userReaction: ReactionType.LOVE
   },
   {
     id: 2,
@@ -41,7 +42,8 @@ export const mockEvents: Event[] = [
         type: ReactionType.HAHA,
         count: 3
       },
-    ]
+    ],
+    userReaction: null
   },
   {
     id: 3,
@@ -55,7 +57,8 @@ export const mockEvents: Event[] = [
         type: ReactionType.WOW,
         count: 5
       }
-    ]
+    ],
+    userReaction: ReactionType.LOVE
   },
   {
     id: 4,
@@ -77,7 +80,8 @@ export const mockEvents: Event[] = [
         type: ReactionType.WOW,
         count: 7
       }
-    ]
+    ],
+    userReaction: ReactionType.HAHA
   },
   {
     id: 5,
@@ -95,7 +99,8 @@ export const mockEvents: Event[] = [
         type: ReactionType.HAHA,
         count: 1
       }
-    ]
+    ],
+    userReaction: ReactionType.HAHA
   },
   {
     id: 6,
@@ -117,6 +122,7 @@ export const mockEvents: Event[] = [
         type: ReactionType.WOW,
         count: 17
       }
-    ]
+    ],
+    userReaction: null
   }
 ];

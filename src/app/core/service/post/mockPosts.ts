@@ -1,4 +1,4 @@
-import { Post } from "../../model/Post";
+import {Post} from "../../model/Post";
 import {ReactionType} from "../../model/Reactions";
 
 export const mockPosts: Post[] = [
@@ -21,7 +21,8 @@ export const mockPosts: Post[] = [
         type: ReactionType.WOW,
         count: 1
       }
-    ]
+    ],
+    userReaction: ReactionType.WOW
   },
   {
     id: 2,
@@ -34,7 +35,8 @@ export const mockPosts: Post[] = [
         type: ReactionType.HAHA,
         count: 19
       }
-    ]
+    ],
+    userReaction: null
   },
   {
     id: 3,
@@ -51,7 +53,8 @@ export const mockPosts: Post[] = [
         type: ReactionType.HAHA,
         count: 20
       }
-    ]
+    ],
+    userReaction: null
   },
   {
     id: 4,
@@ -72,7 +75,8 @@ export const mockPosts: Post[] = [
         type: ReactionType.WOW,
         count: 2
       }
-    ]
+    ],
+    userReaction: null
   },
   {
     id: 5,
@@ -85,6 +89,7 @@ export const mockPosts: Post[] = [
         type: ReactionType.LOVE,
         count: 59
       }
-    ]
+    ],
+    userReaction: ReactionType.LOVE
   },
 ];
