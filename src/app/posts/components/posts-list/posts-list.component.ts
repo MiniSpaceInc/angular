@@ -4,6 +4,7 @@ import {AsyncPipe} from "@angular/common";
 import {Post} from "../../../core/model/Post";
 import {PostMockService} from "../../../core/service/post/post-mock.service";
 import {ReactionsComponent} from "../../../core/components/reactions/reactions.component";
+import {POST_SERVICE} from "../../../core/tokens";
 
 @Component({
   selector: 'app-posts-list',
@@ -19,7 +20,7 @@ import {ReactionsComponent} from "../../../core/components/reactions/reactions.c
 export class PostsListComponent implements OnInit {
   @Input() eventId!: number;
 
-  postService = inject(PostMockService);
+  postService = inject(POST_SERVICE);
   posts: Post[] = [];
 
   ngOnInit() {

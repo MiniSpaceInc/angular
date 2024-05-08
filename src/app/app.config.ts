@@ -6,7 +6,7 @@ import { routes } from './app.routes';
 import {provideHttpClient, withFetch, withInterceptors} from "@angular/common/http";
 import {
   DECODED_JWT_STORAGE_KEY, EVENT_SERVICE,
-  JWT_STORAGE_KEY,
+  JWT_STORAGE_KEY, POST_SERVICE,
   REQUEST_TOKEN_SECRET_STORAGE_KEY,
   REQUEST_TOKEN_STORAGE_KEY
 } from "./core/tokens";
@@ -15,6 +15,7 @@ import {MessageService} from "primeng/api";
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ColumnFilter} from "primeng/table";
 import {EventMockService} from "./core/service/event/event-mock.service";
+import {PostMockService} from "./core/service/post/post-mock.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -51,5 +52,9 @@ export const appConfig: ApplicationConfig = {
       provide: EVENT_SERVICE,
       useClass: EventMockService
     },
+    {
+      provide: POST_SERVICE,
+      useClass: PostMockService
+    }
   ]
 };

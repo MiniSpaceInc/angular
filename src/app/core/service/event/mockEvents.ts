@@ -58,7 +58,7 @@ export const mockEvents: Event[] = [
         count: 5
       }
     ],
-    userReaction: ReactionType.LOVE
+    userReaction: ReactionType.WOW
   },
   {
     id: 4,
