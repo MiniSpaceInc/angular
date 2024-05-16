@@ -4,6 +4,9 @@
       <ng-template pTemplate="content">
         <p>{{post.content}}</p>
       </ng-template>
+      <ng-template pTemplate="footer">
+        <app-reactions [object]="post"/>
+      </ng-template>
     </p-card>
   </div>
 }

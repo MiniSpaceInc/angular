@@ -5,6 +5,8 @@ import {EventService} from "./event.service";
 import {mockEvents} from "./mockEvents";
 import {Event} from "../../model/Event";
 import {Observable, of} from "rxjs";
+import {ReactionType} from "../../model/Reactions";
+import {ReactionsDto} from "../../model/dto/ReactionsDto";
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +39,34 @@ export class EventMockService implements EventService {
   addEvent(event: Event) {
     mockEvents.push(event);
     return of(1);
+  }
+
+
+  setReaction(eventId: number, reaction: ReactionType | null): Observable<any> {
+    // const event = mockEvents.find(e => e.id === eventId)!;
+    // if(event.userReaction !== null) {
+    //   event.reactionsList.find(r => r.type === event.userReaction)!.count--;
+    // }
+    //
+    // if(reaction !== null) {
+    //   const reactions = event.reactionsList.find(r => r.type === reaction);
+    //   if(reactions) {
+    //     reactions.count++;
+    //   } else {
+    //     event.reactionsList.push({
+    //       type: reaction,
+    //       count: 1
+    //     })
+    //   }
+    // }
+    //
+    // event.userReaction = reaction;
+    // return of(HttpStatusCode.NoContent);
+    throw new Error("Not implemented yet!");
+  }
+
+  getReactions(eventId: number): Observable<ReactionsDto> {
+    throw new Error("Not implemented yet!");
   }
 
   filterMockEvents(eventSearchDetails: EventSearchDetails) {

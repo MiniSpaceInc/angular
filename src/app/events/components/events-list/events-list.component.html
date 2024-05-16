@@ -3,5 +3,8 @@
     <ng-template pTemplate="content">
       <b>Data: </b>{{event.date}}
     </ng-template>
+    <ng-template pTemplate="footer">
+      <app-reactions [object]="event"/>
+    </ng-template>
   </p-card>
 </div>

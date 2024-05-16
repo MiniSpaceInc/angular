@@ -7,12 +7,13 @@ import { Post } from "../Post";
 export class PostFactory {
   createEmptyPost(): Post {
       return {
-          id: 0,
+        reactionsList: [],
+        userReaction: null,
+        id: 0,
           uuid: '',
-          title: '',
           author: '',
           date: '',
-          content: '',
+          content: ''
       };
   }
 }

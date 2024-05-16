@@ -10,12 +10,12 @@ export class EventFactory {
 
   createEmptyEvent(): Event {
     return {
-        id: 0,
-        uuid: '',
-        name: '',
-        organizingUnit: this.organizingUnitFactory.createEmptyOrganizingUnit(),
-        date: '',
-        description: '',
+      id: 0,
+      uuid: '',
+      name: '',
+      organizingUnit: this.organizingUnitFactory.createEmptyOrganizingUnit(),
+      date: '',
+      description: ''
     };
   }
 }
