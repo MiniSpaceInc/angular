@@ -1,4 +1,4 @@
-export interface Reactions {
+export interface ReactionDetailsDto {
   type: ReactionType;
   count: number;
 }

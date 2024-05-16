@@ -6,6 +6,7 @@ import {ObjectPageDto} from "../../model/dto/ObjectPageDto";
 import {Event} from "../../model/Event";
 import {HttpClient} from "@angular/common/http";
 import {ReactionType} from "../../model/Reactions";
+import {ReactionsDto} from "../../model/dto/ReactionsDto";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class EventRestService implements EventService {
 
 
   setReaction(eventId: number, reaction: ReactionType | null): Observable<any> {
-    throw new Error("Not implemented yet!");
+    return this.http.put(`/api/events/${eventId}/reactions${reaction ? '?reaction=' + reaction : ''}`, null);
+  }
+
+  getReactions(eventId: number): Observable<ReactionsDto> {
+    return this.http.get<ReactionsDto>(`/api/events/${eventId}/reactions`);
   }
 }

@@ -1,5 +1,4 @@
 import {OrganizingUnit} from "./OrganizingUnit";
-import {Reactions, ReactionType} from "./Reactions";
 
 export interface Event {
   id: number;
@@ -8,6 +7,4 @@ export interface Event {
   organizingUnit: OrganizingUnit;
   date: string;
   description: string;
-  reactionsList: Reactions[];
-  userReaction: ReactionType | null;
 }

@@ -14,8 +14,8 @@ import {authInterceptor} from "./core/interceptors/auth.interceptor";
 import {MessageService} from "primeng/api";
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ColumnFilter} from "primeng/table";
-import {EventMockService} from "./core/service/event/event-mock.service";
-import {PostMockService} from "./core/service/post/post-mock.service";
+import {EventRestService} from "./core/service/event/event-rest.service";
+import {PostRestService} from "./core/service/post/post-rest.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -50,11 +50,11 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: EVENT_SERVICE,
-      useClass: EventMockService
+      useClass: EventRestService
     },
     {
       provide: POST_SERVICE,
-      useClass: PostMockService
+      useClass: PostRestService
     }
   ]
 };
