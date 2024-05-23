@@ -26,12 +26,19 @@ export class EventRestService implements EventService {
     return this.http.post<ObjectPageDto<Event>>('/api/events/search', eventSearchDetails);
   }
 
-
   setReaction(eventId: number, reaction: ReactionType | null): Observable<any> {
     return this.http.put(`/api/events/${eventId}/reactions${reaction ? '?reaction=' + reaction : ''}`, null);
   }
 
   getReactions(eventId: number): Observable<ReactionsDto> {
     return this.http.get<ReactionsDto>(`/api/events/${eventId}/reactions`);
+  }
+
+  signUpForEvent(eventId: number): Observable<any> {
+    return this.http.post(`/api/events/${eventId}/participants`, null);
+  }
+
+  cancelEventRegistration(eventId: number): Observable<any> {
+    return this.http.delete(`/api/events/${eventId}/participants`);
   }
 }

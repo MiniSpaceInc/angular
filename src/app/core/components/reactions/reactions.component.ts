@@ -1,5 +1,5 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
-import {NgOptimizedImage} from "@angular/common";
+import {Component, inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser, NgOptimizedImage} from "@angular/common";
 import {Event} from "../../model/Event";
 import {ReactionType} from "../../model/Reactions";
 import {Post} from "../../model/Post";
@@ -22,9 +22,12 @@ export class ReactionsComponent implements OnInit {
   eventService = inject(EVENT_SERVICE);
   postService = inject(POST_SERVICE);
   reactionsDto: ReactionsDto = inject(ReactionsFactory).createEmptyReactionsDto();
+  platform = inject(PLATFORM_ID);
 
   ngOnInit() {
-    this.reloadReactions();
+    if(isPlatformBrowser(this.platform)) {
+      this.reloadReactions();
+    }
   }
 
   setReaction(reaction: ReactionType | null):void {

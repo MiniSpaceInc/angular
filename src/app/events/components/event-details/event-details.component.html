@@ -10,8 +10,15 @@
     <ng-template pTemplate="footer">
       <div class="row">
         <div class="col">
-          <p-toggleButton onLabel="Wypisz się"
-                          offLabel="Zapisz się"/>
+          <div>
+            <p-toggleButton onLabel="Wypisz się"
+                            offLabel="Zapisz się"
+                            [(ngModel)]="event.userRegistered"
+                            (onChange)="changeEventRegistration(!$event.checked!)"/>
+          </div>
+          <div style="margin-top: 10px">
+            <b>Zapisanych osób: {{event.participantCount}}</b>
+          </div>
         </div>
         <div class="col-4">
           <app-reactions [object]="event" style="margin: 5px;"/>

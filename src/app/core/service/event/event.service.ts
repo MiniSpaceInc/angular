@@ -11,4 +11,6 @@ export interface EventService {
     getEventByUuid(uuid: string): Observable<Event>;
     setReaction(eventId: number, reaction: ReactionType | null): Observable<any>;
     getReactions(eventId: number): Observable<ReactionsDto>;
+    signUpForEvent(eventId: number): Observable<any>;
+    cancelEventRegistration(eventId: number): Observable<any>;
 }
