@@ -43,30 +43,19 @@ export class EventMockService implements EventService {
 
 
   setReaction(eventId: number, reaction: ReactionType | null): Observable<any> {
-    // const event = mockEvents.find(e => e.id === eventId)!;
-    // if(event.userReaction !== null) {
-    //   event.reactionsList.find(r => r.type === event.userReaction)!.count--;
-    // }
-    //
-    // if(reaction !== null) {
-    //   const reactions = event.reactionsList.find(r => r.type === reaction);
-    //   if(reactions) {
-    //     reactions.count++;
-    //   } else {
-    //     event.reactionsList.push({
-    //       type: reaction,
-    //       count: 1
-    //     })
-    //   }
-    // }
-    //
-    // event.userReaction = reaction;
-    // return of(HttpStatusCode.NoContent);
     throw new Error("Not implemented yet!");
   }
 
   getReactions(eventId: number): Observable<ReactionsDto> {
     throw new Error("Not implemented yet!");
+  }
+
+  signUpForEvent(eventId: number): Observable<any> {
+    throw new Error("Not implemented yet");
+  }
+
+  cancelEventRegistration(eventId: number): Observable<any> {
+    throw new Error("Not implemented yet");
   }
 
   filterMockEvents(eventSearchDetails: EventSearchDetails) {
