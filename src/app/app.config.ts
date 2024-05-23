@@ -5,8 +5,8 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import {provideHttpClient, withFetch, withInterceptors} from "@angular/common/http";
 import {
-  DECODED_JWT_STORAGE_KEY,
-  JWT_STORAGE_KEY,
+  DECODED_JWT_STORAGE_KEY, EVENT_SERVICE,
+  JWT_STORAGE_KEY, POST_SERVICE,
   REQUEST_TOKEN_SECRET_STORAGE_KEY,
   REQUEST_TOKEN_STORAGE_KEY
 } from "./core/tokens";
@@ -14,6 +14,8 @@ import {authInterceptor} from "./core/interceptors/auth.interceptor";
 import {MessageService} from "primeng/api";
 import {NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ColumnFilter} from "primeng/table";
+import {EventRestService} from "./core/service/event/event-rest.service";
+import {PostRestService} from "./core/service/post/post-rest.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -45,6 +47,14 @@ export const appConfig: ApplicationConfig = {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ColumnFilter),
       multi: true
+    },
+    {
+      provide: EVENT_SERVICE,
+      useClass: EventRestService
+    },
+    {
+      provide: POST_SERVICE,
+      useClass: PostRestService
     }
   ]
 };

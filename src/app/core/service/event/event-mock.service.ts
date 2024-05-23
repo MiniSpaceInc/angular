@@ -5,6 +5,8 @@ import {EventService} from "./event.service";
 import {mockEvents} from "./mockEvents";
 import {Event} from "../../model/Event";
 import {Observable, of} from "rxjs";
+import {ReactionType} from "../../model/Reactions";
+import {ReactionsDto} from "../../model/dto/ReactionsDto";
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +39,23 @@ export class EventMockService implements EventService {
   addEvent(event: Event) {
     mockEvents.push(event);
     return of(1);
+  }
+
+
+  setReaction(eventId: number, reaction: ReactionType | null): Observable<any> {
+    throw new Error("Not implemented yet!");
+  }
+
+  getReactions(eventId: number): Observable<ReactionsDto> {
+    throw new Error("Not implemented yet!");
+  }
+
+  signUpForEvent(eventId: number): Observable<any> {
+    throw new Error("Not implemented yet");
+  }
+
+  cancelEventRegistration(eventId: number): Observable<any> {
+    throw new Error("Not implemented yet");
   }
 
   filterMockEvents(eventSearchDetails: EventSearchDetails) {

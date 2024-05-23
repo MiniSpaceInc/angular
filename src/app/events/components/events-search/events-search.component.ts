@@ -9,6 +9,7 @@ import {EventsSearchFormComponent} from "../events-search-form/events-search-for
 import {EventService} from "../../../core/service/event/event.service";
 import {EventRestService} from "../../../core/service/event/event-rest.service";
 import { EventMockService } from '../../../core/service/event/event-mock.service';
+import {EVENT_SERVICE} from "../../../core/tokens";
 
 @Component({
   selector: 'app-events-search',
@@ -29,7 +30,7 @@ import { EventMockService } from '../../../core/service/event/event-mock.service
 export class EventsSearchComponent {
   @Output() eventSelected = new EventEmitter<Event>();
 
-  eventService: EventService = inject(EventMockService);
+  eventService: EventService = inject(EVENT_SERVICE);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
 
   eventsPerPage = 4;

@@ -7,4 +7,6 @@ export interface Event {
   organizingUnit: OrganizingUnit;
   date: string;
   description: string;
+  participantCount: number;
+  userRegistered: boolean;
 }

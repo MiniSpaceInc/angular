@@ -1,4 +1,3 @@
-import { EventService } from '../../../core/service/event/event.service';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import {Component, inject} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +11,7 @@ import { EventMockService } from '../../../core/service/event/event-mock.service
 import { CommentsComponent } from '../../../comments/comments.component';
 import { CommentService } from '../../../core/service/comment/comment.service';
 import { CommentMockService } from '../../../core/service/comment/comment-mock.service';
+import {EVENT_SERVICE} from "../../../core/tokens";
 
 @Component({
   selector: 'app-event-view',
@@ -29,7 +29,7 @@ import { CommentMockService } from '../../../core/service/comment/comment-mock.s
   styleUrl: './event-view.component.scss'
 })
 export class EventViewComponent {
-  eventService: EventService = inject(EventMockService);
+  eventService: EventService = inject(EVENT_SERVICE);
   commentService: CommentService = inject(CommentMockService);
   route: ActivatedRoute = inject(ActivatedRoute);
 

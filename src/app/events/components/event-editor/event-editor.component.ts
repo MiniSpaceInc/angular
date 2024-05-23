@@ -11,12 +11,11 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ImageModule } from 'primeng/image';
-import { EventService } from "../../../core/service/event/event.service";
-import { EventRestService } from "../../../core/service/event/event-rest.service";
 import {DropdownModule} from "primeng/dropdown";
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
 import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";
 import { EventMockService } from '../../../core/service/event/event-mock.service';
+import {EVENT_SERVICE} from "../../../core/tokens";
 
 @Component({
   selector: 'app-event-editor',
@@ -39,7 +38,8 @@ export class EventEditorComponent implements OnInit {
 
   eventFactory = inject(EventFactory);
   eventForm = this.createForm();
-  eventService: EventService = inject(EventMockService);
+
+  eventService: EventService = inject(EVENT_SERVICE);
   organizingUnitService = inject(OrganizingUnitRestService);
 
   usersOrganizingUnits: OrganizingUnit[] = [];
