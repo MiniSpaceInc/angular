@@ -15,7 +15,8 @@ export class EventFactory {
       name: '',
       organizingUnit: this.organizingUnitFactory.createEmptyOrganizingUnit(),
       date: '',
-      description: ''
+      description: '',
+      participantCount: 0
     };
   }
 }

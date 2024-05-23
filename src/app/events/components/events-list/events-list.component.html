@@ -1,7 +1,12 @@
 <div *ngFor="let event of events">
   <p-card (click)="onEventClick(event)" header="{{event.name}}" subheader="{{event.organizingUnit.name}}">
     <ng-template pTemplate="content">
-      <b>Data: </b>{{event.date}}
+      <div>
+        <b>Data: </b>{{event.date}}
+      </div>
+      <div style="margin-top: 30px">
+        <b>Zapisanych osób: </b>{{event.participantCount}}
+      </div>
     </ng-template>
     <ng-template pTemplate="footer">
       <app-reactions [object]="event"/>
