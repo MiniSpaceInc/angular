@@ -14,8 +14,8 @@ import { ImageModule } from 'primeng/image';
 import {DropdownModule} from "primeng/dropdown";
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
 import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";
-import { EventMockService } from '../../../core/service/event/event-mock.service';
 import {EVENT_SERVICE} from "../../../core/tokens";
+import {EventService} from "../../../core/service/event/event.service";
 
 @Component({
   selector: 'app-event-editor',

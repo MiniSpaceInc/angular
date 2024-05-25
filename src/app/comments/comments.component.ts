@@ -52,7 +52,7 @@ export class CommentsComponent {
     this.content = '';
   }
 
-  deleteComment(event: any): void {
+  deleteComment(): void {
     if(this.selectedComment === null) return;
     this.commentService.deleteCommentByUuid(this.selectedComment.uuid);
     this.op.hide();
@@ -63,8 +63,7 @@ export class CommentsComponent {
     this.op.toggle(event);
   }
 
-  hideOverlay(event: any): void {
+  hideOverlay(): void {
     this.selectedComment = null;
   }
-
 }

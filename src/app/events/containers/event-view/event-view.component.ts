@@ -6,12 +6,11 @@ import {AsyncPipe, NgFor} from '@angular/common';
 import {mergeMap} from "rxjs";
 import {EventDetailsComponent} from "../../components/event-details/event-details.component";
 import {PostsListComponent} from "../../../posts/components/posts-list/posts-list.component";
-import {EventRestService} from "../../../core/service/event/event-rest.service";
-import { EventMockService } from '../../../core/service/event/event-mock.service';
 import { CommentsComponent } from '../../../comments/comments.component';
 import { CommentService } from '../../../core/service/comment/comment.service';
 import { CommentMockService } from '../../../core/service/comment/comment-mock.service';
 import {EVENT_SERVICE} from "../../../core/tokens";
+import {EventService} from "../../../core/service/event/event.service";
 
 @Component({
   selector: 'app-event-view',

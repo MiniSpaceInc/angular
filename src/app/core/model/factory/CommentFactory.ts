@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Comment } from "../Comment";
 import { v4 } from "uuid"
+import {CreateCommentDto} from "../dto/CreateCommentDto";
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +17,14 @@ export class CommentFactory {
 		};
 	}
 
+  createEmptyCreateCommentDto(): CreateCommentDto {
+    return {
+      eventId: null,
+      postId: null,
+      content: ''
+    }
+  }
+
 	createMockCommentFromData(content: string): Comment {
 		return {
 			id: 0,
@@ -25,6 +34,4 @@ export class CommentFactory {
 			author: 'Bartosz Olszewski',
 		};
 	}
-
-
 }
