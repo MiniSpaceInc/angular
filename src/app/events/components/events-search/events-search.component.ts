@@ -6,6 +6,9 @@ import {EventSearchDetailsFactory} from "../../../core/model/factory/EventSearch
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CalendarModule} from "primeng/calendar";
 import {EventsSearchFormComponent} from "../events-search-form/events-search-form.component";
+import {EventService} from "../../../core/service/event/event.service";
+import {EventRestService} from "../../../core/service/event/event-rest.service";
+import { EventMockService } from '../../../core/service/event/event-mock.service';
 import {EVENT_SERVICE} from "../../../core/tokens";
 
 @Component({
@@ -27,7 +30,7 @@ import {EVENT_SERVICE} from "../../../core/tokens";
 export class EventsSearchComponent {
   @Output() eventSelected = new EventEmitter<Event>();
 
-  eventService = inject(EVENT_SERVICE);
+  eventService: EventService = inject(EVENT_SERVICE);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
 
   eventsPerPage = 4;

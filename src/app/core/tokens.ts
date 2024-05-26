@@ -1,6 +1,7 @@
 import { InjectionToken } from '@angular/core';
 import {EventService} from "./service/event/event.service";
 import {PostService} from "./service/post/post.service";
+import {CommentService} from "./service/comment/comment.service";
 
 export const REQUEST_TOKEN_STORAGE_KEY
   = new InjectionToken<string>('Key for storing request token in local storage.');
@@ -19,3 +20,6 @@ export const EVENT_SERVICE
 
 export const POST_SERVICE
   = new InjectionToken<PostService>('Service for managing posts.');
+
+export const COMMENT_SERVICE
+  = new InjectionToken<CommentService>('Service for managing comments');

@@ -3,6 +3,7 @@ import {CardModule} from "primeng/card";
 import {SharedModule} from "primeng/api";
 import {ToggleButtonModule} from "primeng/togglebutton";
 import {Event} from "../../../core/model/Event";
+import { Comment } from '../../../core/model/Comment';
 import {ReactionsComponent} from "../../../core/components/reactions/reactions.component";
 import {EVENT_SERVICE} from "../../../core/tokens";
 import {FormsModule} from "@angular/forms";

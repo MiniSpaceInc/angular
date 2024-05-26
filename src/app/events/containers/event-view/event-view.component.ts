@@ -6,7 +6,9 @@ import {AsyncPipe, NgFor} from '@angular/common';
 import {mergeMap} from "rxjs";
 import {EventDetailsComponent} from "../../components/event-details/event-details.component";
 import {PostsListComponent} from "../../../posts/components/posts-list/posts-list.component";
+import { CommentsComponent } from '../../../comments/comments.component';
 import {EVENT_SERVICE} from "../../../core/tokens";
+import {EventService} from "../../../core/service/event/event.service";
 
 @Component({
   selector: 'app-event-view',
@@ -16,6 +18,7 @@ import {EVENT_SERVICE} from "../../../core/tokens";
     ToggleButtonModule,
     NgFor,
     EventDetailsComponent,
+    CommentsComponent,
     PostsListComponent,
     AsyncPipe,
   ],
@@ -23,8 +26,8 @@ import {EVENT_SERVICE} from "../../../core/tokens";
   styleUrl: './event-view.component.scss'
 })
 export class EventViewComponent {
-  eventService = inject(EVENT_SERVICE);
-  route = inject(ActivatedRoute);
+  eventService: EventService = inject(EVENT_SERVICE);
+  route: ActivatedRoute = inject(ActivatedRoute);
 
   getEvent = this.route.params.pipe(
     mergeMap(params => this.eventService.getEventByUuid(params['uuid']))

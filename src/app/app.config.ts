@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import {provideHttpClient, withFetch, withInterceptors} from "@angular/common/http";
 import {
+  COMMENT_SERVICE,
   DECODED_JWT_STORAGE_KEY, EVENT_SERVICE,
   JWT_STORAGE_KEY, POST_SERVICE,
   REQUEST_TOKEN_SECRET_STORAGE_KEY,
@@ -16,6 +17,7 @@ import {NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ColumnFilter} from "primeng/table";
 import {EventRestService} from "./core/service/event/event-rest.service";
 import {PostRestService} from "./core/service/post/post-rest.service";
+import {CommentRestService} from "./core/service/comment/comment-rest.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -55,6 +57,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: POST_SERVICE,
       useClass: PostRestService
+    },
+    {
+      provide: COMMENT_SERVICE,
+      useClass: CommentRestService
     }
   ]
 };

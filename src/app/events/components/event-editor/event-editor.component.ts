@@ -15,6 +15,7 @@ import {DropdownModule} from "primeng/dropdown";
 import {OrganizingUnit} from "../../../core/model/OrganizingUnit";
 import {OrganizingUnitRestService} from "../../../core/service/organizing-unit/organizing-unit-rest.service";
 import {EVENT_SERVICE} from "../../../core/tokens";
+import {EventService} from "../../../core/service/event/event.service";
 
 @Component({
   selector: 'app-event-editor',
@@ -37,7 +38,8 @@ export class EventEditorComponent implements OnInit {
 
   eventFactory = inject(EventFactory);
   eventForm = this.createForm();
-  eventService = inject(EVENT_SERVICE);
+
+  eventService: EventService = inject(EVENT_SERVICE);
   organizingUnitService = inject(OrganizingUnitRestService);
 
   usersOrganizingUnits: OrganizingUnit[] = [];
