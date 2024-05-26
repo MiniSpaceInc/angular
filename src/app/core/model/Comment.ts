@@ -1,7 +1,10 @@
+import {User} from "./User";
+
 export interface Comment {
-    id: number;
-    uuid: string;
-    content: string;
-    author: string;
-    date: string;
+  id: number;
+  user: User;
+  postId: number;
+  eventId: number;
+  content: string;
+  dateCommented: string;
 }

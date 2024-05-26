@@ -2,9 +2,11 @@
 <p-card>
     <div *ngFor="let comment of comments">
         <div class="comment-container">
-            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+<!--          <div>-->
+<!--            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />-->
+<!--          </div>-->
             <div class="comment-content-container">
-                <span class="font-bold">{{comment.author}}</span>
+                <span class="font-bold">{{comment.user.firstName}} {{comment.user.lastName}}</span>
                 <p class="m-0">{{comment.content}}</p>
             </div>
             <p-button (click)="toggleOverlay($event, comment)" icon="pi pi-ellipsis-v" [text]="true"/>
@@ -12,7 +14,7 @@
         <div class="spacer"></div>
     </div>
     <div class="comment-container">
-        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+<!--        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />-->
         <div class="comment-input-container">
             <input
                 type="text"
