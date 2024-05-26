@@ -3,6 +3,7 @@ import {CommentService} from "./comment.service";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Comment} from "../../model/Comment";
+import {CreateCommentDto} from "../../model/dto/CreateCommentDto";
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,19 @@ import {Comment} from "../../model/Comment";
 export class CommentRestService implements CommentService {
   private http = inject(HttpClient)
 
-  addComment(comment: Comment): void {
+  addComment(createCommentDto: CreateCommentDto): Observable<any> {
+    return this.http.post("/api/comments", createCommentDto);
+  }
+
+  deleteComment(commentId: number): Observable<any> {
     throw new Error("Not implemented yet!");
   }
 
-  deleteCommentByUuid(uuid: string): void {
-    throw new Error("Not implemented yet");
+  getEventComments(eventId: number): Observable<Comment[]> {
+    throw new Error("Not implemented yet!");
   }
 
-  getCommentsByEventUuid(uuid: string): Observable<Comment[]> {
+  getPostComments(postId: number): Observable<Comment[]> {
     throw new Error("Not implemented yet!");
   }
 }

@@ -9,11 +9,13 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { CommentService } from '../core/service/comment/comment.service';
-import { CommentMockService } from '../core/service/comment/comment-mock.service';
 import { CommentFactory } from '../core/model/factory/CommentFactory';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ListboxModule } from 'primeng/listbox';
 import { OverlayPanel } from 'primeng/overlaypanel';
+import {COMMENT_SERVICE} from "../core/tokens";
+import {Post} from "../core/model/Post";
+import {Event} from "../core/model/Event";
 
 @Component({
   selector: 'app-comments',
@@ -35,9 +37,10 @@ import { OverlayPanel } from 'primeng/overlaypanel';
   styleUrl: './comments.component.scss'
 })
 export class CommentsComponent {
-  @Input() comments!: Comment[];
+  @Input() object!: Event | Post;
   @ViewChild('op') op!: OverlayPanel;
-  commentService: CommentService = inject(CommentMockService);
+  comments: Comment[] = [];
+  commentService: CommentService = inject(COMMENT_SERVICE);
   commentFactory: CommentFactory = inject(CommentFactory);
   selectedComment: Comment | null = null;
   content: string = '';
@@ -47,15 +50,26 @@ export class CommentsComponent {
   }
 
   addComment(): void {
-    if (this.content == '') return;
-    this.commentService.addComment(this.commentFactory.createMockCommentFromData(this.content));
+    if (this.content == '') {
+      return;
+    }
+
+    const createCommentDto = this.commentFactory.createEmptyCreateCommentDto();
+    if(this.isEvent(this.object)) {
+      createCommentDto.eventId = this.object.id;
+    } else {
+      createCommentDto.postId = this.object.id;
+    }
+
+    createCommentDto.content = this.content;
+    this.commentService.addComment(createCommentDto).subscribe();
     this.content = '';
   }
 
   deleteComment(): void {
-    if(this.selectedComment === null) return;
-    this.commentService.deleteCommentByUuid(this.selectedComment.uuid);
-    this.op.hide();
+    // if(this.selectedComment === null) return;
+    // this.commentService.deleteCommentByUuid(this.selectedComment.uuid);
+    // this.op.hide();
   }
 
   toggleOverlay(event: any, comment: Comment): void {
@@ -65,5 +79,9 @@ export class CommentsComponent {
 
   hideOverlay(): void {
     this.selectedComment = null;
+  }
+
+  private isEvent(object: Event | Post): object is Event {
+    return (object as Event).organizingUnit !== undefined;
   }
 }
