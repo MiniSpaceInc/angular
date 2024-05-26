@@ -99,9 +99,12 @@ export class CommentsComponent implements OnInit {
   }
 
   deleteComment(): void {
-    // if(this.selectedComment === null) return;
-    // this.commentService.deleteCommentByUuid(this.selectedComment.uuid);
-    // this.op.hide();
+    if(this.selectedComment === null) {
+      return;
+    }
+
+    this.commentService.deleteComment(this.selectedComment.id).subscribe(() => this.searchComments());
+    this.op.hide();
   }
 
   toggleOverlay(event: any, comment: Comment): void {

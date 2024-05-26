@@ -18,7 +18,7 @@ export class CommentRestService implements CommentService {
   }
 
   deleteComment(commentId: number): Observable<any> {
-    throw new Error("Not implemented yet!");
+    return this.http.delete(`/api/comments/${commentId}`);
   }
 
   getComments(commentSearchDetails: CommentSearchDetailsDto): Observable<ObjectPageDto<Comment>> {
