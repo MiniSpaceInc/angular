@@ -21,6 +21,11 @@
                 pInputText [(ngModel)]="content" />
         </div>
     </div>
+    <div>
+      <p-paginator [totalRecords]="totalComments"
+                   [rows]="commentsPerPage"
+                   (onPageChange)="pageChange($event.page!)"/>
+    </div>
     <p-overlayPanel #op
         (onHide)="hideOverlay()">
         <ng-template pTemplate="content">

@@ -1,12 +1,16 @@
-import { Injectable } from "@angular/core";
+import {inject, Injectable} from "@angular/core";
 import { Comment } from "../Comment";
 import { v4 } from "uuid"
 import {CreateCommentDto} from "../dto/CreateCommentDto";
+import {CommentSearchDetailsDto} from "../dto/CommentSearchDetailsDto";
+import {PageableFactory} from "./PageableFactory";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CommentFactory {
+  private pageableFactory = inject(PageableFactory);
+
 	createEmptyComment(): Comment {
 		return {
 			id: 0,
@@ -22,6 +26,14 @@ export class CommentFactory {
       eventId: null,
       postId: null,
       content: ''
+    }
+  }
+
+  createSearchDetails(itemsPerPage: number): CommentSearchDetailsDto {
+    return {
+      eventId: null,
+      postId: null,
+      pageable: this.pageableFactory.createPageableWithNoSorting(itemsPerPage)
     }
   }
 

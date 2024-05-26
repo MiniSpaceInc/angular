@@ -1,4 +1,4 @@
-import { Component, inject, Input, ViewChild } from '@angular/core';
+import {Component, inject, Input, OnInit, ViewChild} from '@angular/core';
 import { Comment } from '../core/model/Comment';
 import { NgFor } from '@angular/common';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -16,6 +16,8 @@ import { OverlayPanel } from 'primeng/overlaypanel';
 import {COMMENT_SERVICE} from "../core/tokens";
 import {Post} from "../core/model/Post";
 import {Event} from "../core/model/Event";
+import {CommentSearchDetailsDto} from "../core/model/dto/CommentSearchDetailsDto";
+import {PaginatorModule} from "primeng/paginator";
 
 @Component({
   selector: 'app-comments',
@@ -31,19 +33,36 @@ import {Event} from "../core/model/Event";
     InputTextModule,
     OverlayPanelModule,
     ListboxModule,
-
+    PaginatorModule
   ],
   templateUrl: './comments.component.html',
   styleUrl: './comments.component.scss'
 })
-export class CommentsComponent {
+export class CommentsComponent implements OnInit {
+  private readonly INITIAL_ITEMS_PER_PAGE = 2;
+
   @Input() object!: Event | Post;
   @ViewChild('op') op!: OverlayPanel;
+
   comments: Comment[] = [];
+  totalComments: number = 0;
+  commentsPerPage: number = this.INITIAL_ITEMS_PER_PAGE;
+
   commentService: CommentService = inject(COMMENT_SERVICE);
   commentFactory: CommentFactory = inject(CommentFactory);
   selectedComment: Comment | null = null;
   content: string = '';
+  commentSearchDetails: CommentSearchDetailsDto = this.commentFactory.createSearchDetails(this.INITIAL_ITEMS_PER_PAGE);
+
+  ngOnInit() {
+    if(this.isEvent(this.object)) {
+      this.commentSearchDetails.eventId = this.object.id;
+    } else {
+      this.commentSearchDetails.postId = this.object.id;
+    }
+
+    this.searchComments();
+  }
 
   onEnterPressed() {
     this.addComment();
@@ -61,9 +80,22 @@ export class CommentsComponent {
       createCommentDto.postId = this.object.id;
     }
 
-    createCommentDto.content = this.content;
-    this.commentService.addComment(createCommentDto).subscribe();
+    createCommentDto.content = this.content.concat();
+    this.commentService.addComment(createCommentDto).subscribe(() => this.searchComments());
     this.content = '';
+  }
+
+  pageChange(page: number) {
+    this.commentSearchDetails.pageable.page = page;
+    this.searchComments();
+  }
+
+  searchComments(): void {
+    this.commentService.getComments(this.commentSearchDetails).subscribe(page => {
+        this.comments = page.content;
+        this.totalComments = page.totalElements;
+      }
+    );
   }
 
   deleteComment(): void {
