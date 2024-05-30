@@ -5,4 +5,5 @@ import {Observable} from "rxjs";
 
 export interface FriendService {
   getFriendsPage(friendSearchDetails: FriendSearchDetails): Observable<ObjectPageDto<User>>;
+  inviteFriend(userUsosId: string): Observable<void>;
 }

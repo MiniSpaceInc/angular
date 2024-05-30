@@ -5,6 +5,7 @@ import {User} from "../../../core/model/User";
 import {FRIEND_SERVICE} from "../../../core/tokens";
 import {FriendSearchDetailsFactory} from "../../../core/model/factory/FriendSearchDetailsFactory";
 import {JsonPipe} from "@angular/common";
+import {CardModule} from "primeng/card";
 
 @Component({
   selector: 'app-friends-list',
@@ -13,7 +14,8 @@ import {JsonPipe} from "@angular/common";
     TableModule,
     FormsModule,
     ReactiveFormsModule,
-    JsonPipe
+    JsonPipe,
+    CardModule
   ],
   templateUrl: './friends-list.component.html',
   styleUrl: './friends-list.component.scss'

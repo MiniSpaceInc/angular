@@ -15,4 +15,8 @@ export class FriendRestService implements FriendService {
   getFriendsPage(friendSearchDetails: FriendSearchDetails): Observable<ObjectPageDto<User>> {
     return this.http.post<ObjectPageDto<User>>('/api/friends/search', friendSearchDetails);
   }
+
+  inviteFriend(userUsosId: string): Observable<any> {
+    return this.http.post(`/api/friends?userUsosId=${userUsosId}`, null);
+  }
 }
