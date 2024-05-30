@@ -1,12 +1,14 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import {CardModule} from "primeng/card";
 import {SharedModule} from "primeng/api";
 import {ToggleButtonModule} from "primeng/togglebutton";
 import {Event} from "../../../core/model/Event";
-import { Comment } from '../../../core/model/Comment';
 import {ReactionsComponent} from "../../../core/components/reactions/reactions.component";
-import {EVENT_SERVICE} from "../../../core/tokens";
+import {EVENT_SERVICE, FRIEND_SERVICE} from "../../../core/tokens";
 import {FormsModule} from "@angular/forms";
+import {User} from "../../../core/model/User";
+import {DialogModule} from "primeng/dialog";
+import {DataViewModule} from "primeng/dataview";
 
 @Component({
   selector: 'app-event-details',
@@ -16,15 +18,27 @@ import {FormsModule} from "@angular/forms";
     SharedModule,
     ToggleButtonModule,
     ReactionsComponent,
-    FormsModule
+    FormsModule,
+    DialogModule,
+    DataViewModule
   ],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss'
 })
-export class EventDetailsComponent {
+export class EventDetailsComponent implements OnInit {
   @Input() event!: Event;
 
   private eventService = inject(EVENT_SERVICE);
+  private friendService = inject(FRIEND_SERVICE);
+
+  registeredFriends: User[] = [];
+  friendsDialogVisible = false;
+
+  ngOnInit() {
+    this.friendService.getFriendsRegisteredForEvent(this.event.id).subscribe(
+      friends => this.registeredFriends = friends
+    );
+  }
 
   changeEventRegistration(alreadyRegistered: boolean):void {
     if(alreadyRegistered) {

@@ -36,4 +36,8 @@ export class FriendRestService implements FriendService {
   declineFriendRequest(requestId: number): Observable<any> {
     return this.http.delete(`/api/friends/requests/${requestId}`);
   }
+
+  getFriendsRegisteredForEvent(eventId: number): Observable<User[]> {
+    return this.http.get<User[]>(`/api/friends?eventId=${eventId}`);
+  }
 }

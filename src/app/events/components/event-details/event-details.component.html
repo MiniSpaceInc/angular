@@ -18,6 +18,10 @@
           </div>
           <div style="margin-top: 10px">
             <b>Zapisanych osób: {{event.participantCount}}</b>
+            <span style="margin-left: 10px; cursor: pointer"
+                  (click)="friendsDialogVisible = true">
+              (w tym znajomych: {{registeredFriends.length}})
+            </span>
           </div>
         </div>
         <div class="col-4">
@@ -27,3 +31,15 @@
     </ng-template>
   </p-card>
 </div>
+
+<p-dialog [(visible)]="friendsDialogVisible"
+          [modal]="true"
+          [header]="'Zapisani znajomi'">
+  <div style="width: 400px; height: 400px">
+    <div>
+      @for(friend of registeredFriends; track friend.id) {
+        <p>{{friend.firstName}} {{friend.lastName}}</p>
+      }
+    </div>
+  </div>
+</p-dialog>

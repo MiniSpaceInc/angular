@@ -11,4 +11,5 @@ export interface FriendService {
   getFriendRequests(): Observable<FriendRequest[]>;
   acceptFriendRequest(requestId: number): Observable<any>;
   declineFriendRequest(requestId: number): Observable<any>;
+  getFriendsRegisteredForEvent(eventId: number): Observable<User[]>;
 }
