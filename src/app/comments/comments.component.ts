@@ -39,7 +39,7 @@ import {PaginatorModule} from "primeng/paginator";
   styleUrl: './comments.component.scss'
 })
 export class CommentsComponent implements OnInit {
-  private readonly INITIAL_ITEMS_PER_PAGE = 2;
+  private readonly INITIAL_ITEMS_PER_PAGE = 5;
 
   @Input() object!: Event | Post;
   @ViewChild('op') op!: OverlayPanel;
