@@ -1,2 +1,3 @@
 <app-invite-friend/>
-<app-friends-list/>
+<app-friends-list #friendsList/>
+<app-friend-requests-list (friendAdded)="friendsList.loadFriends()"/>

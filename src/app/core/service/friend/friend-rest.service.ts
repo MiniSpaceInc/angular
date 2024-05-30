@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {ObjectPageDto} from "../../model/dto/ObjectPageDto";
 import {User} from "../../model/User";
 import {HttpClient} from "@angular/common/http";
+import {FriendRequest} from "../../model/FriendRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,17 @@ export class FriendRestService implements FriendService {
 
   removeFromFriends(userId: number): Observable<any> {
     return this.http.delete(`/api/friends/${userId}`);
+  }
+
+  getFriendRequests(): Observable<FriendRequest[]> {
+    return this.http.get<FriendRequest[]>('/api/friends/requests');
+  }
+
+  acceptFriendRequest(requestId: number): Observable<any> {
+    return this.http.post(`/api/friends/requests/${requestId}`, null);
+  }
+
+  declineFriendRequest(requestId: number): Observable<any> {
+    return this.http.delete(`/api/friends/requests/${requestId}`);
   }
 }
