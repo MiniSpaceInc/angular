@@ -28,17 +28,27 @@ export class FriendsListComponent implements OnInit {
   friendSearchDetails = inject(FriendSearchDetailsFactory).createEmptySearchDetails(this.friendsPerPage);
 
   ngOnInit(): void {
-    this.loadUsers(0, this.friendsPerPage);
+    this.loadFriends();
   }
 
-  loadUsers(first: number, rows: number): void {
+  pageChange(first: number, rows: number): void {
     this.friendSearchDetails.page = first / rows;
     this.friendSearchDetails.size = rows;
+    this.loadFriends();
+  }
+
+  loadFriends(): void {
     this.friendService.getFriendsPage(this.friendSearchDetails).subscribe(
       page => {
         this.friends = page.content;
         this.totalFriends = page.totalElements;
       }
+    );
+  }
+
+  removeFromFriends(userId: number): void {
+    this.friendService.removeFromFriends(userId).subscribe(
+      () => this.loadFriends()
     );
   }
 }

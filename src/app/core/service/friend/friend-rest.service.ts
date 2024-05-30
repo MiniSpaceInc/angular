@@ -19,4 +19,8 @@ export class FriendRestService implements FriendService {
   inviteFriend(userUsosId: string): Observable<any> {
     return this.http.post(`/api/friends?userUsosId=${userUsosId}`, null);
   }
+
+  removeFromFriends(userId: number): Observable<any> {
+    return this.http.delete(`/api/friends/${userId}`);
+  }
 }
