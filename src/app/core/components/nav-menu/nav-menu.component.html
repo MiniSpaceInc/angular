@@ -1,7 +1,9 @@
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="['/']">MiNISpace</a>
-    <app-admin-console-button/>
+    @if(authService.userHasRole(Role.ADMIN)) {
+      <app-admin-console-button/>
+    }
     <app-login/>
   </div>
 </nav>

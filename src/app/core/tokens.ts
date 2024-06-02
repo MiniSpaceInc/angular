@@ -3,6 +3,7 @@ import {EventService} from "./service/event/event.service";
 import {PostService} from "./service/post/post.service";
 import {CommentService} from "./service/comment/comment.service";
 import {FriendService} from "./service/friend/friend.service";
+import {AuthService} from "./service/auth/auth.service";
 
 export const REQUEST_TOKEN_STORAGE_KEY
   = new InjectionToken<string>('Key for storing request token in local storage.');
@@ -27,3 +28,6 @@ export const COMMENT_SERVICE
 
 export const FRIEND_SERVICE
   = new InjectionToken<FriendService>('Service for managing friend');
+
+export const AUTH_SERVICE
+  = new InjectionToken<AuthService>('Service for methods related to authorization and authentication');
