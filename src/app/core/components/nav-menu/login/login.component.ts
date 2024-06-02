@@ -3,13 +3,11 @@ import {AuthorizationUsosService} from "../../../service/auth/authorization-usos
 import {DOCUMENT} from "@angular/common";
 import {LocalStorageService} from "../../../service/local-storage.service";
 import {
-  DECODED_JWT_STORAGE_KEY,
-  JWT_STORAGE_KEY,
   REQUEST_TOKEN_SECRET_STORAGE_KEY,
   REQUEST_TOKEN_STORAGE_KEY
 } from "../../../tokens";
-import {jwtDecode} from "jwt-decode";
 import {AuthService} from "../../../service/auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -21,6 +19,7 @@ import {AuthService} from "../../../service/auth/auth.service";
 export class LoginComponent {
   private authUsosService = inject(AuthorizationUsosService);
   private document = inject(DOCUMENT);
+  private router = inject(Router);
   localStorage = inject(LocalStorageService);
   authService = inject(AuthService);
   requestTokenKey = inject(REQUEST_TOKEN_STORAGE_KEY);
@@ -37,5 +36,9 @@ export class LoginComponent {
 
   logout(): void {
     this.authService.removeAccessToken();
+  }
+
+  showProfile(): void {
+    this.router.navigate(['/user']).then();
   }
 }
