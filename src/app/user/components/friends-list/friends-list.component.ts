@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {TableModule} from "primeng/table";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {User} from "../../../core/model/User";
@@ -21,6 +21,10 @@ import {CardModule} from "primeng/card";
   styleUrl: './friends-list.component.scss'
 })
 export class FriendsListComponent implements OnInit {
+  @Input() buttonClass: string | undefined;
+  @Input() buttonText: string | undefined;
+  @Output() buttonClick = new EventEmitter<number>();
+
   private friendService = inject(FRIEND_SERVICE);
   friendsPerPage = 10;
   totalFriends = 0;

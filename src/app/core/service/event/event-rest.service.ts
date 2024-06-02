@@ -7,6 +7,8 @@ import {Event} from "../../model/Event";
 import {HttpClient} from "@angular/common/http";
 import {ReactionType} from "../../model/Reactions";
 import {ReactionsDto} from "../../model/dto/ReactionsDto";
+import {PageableDto} from "../../model/dto/PageableDto";
+import {EventInvitation} from "../../model/EventInvitation";
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +42,24 @@ export class EventRestService implements EventService {
 
   cancelEventRegistration(eventId: number): Observable<any> {
     return this.http.delete(`/api/events/${eventId}/participants`);
+  }
+
+  getEventInvitationsPage(pageable: PageableDto): Observable<ObjectPageDto<EventInvitation>> {
+    return this.http.post<ObjectPageDto<EventInvitation>>('/api/friends/invitations/search', pageable);
+  }
+
+  acceptEventInvitation(invitationId: number): Observable<any> {
+    return this.http.post(`/api/friends/invitations/${invitationId}`, null);
+  }
+
+  declineEventInvitation(invitationId: number): Observable<any> {
+    return this.http.delete(`/api/friends/invitations/${invitationId}`);
+  }
+
+  inviteFriend(eventId: number, userId: number): Observable<any> {
+    return this.http.post('/api/friends/invitations', {
+      eventId: eventId,
+      toUserId: userId
+    });
   }
 }

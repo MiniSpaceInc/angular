@@ -15,6 +15,11 @@
                             offLabel="Zapisz się"
                             [(ngModel)]="event.userRegistered"
                             (onChange)="changeEventRegistration(!$event.checked!)"/>
+            <button class="btn btn-outline-primary"
+                    style="height: 50px; margin-left: 10px"
+                    (click)="inviteFriendsDialogVisible = true">
+              Zaproś znajomego
+            </button>
           </div>
           <div style="margin-top: 10px">
             <b>Zapisanych osób: {{event.participantCount}}</b>
@@ -41,5 +46,15 @@
         <p>{{friend.firstName}} {{friend.lastName}}</p>
       }
     </div>
+  </div>
+</p-dialog>
+
+<p-dialog [(visible)]="inviteFriendsDialogVisible"
+          [modal]="true"
+          header="Zaproś znajomego na to wydarzenie">
+  <div style="width: 400px; height: 400px">
+    <app-friends-list (buttonClick)="inviteFriend($event)"
+                      buttonClass="btn btn-outline-success"
+                      buttonText="Zaproś"/>
   </div>
 </p-dialog>

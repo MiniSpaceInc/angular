@@ -6,14 +6,8 @@
         <td>{{friendRequest.sender.firstName}} {{friendRequest.sender.lastName}}</td>
         <!--          <td>{{friendRequest.sender.usosId}}</td>-->
         <td>
-          <button class="btn btn-success"
-                  (click)="acceptFriendRequest(friendRequest.requestId)">
-            Akceptuj
-          </button>
-          <button class="btn btn-danger"
-                  (click)="declineFriendRequest(friendRequest.requestId)">
-            Odrzuć
-          </button>
+          <app-accept-decline (accepted)="acceptFriendRequest(friendRequest.requestId)"
+                              (declined)="declineFriendRequest(friendRequest.requestId)"/>
         </td>
       </tr>
     </ng-template>

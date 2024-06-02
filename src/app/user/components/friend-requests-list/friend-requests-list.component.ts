@@ -3,13 +3,15 @@ import {CardModule} from "primeng/card";
 import {TableModule} from "primeng/table";
 import {FRIEND_SERVICE} from "../../../core/tokens";
 import {FriendRequest} from "../../../core/model/FriendRequest";
+import {AcceptDeclineComponent} from "../../../core/components/accept-decline/accept-decline.component";
 
 @Component({
   selector: 'app-friend-requests-list',
   standalone: true,
   imports: [
     CardModule,
-    TableModule
+    TableModule,
+    AcceptDeclineComponent
   ],
   templateUrl: './friend-requests-list.component.html',
   styleUrl: './friend-requests-list.component.scss'
