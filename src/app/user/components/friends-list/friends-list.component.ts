@@ -1,10 +1,10 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output, PLATFORM_ID} from '@angular/core';
 import {TableModule} from "primeng/table";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {User} from "../../../core/model/User";
 import {FRIEND_SERVICE} from "../../../core/tokens";
 import {FriendSearchDetailsFactory} from "../../../core/model/factory/FriendSearchDetailsFactory";
-import {JsonPipe} from "@angular/common";
+import {isPlatformBrowser, JsonPipe} from "@angular/common";
 import {CardModule} from "primeng/card";
 
 @Component({
@@ -30,9 +30,12 @@ export class FriendsListComponent implements OnInit {
   totalFriends = 0;
   friends: User[] = [];
   friendSearchDetails = inject(FriendSearchDetailsFactory).createEmptySearchDetails(this.friendsPerPage);
+  platformId = inject(PLATFORM_ID);
 
   ngOnInit(): void {
-    this.loadFriends();
+    if(isPlatformBrowser(this.platformId)) {
+      this.loadFriends();
+    }
   }
 
   pageChange(first: number, rows: number): void {
