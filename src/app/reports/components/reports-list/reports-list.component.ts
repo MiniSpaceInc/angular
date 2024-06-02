@@ -2,14 +2,15 @@ import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {UserReportedIssueDto} from "../../../core/model/dto/UserReportedIssueDto";
 import {Router} from "@angular/router";
 import {CardModule} from "primeng/card";
-import {NgFor} from "@angular/common";
+import {NgFor, NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-reports-list',
   standalone: true,
   imports: [
     CardModule,
-    NgFor
+    NgFor,
+    NgStyle
   ],
   templateUrl: './reports-list.component.html',
   styleUrl: './reports-list.component.scss'

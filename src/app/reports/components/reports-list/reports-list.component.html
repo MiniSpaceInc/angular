@@ -2,11 +2,11 @@
   <div class="report-list">
     <p-card *ngFor="let report of reports" (click)="onReportClick(report)">
       <ng-template pTemplate="header">
-        {{ report.status }}
+        <b>{{ report.status }}</b>
       </ng-template>
       <ng-template pTemplate="content">
         <div>
-          <b>Title: {{ report.title }}</b>
+          <b>Title: </b>{{ report.title }}
         </div>
       </ng-template>
     </p-card>
