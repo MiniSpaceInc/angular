@@ -22,7 +22,12 @@
     <ng-template pTemplate="body" let-invitation>
       <tr>
         <td>{{invitation.fromUser.firstName}} {{invitation.fromUser.lastName}}</td>
-        <td>{{invitation.event.name}}</td>
+        <td>
+            <p (click)="navigateToEvent(invitation.event.uuid)"
+               style="cursor: pointer">
+                {{invitation.event.name}}
+            </p>
+        </td>
         <td>
           <app-accept-decline (accepted)="acceptInvitation(invitation.id)"
                               (declined)="declineInvitation(invitation.id)"/>
