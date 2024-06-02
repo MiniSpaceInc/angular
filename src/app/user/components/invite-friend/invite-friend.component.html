@@ -1,22 +1,18 @@
-<div style="margin: 10px 10px 10px 10px">
-  <p-card>
+<div>
+  <form [formGroup]="inviteFriendForm">
     <div>
-      <form [formGroup]="inviteFriendForm">
-        <div>
-          <label for="usosIdInput">Zaproś znajomego: </label>
-          <input type="text"
-                 formControlName="usosId"
-                 id="usosIdInput"
-                 class="form-control"
-                 style="width: 200px"
-                 placeholder="Id użytkownika z usosa"/>
-          <input type="button"
-                 value="Zaproś"
-                 class="btn btn-success"
-                 style="margin-left: 20px"
-                 (click)="inviteToFriends()"/>
-        </div>
-      </form>
+      <label for="usosIdInput">Zaproś znajomego: </label>
+      <input type="text"
+             formControlName="usosId"
+             id="usosIdInput"
+             class="form-control"
+             style="width: 200px"
+             placeholder="Id użytkownika z usosa"/>
+      <input type="button"
+             value="Zaproś"
+             class="btn btn-success"
+             style="margin-left: 20px"
+             (click)="inviteToFriends()"/>
     </div>
-  </p-card>
+  </form>
 </div>

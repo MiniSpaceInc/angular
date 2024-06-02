@@ -1,27 +1,23 @@
-<div style="margin: 10px 10px 10px 10px">
-  <p-card>
-    <h4>Zaproszenia do znajomych:</h4>
-    @if(friendRequests.length > 0) {
-      <p-table [value]="friendRequests">
-        <ng-template pTemplate="body" let-friendRequest>
-          <tr>
-            <td>{{friendRequest.sender.firstName}} {{friendRequest.sender.lastName}}</td>
-            <!--          <td>{{friendRequest.sender.usosId}}</td>-->
-            <td>
-              <button class="btn btn-success"
-                      (click)="acceptFriendRequest(friendRequest.requestId)">
-                Akceptuj
-              </button>
-              <button class="btn btn-danger"
-                      (click)="declineFriendRequest(friendRequest.requestId)">
-                Odrzuć
-              </button>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    } @else {
-      <h2>Aktualnie nie masz żadnych zaproszeń do znajomych</h2>
-    }
-  </p-card>
-</div>
+<h4>Zaproszenia do znajomych:</h4>
+@if(friendRequests.length > 0) {
+  <p-table [value]="friendRequests">
+    <ng-template pTemplate="body" let-friendRequest>
+      <tr>
+        <td>{{friendRequest.sender.firstName}} {{friendRequest.sender.lastName}}</td>
+        <!--          <td>{{friendRequest.sender.usosId}}</td>-->
+        <td>
+          <button class="btn btn-success"
+                  (click)="acceptFriendRequest(friendRequest.requestId)">
+            Akceptuj
+          </button>
+          <button class="btn btn-danger"
+                  (click)="declineFriendRequest(friendRequest.requestId)">
+            Odrzuć
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+} @else {
+  <h2>Aktualnie nie masz żadnych zaproszeń do znajomych</h2>
+}

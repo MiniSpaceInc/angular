@@ -1,3 +1,15 @@
-<app-invite-friend/>
-<app-friends-list #friendsList/>
-<app-friend-requests-list (friendAdded)="friendsList.loadFriends()"/>
+<div class="component-card">
+  <p-card>
+    <app-invite-friend/>
+  </p-card>
+</div>
+<div class="component-card">
+  <p-card>
+    <app-friends-list #friendsList/>
+  </p-card>
+</div>
+<div class="component-card">
+  <p-card>
+    <app-friend-requests-list (friendAdded)="friendsList.loadFriends()"/>
+  </p-card>
+</div>

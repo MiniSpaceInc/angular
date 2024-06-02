@@ -1,28 +1,24 @@
-<div style="margin: 10px 10px 10px 10px">
-  <p-card>
-    <p-table [value]="friends"
-             [rows]="friendsPerPage"
-             [totalRecords]="totalFriends"
-             [paginator]="true"
-             (onPage)="pageChange($event.first, $event.rows)">
-      <ng-template pTemplate="header">
-        <tr>
-          <td>
-            <h4>Twoi znajomi:</h4>
-          </td>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-user>
-        <tr>
-          <td>{{user.firstName}} {{user.lastName}}</td>
-          <td>
-            <button class="btn btn-outline-danger"
-                    (click)="removeFromFriends(user.id)">
-              Usuń znajomego
-            </button>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </p-card>
-</div>
+<p-table [value]="friends"
+         [rows]="friendsPerPage"
+         [totalRecords]="totalFriends"
+         [paginator]="true"
+         (onPage)="pageChange($event.first, $event.rows)">
+  <ng-template pTemplate="header">
+    <tr>
+      <td>
+        <h4>Twoi znajomi:</h4>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+    <tr>
+      <td>{{user.firstName}} {{user.lastName}}</td>
+      <td>
+        <button class="btn btn-outline-danger"
+                (click)="removeFromFriends(user.id)">
+          Usuń znajomego
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
