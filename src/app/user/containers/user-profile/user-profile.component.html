@@ -1,0 +1,23 @@
+<div class="component-card">
+  <p-card>
+    <app-invite-friend/>
+  </p-card>
+</div>
+<div class="component-card">
+  <p-card>
+    <app-friends-list #friendsList
+                      (buttonClick)="friendsList.removeFromFriends($event)"
+                      buttonClass="btn btn-outline-danger"
+                      buttonText="Usuń znajomego"/>
+  </p-card>
+</div>
+<div class="component-card">
+  <p-card>
+    <app-friend-requests-list (friendAdded)="friendsList.loadFriends()"/>
+  </p-card>
+</div>
+<div class="component-card">
+  <p-card>
+    <app-event-invitations/>
+  </p-card>
+</div>

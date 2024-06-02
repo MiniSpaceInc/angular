@@ -1,13 +1,15 @@
-@if(mode === "list") {
+@if (mode === "list") {
   <div class="d-flex justify-content-center">
     <div class="column">
       <app-events-search/>
-      <button class="btn btn-success" (click)="mode = 'edit'">Dodaj wydarzenie</button>
+      @if (authService.userHasRole(Role.ORGANIZER)) {
+        <button class="btn btn-success" (click)="mode = 'edit'">Dodaj wydarzenie</button>
+      }
     </div>
   </div>
 }
 
-@if(mode === "edit") {
+@if (mode === "edit") {
   <div class="d-flex justify-content-center">
     <div class="column">
       <app-event-editor (eventSaved)="mode = 'list'"/>

@@ -2,7 +2,7 @@
   @for(reactions of reactionsDto.reactions; track reactions.type) {
     <div style="display: inline-block; margin-right: 10px">
       <div [class]="reactionsDto.userReaction === reactions.type ? 'marked' : ''">
-      <span style="margin-right: 20px"
+      <span style="margin-right: 20px; cursor: pointer"
             (click)="setReaction(reactions.type); $event.stopPropagation()">
         <img [ngSrc]="'assets/reactionType_' + reactions.type + '.svg'"
              height="30"

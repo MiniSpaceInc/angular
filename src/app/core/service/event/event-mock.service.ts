@@ -7,6 +7,9 @@ import {Event} from "../../model/Event";
 import {Observable, of} from "rxjs";
 import {ReactionType} from "../../model/Reactions";
 import {ReactionsDto} from "../../model/dto/ReactionsDto";
+import {PageableDto} from "../../model/dto/PageableDto";
+import {ObjectPageDto} from "../../model/dto/ObjectPageDto";
+import {EventInvitation} from "../../model/EventInvitation";
 
 @Injectable({
   providedIn: 'root'
@@ -64,5 +67,21 @@ export class EventMockService implements EventService {
       .filter(event => event.organizingUnit.name.toLowerCase().includes(eventSearchDetails.organizer.toLowerCase()))
       .filter(event => (eventSearchDetails.dateFrom || eventSearchDetails.dateFrom === '') ? true : event.date >= eventSearchDetails.dateFrom)
       .filter(event => (eventSearchDetails.dateTo || eventSearchDetails.dateTo === '') ? true : event.date <= eventSearchDetails.dateTo)
+  }
+
+  getEventInvitationsPage(pageable: PageableDto): Observable<ObjectPageDto<EventInvitation>> {
+    throw new Error("Not implemented yet");
+  }
+
+  acceptEventInvitation(invitationId: number): Observable<any> {
+    throw new Error("Not implemented yet!");
+  }
+
+  declineEventInvitation(invitationId: number): Observable<any> {
+    throw new Error("Not implemented yet!");
+  }
+
+  inviteFriend(eventId: number, userId: number): Observable<any> {
+    throw new Error("Not implemented yet!");
   }
 }

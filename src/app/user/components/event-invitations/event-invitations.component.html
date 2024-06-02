@@ -1,0 +1,40 @@
+<h4>Zaproszenia na wydarzenia:</h4>
+@if(invitations.length > 0) {
+  <p-table [value]="invitations"
+           [rows]="pageable.size"
+           [totalRecords]="totalInvitations"
+           [paginator]="true"
+           (onPage)="pageChange($event.first, $event.rows)">
+    <ng-template pTemplate="header">
+      <tr>
+        <td>
+          <b style="margin-left: 16px">
+            Od:
+          </b>
+        </td>
+        <td>
+          <b style="margin-left: 16px">
+            Nazwa wydarzenia:
+          </b>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-invitation>
+      <tr>
+        <td>{{invitation.fromUser.firstName}} {{invitation.fromUser.lastName}}</td>
+        <td>
+            <p (click)="navigateToEvent(invitation.event.uuid)"
+               style="cursor: pointer">
+                {{invitation.event.name}}
+            </p>
+        </td>
+        <td>
+          <app-accept-decline (accepted)="acceptInvitation(invitation.id)"
+                              (declined)="declineInvitation(invitation.id)"/>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+} @else {
+  <h2>Aktualnie nie masz żadnych zaproszeń na wydarzenia</h2>
+}

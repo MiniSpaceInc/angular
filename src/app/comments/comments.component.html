@@ -1,51 +1,55 @@
 <div class="spacer"></div>
 <p-card>
-    <div *ngFor="let comment of comments">
-        <div class="comment-container">
-<!--          <div>-->
-<!--            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />-->
-<!--          </div>-->
-            <div class="comment-content-container">
-                <span class="font-bold">{{comment.user.firstName}} {{comment.user.lastName}}</span>
-                <p class="m-0">{{comment.content}}</p>
-            </div>
-            <p-button (click)="toggleOverlay($event, comment)" icon="pi pi-ellipsis-v" [text]="true"/>
-        </div>
-        <div class="spacer"></div>
-    </div>
+  <div *ngFor="let comment of comments">
     <div class="comment-container">
-<!--        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />-->
-        <div class="comment-input-container">
-            <input
-                type="text"
-                placeholder="Napisz komentarz..."
-                (keydown.enter)="onEnterPressed()"
-                pInputText [(ngModel)]="content" />
-        </div>
+      <!--          <div>-->
+      <!--            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />-->
+      <!--          </div>-->
+      <div class="comment-content-container">
+        <span class="font-bold">{{ comment.user.firstName }} {{ comment.user.lastName }}</span>
+        <p class="m-0">{{ comment.content }}</p>
+      </div>
+      @if (comment.user.id === authService.getUserId() || authService.userHasRole(Role.ADMIN)) {
+        <p-button (click)="toggleOverlay($event, comment)" icon="pi pi-ellipsis-v" [text]="true"/>
+      }
     </div>
-    <div>
-      <p-paginator [totalRecords]="totalComments"
-                   [rows]="commentsPerPage"
-                   (onPageChange)="pageChange($event.page!)"/>
+    <div class="spacer"></div>
+  </div>
+  <div class="comment-container">
+    <!--        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />-->
+    <div class="comment-input-container">
+      <input
+        type="text"
+        placeholder="Napisz komentarz..."
+        (keydown.enter)="onEnterPressed()"
+        pInputText [(ngModel)]="content"/>
     </div>
+  </div>
+  <div>
+    <p-paginator [totalRecords]="totalComments"
+                 [rows]="commentsPerPage"
+                 (onPageChange)="pageChange($event.page!)"/>
+  </div>
+  @if (selectedComment?.user?.id === authService.getUserId() || authService.userHasRole(Role.ADMIN)) {
     <p-overlayPanel #op
-        (onHide)="hideOverlay()">
-        <ng-template pTemplate="content">
-            <div class="list-box-container">
-                <p-button
-                    (click)="deleteComment()"
-                    label="Delete"
-                    icon="pi pi-times"
-                    [text]="true"
-                    severity="danger"
-                />
-<!--                <p-button-->
-<!--                    (click)="op.toggle($event)"-->
-<!--                    label="Edit"-->
-<!--                    icon="pi pi-pencil"-->
-<!--                    [text]="true"-->
-<!--                />-->
-            </div>
-        </ng-template>
+                    (onHide)="hideOverlay()">
+      <ng-template pTemplate="content">
+        <div class="list-box-container">
+          <p-button
+            (click)="deleteComment()"
+            label="Delete"
+            icon="pi pi-times"
+            [text]="true"
+            severity="danger"
+          />
+          <!--                <p-button-->
+          <!--                    (click)="op.toggle($event)"-->
+          <!--                    label="Edit"-->
+          <!--                    icon="pi pi-pencil"-->
+          <!--                    [text]="true"-->
+          <!--                />-->
+        </div>
+      </ng-template>
     </p-overlayPanel>
+  }
 </p-card>
