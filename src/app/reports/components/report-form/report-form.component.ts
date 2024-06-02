@@ -6,6 +6,7 @@ import {ReportRestService} from "../../../core/service/report/report-rest.servic
 import {StatusTypeEnum} from "../../../core/model/dto/StatusTypeEnum";
 import {MessageService} from "primeng/api";
 import {LocalStorageService} from "../../../core/service/local-storage.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-report-form',
@@ -24,6 +25,7 @@ export class ReportFormComponent {
   private reportService = inject(ReportRestService);
   private localStorageService = inject(LocalStorageService);
   private messageService = inject(MessageService);
+  private router = inject(Router);
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -47,5 +49,7 @@ export class ReportFormComponent {
           detail: 'Dodano nowe zgłoszenie'
         })
       );
+    console.log('navigate reports')
+    this.router.navigate(['/reports']);
   }
 }

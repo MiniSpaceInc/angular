@@ -6,6 +6,8 @@ import {
 } from "./core/components/redirect-after-usos-login/redirect-after-usos-login.component";
 import {AdminConsoleComponent} from "./admin/containers/admin-console/admin-console.component";
 import {ReportFormComponent} from "./reports/components/report-form/report-form.component";
+import {ReportsViewComponent} from "./reports/containers/reports-view/reports-view.component";
+import {ReportDetailsComponent} from "./reports/components/report-details/report-details.component";
 
 export const routes: Routes = [
   {
@@ -32,5 +34,13 @@ export const routes: Routes = [
   {
     path: 'report',
     component: ReportFormComponent
+  },
+  {
+    path: 'reports',
+    component: ReportsViewComponent
+  },
+  {
+    path: 'reports/:uuid',
+    component: ReportDetailsComponent
   }
 ];
