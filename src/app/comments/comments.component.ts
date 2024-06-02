@@ -13,11 +13,12 @@ import { CommentFactory } from '../core/model/factory/CommentFactory';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ListboxModule } from 'primeng/listbox';
 import { OverlayPanel } from 'primeng/overlaypanel';
-import {COMMENT_SERVICE} from "../core/tokens";
+import {AUTH_SERVICE, COMMENT_SERVICE} from "../core/tokens";
 import {Post} from "../core/model/Post";
 import {Event} from "../core/model/Event";
 import {CommentSearchDetailsDto} from "../core/model/dto/CommentSearchDetailsDto";
 import {PaginatorModule} from "primeng/paginator";
+import {Role} from "../core/model/Role";
 
 @Component({
   selector: 'app-comments',
@@ -50,6 +51,7 @@ export class CommentsComponent implements OnInit {
 
   commentService: CommentService = inject(COMMENT_SERVICE);
   commentFactory: CommentFactory = inject(CommentFactory);
+  authService = inject(AUTH_SERVICE);
   selectedComment: Comment | null = null;
   content: string = '';
   commentSearchDetails: CommentSearchDetailsDto = this.commentFactory.createSearchDetails(this.INITIAL_ITEMS_PER_PAGE);
@@ -119,4 +121,6 @@ export class CommentsComponent implements OnInit {
   private isEvent(object: Event | Post): object is Event {
     return (object as Event).organizingUnit !== undefined;
   }
+
+  protected readonly Role = Role;
 }

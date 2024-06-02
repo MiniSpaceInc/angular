@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import {provideHttpClient, withFetch, withInterceptors} from "@angular/common/http";
 import {
+  AUTH_SERVICE,
   COMMENT_SERVICE,
   DECODED_JWT_STORAGE_KEY, EVENT_SERVICE, FRIEND_SERVICE,
   JWT_STORAGE_KEY, POST_SERVICE,
@@ -19,6 +20,7 @@ import {EventRestService} from "./core/service/event/event-rest.service";
 import {PostRestService} from "./core/service/post/post-rest.service";
 import {CommentRestService} from "./core/service/comment/comment-rest.service";
 import {FriendRestService} from "./core/service/friend/friend-rest.service";
+import {AuthService} from "./core/service/auth/auth.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -66,6 +68,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: FRIEND_SERVICE,
       useClass: FriendRestService
+    },
+    {
+      provide: AUTH_SERVICE,
+      useClass: AuthService
     }
   ]
 };
