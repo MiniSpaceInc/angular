@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form [formGroup]="form">
+        <div class="form-group">
+          <div>
+            <label for="reportTitle" class="col-md-8 mx-auto d-block">Tytuł zgłoszenia</label>
+            <input id="reportTitle"
+                   formControlName="reportTitle"
+                   placeholder="Tytuł zgłoszenia"
+                   class="col-md-8 mx-auto d-block mb-3"
+                   required
+                   pInputText
+                   type="text">
+          </div>
+          <div class="mb-3">
+            <label for="reportContent" class="col-md-8 mx-auto d-block">Treść zgłoszenia</label>
+            <textarea
+              [rows]="5"
+              [cols]="50"
+              [autoResize]="true"
+              id="reportContent"
+              formControlName="reportContent"
+              class="col-md-8 mx-auto d-block"
+              placeholder="Treść zgłoszenia"
+              pInputTextarea
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <button type="button"
+                    class="btn btn-success"
+                    (click)="sendReport()"
+                    [disabled]="form.invalid">
+              Zapisz
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

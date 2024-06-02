@@ -5,6 +5,7 @@ import {
   RedirectAfterUsosLoginComponent
 } from "./core/components/redirect-after-usos-login/redirect-after-usos-login.component";
 import {AdminConsoleComponent} from "./admin/containers/admin-console/admin-console.component";
+import {ReportFormComponent} from "./reports/components/report-form/report-form.component";
 
 export const routes: Routes = [
   {
@@ -27,5 +28,9 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminConsoleComponent
+  },
+  {
+    path: 'report',
+    component: ReportFormComponent
   }
 ];
