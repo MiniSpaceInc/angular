@@ -10,4 +10,5 @@ export interface ReportService {
   getUnresolvedReports(pageableDto: PageableDto): Observable<ObjectPageDto<UserReportedIssueDto>>;
   getDetails(uuid: String): Observable<ReportDetailsDto>;
   updateStatus(id: number, status: StatusTypeEnum): Observable<UserReportedIssueDto>;
+  getUsersReports(pageable: PageableDto): Observable<ObjectPageDto<UserReportedIssueDto>>;
 }

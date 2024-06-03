@@ -1,0 +1,4 @@
+<app-reports-list [reports]="reports"/>
+<p-paginator [rows]="pageable.size"
+             (onPageChange)="changePage($event.first, $event.rows)"
+             [totalRecords]="totalReports"/>

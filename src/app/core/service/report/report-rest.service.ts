@@ -33,4 +33,7 @@ export class ReportRestService implements ReportService {
     return this.http.patch<UserReportedIssueDto>('api/reports/' + id, params);
   }
 
+  getUsersReports(pageable: PageableDto): Observable<ObjectPageDto<UserReportedIssueDto>> {
+    return this.http.post<ObjectPageDto<UserReportedIssueDto>>('/api/reports/myReports', pageable);
+  }
 }
