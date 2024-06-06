@@ -1,0 +1,45 @@
+<div style="margin: 10px">
+  <p-card header="{{reportDetails?.title}}">
+    <ng-template pTemplate="header">
+      <div style="padding: 20px">
+        <button class="btn"
+                style="background-color: dodgerblue; color: white; width: 80px; height: 50px; font-weight: bold"
+                (click)="goBack()">
+          Wróć
+        </button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <p>Status zgłoszenia: <b>{{reportDetails ? StatusTextMap.get(reportDetails.status) : ''}}</b></p>
+      <p>Opis zgłoszenia:</p>
+      <p><b>{{reportDetails?.description}}</b></p>
+      <p>Zgłoszenie utworzył: <i>{{reportDetails?.user?.firstName}} {{reportDetails?.user?.lastName}}</i></p>
+      <p>Ostatniej aktualizacji dokonał: <i>{{reportDetails?.updatedBy?.firstName}} {{reportDetails?.updatedBy?.lastName}}</i></p>
+    </ng-template>
+    <ng-template pTemplate="footer" class="button-container">
+      <div class="flex-column">
+        <p-button
+          label="W trakcie rozpatrywania"
+          severity="info"
+          [ngStyle]="{'margin-right':'8px'}"
+          [disabled]="status === StatusTypeEnum.IN_PROGRESS"
+          (onClick)="updateStatus(StatusTypeEnum.IN_PROGRESS)"
+        />
+        <p-button
+          label="Odrzucono"
+          severity="warning"
+          [ngStyle]="{'margin-right':'8px'}"
+          [disabled]="status === StatusTypeEnum.REJECTED"
+          (onClick)="updateStatus(StatusTypeEnum.REJECTED)"
+        />
+        <p-button
+          label="Zamknięte"
+          severity="danger"
+          [ngStyle]="{'margin-right':'8px'}"
+          [disabled]="status === StatusTypeEnum.CLOSED"
+          (onClick)="updateStatus(StatusTypeEnum.CLOSED)"
+        />
+      </div>
+    </ng-template>
+  </p-card>
+</div>

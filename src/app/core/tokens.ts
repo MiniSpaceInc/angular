@@ -4,6 +4,7 @@ import {PostService} from "./service/post/post.service";
 import {CommentService} from "./service/comment/comment.service";
 import {FriendService} from "./service/friend/friend.service";
 import {AuthService} from "./service/auth/auth.service";
+import {ReportService} from "./service/report/report.service";
 
 export const REQUEST_TOKEN_STORAGE_KEY
   = new InjectionToken<string>('Key for storing request token in local storage.');
@@ -31,3 +32,6 @@ export const FRIEND_SERVICE
 
 export const AUTH_SERVICE
   = new InjectionToken<AuthService>('Service for methods related to authorization and authentication');
+
+export const REPORT_SERVICE
+  = new InjectionToken<ReportService>('Service for managing user\'s reports');
