@@ -1,4 +1,16 @@
+<button class="btn btn-info"
+        (click)="createReportVisible = true">
+  Utwórz nowe zgłoszenie
+</button>
 <app-reports-list [reports]="reports"/>
 <p-paginator [rows]="pageable.size"
              (onPageChange)="changePage($event.first, $event.rows)"
              [totalRecords]="totalReports"/>
+
+<p-dialog [(visible)]="createReportVisible"
+          [modal]="true"
+          header="Utwórz zgłoszenie">
+  <div style="width: 400px; height: 600px">
+    <app-report-form (reportCreated)="createReportVisible = false; getReports()"/>
+  </div>
+</p-dialog>

@@ -5,13 +5,17 @@ import {PageableFactory} from "../../../../core/model/factory/PageableFactory";
 import {REPORT_SERVICE} from "../../../../core/tokens";
 import {isPlatformBrowser} from "@angular/common";
 import {PaginatorModule} from "primeng/paginator";
+import {DialogModule} from "primeng/dialog";
+import {ReportFormComponent} from "../../../../reports/components/report-form/report-form.component";
 
 @Component({
   selector: 'app-user-reports-tab',
   standalone: true,
   imports: [
     ReportsListComponent,
-    PaginatorModule
+    PaginatorModule,
+    DialogModule,
+    ReportFormComponent
   ],
   templateUrl: './user-reports-tab.component.html',
   styleUrl: './user-reports-tab.component.scss'
@@ -20,8 +24,9 @@ export class UserReportsTabComponent implements OnInit {
   private reportService = inject(REPORT_SERVICE);
   private platformId = inject(PLATFORM_ID);
   reports: UserReportedIssueDto[] = [];
-  pageable = inject(PageableFactory).createPageableWithNoSorting(1);
+  pageable = inject(PageableFactory).createPageableWithNoSorting(5);
   totalReports = 0;
+  createReportVisible = false;
 
   ngOnInit(): void {
     if(isPlatformBrowser(this.platformId)) {
