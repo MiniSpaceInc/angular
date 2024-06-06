@@ -9,4 +9,5 @@ export interface PostService {
   setReaction(postId: number, reaction: ReactionType | null): Observable<any>;
   getReactions(postId: number): Observable<ReactionsDto>;
   addNewPost(createPostDto: CreatePostDto): Observable<any>;
+  deletePost(postId: number): Observable<any>;
 }

@@ -6,7 +6,17 @@
   </button>
   @for (post of posts; track post.id) {
     <div class="post-card">
-      <p-card header="{{post.author}}" subheader="{{post.date}}">
+      <p-card header="{{post.author}}">
+        <ng-template pTemplate="header">
+          <div style="padding: 10px;">
+            <h3 style="display: inline-block">{{post.datePosted | date : "dd.MM.YYYY"}}</h3>
+            <button class="btn btn-danger float-end"
+                    style="display: inline-block"
+                    (click)="selectedPostId = post.id; deletePostDialogVisible = true">
+              &#10006;
+            </button>
+          </div>
+        </ng-template>
         <ng-template pTemplate="content">
           <div [innerHTML]="post.content"></div>
         </ng-template>
@@ -23,5 +33,22 @@
   <div>
     <app-post-form (postCreated)="addNewPostDialogVisible = false; refreshPosts()"
                    [eventId]="event.id"/>
+  </div>
+</p-dialog>
+
+<p-dialog [(visible)]="deletePostDialogVisible"
+          [modal]="true"
+          header="Czy na pewno chcesz usunąć post?">
+  <div style="width: 400px">
+    <button class="btn btn-danger"
+            style="display: inline-block; margin: 10px; width: 40%"
+            (click)="deletePost()">
+      Tak
+    </button>
+    <button class="btn btn-success"
+            style="display: inline-block; margin: 10px; width: 40%"
+            (click)="deletePostDialogVisible = false">
+      Nie
+    </button>
   </div>
 </p-dialog>

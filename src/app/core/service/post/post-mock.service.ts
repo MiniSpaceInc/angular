@@ -45,4 +45,8 @@ export class PostMockService implements PostService {
   addNewPost(createPostDto: CreatePostDto): Observable<any> {
     throw new Error("Not implemented yet!");
   }
+
+  deletePost(postId: number): Observable<any> {
+    throw new Error("Not implemented yet!");
+  }
 }

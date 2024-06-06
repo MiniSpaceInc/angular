@@ -27,4 +27,8 @@ export class PostRestService implements PostService {
   addNewPost(createPostDto: CreatePostDto): Observable<any> {
     return this.http.post("/api/posts/add", createPostDto);
   }
+
+  deletePost(postId: number): Observable<any> {
+    return this.http.delete(`/api/posts/${postId}`);
+  }
 }

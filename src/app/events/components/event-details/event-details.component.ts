@@ -10,20 +10,22 @@ import {User} from "../../../core/model/User";
 import {DialogModule} from "primeng/dialog";
 import {DataViewModule} from "primeng/dataview";
 import {FriendsListComponent} from "../../../user/components/friends-list/friends-list.component";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [
-    CardModule,
-    SharedModule,
-    ToggleButtonModule,
-    ReactionsComponent,
-    FormsModule,
-    DialogModule,
-    DataViewModule,
-    FriendsListComponent
-  ],
+    imports: [
+        CardModule,
+        SharedModule,
+        ToggleButtonModule,
+        ReactionsComponent,
+        FormsModule,
+        DialogModule,
+        DataViewModule,
+        FriendsListComponent,
+        DatePipe
+    ],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss'
 })

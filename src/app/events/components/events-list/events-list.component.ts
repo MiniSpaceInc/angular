@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Event } from "../../../core/model/Event";
-import {AsyncPipe, NgFor, NgOptimizedImage} from "@angular/common";
+import {AsyncPipe, DatePipe, NgFor, NgOptimizedImage} from "@angular/common";
 import { CardModule } from 'primeng/card';
 import { RippleModule } from 'primeng/ripple';
 import { Router } from '@angular/router';
@@ -12,15 +12,16 @@ import {ReactionsComponent} from "../../../core/components/reactions/reactions.c
 @Component({
   selector: 'app-events-list',
   standalone: true,
-  imports: [
-    AsyncPipe,
-    NgFor,
-    PaginationComponent,
-    RippleModule,
-    CardModule,
-    NgOptimizedImage,
-    ReactionsComponent
-  ],
+    imports: [
+        AsyncPipe,
+        NgFor,
+        PaginationComponent,
+        RippleModule,
+        CardModule,
+        NgOptimizedImage,
+        ReactionsComponent,
+        DatePipe
+    ],
   templateUrl: './events-list.component.html',
   styleUrl: './events-list.component.scss'
 })

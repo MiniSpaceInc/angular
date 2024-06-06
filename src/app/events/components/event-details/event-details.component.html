@@ -5,7 +5,7 @@
     </ng-template>
     <ng-template pTemplate="content">
       <p>{{event.description}}</p>
-      <p>{{event.date}}</p>
+      <p>{{event.date | date : "dd.MM.YYYY"}}</p>
     </ng-template>
     <ng-template pTemplate="footer">
       <div class="row">
