@@ -1,19 +1,16 @@
 import { Injectable } from "@angular/core";
-import { Post } from "../Post";
+import {CreatePostDto} from "../dto/CreatePostDto";
 
 @Injectable({
     providedIn: 'root'
 })
 export class PostFactory {
-  createEmptyPost(): Post {
-      return {
-        reactionsList: [],
-        userReaction: null,
-        id: 0,
-          uuid: '',
-          author: '',
-          date: '',
-          content: ''
-      };
+  getCreatePostDto(eventId: number, content: string, date: string): CreatePostDto {
+    return {
+      eventId: eventId,
+      content: content,
+      datePosted: date,
+      dateCreated: date
+    }
   }
 }

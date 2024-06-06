@@ -5,6 +5,7 @@ import { mockPosts } from './mockPosts';
 import {Observable, of} from "rxjs";
 import {ReactionType} from "../../model/Reactions";
 import {ReactionsDto} from "../../model/dto/ReactionsDto";
+import {CreatePostDto} from "../../model/dto/CreatePostDto";
 
 @Injectable({
     providedIn: 'root'
@@ -38,6 +39,10 @@ export class PostMockService implements PostService {
   }
 
   getReactions(eventId: number): Observable<ReactionsDto> {
+    throw new Error("Not implemented yet!");
+  }
+
+  addNewPost(createPostDto: CreatePostDto): Observable<any> {
     throw new Error("Not implemented yet!");
   }
 }

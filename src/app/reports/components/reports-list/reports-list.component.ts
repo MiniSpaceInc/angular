@@ -21,7 +21,6 @@ export class ReportsListComponent {
   router: Router = inject(Router);
 
   onReportClick(report: UserReportedIssueDto) {
-    console.log('navigate details')
     this.router.navigate(['/reports', report.uuid]);
   }
 

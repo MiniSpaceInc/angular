@@ -45,7 +45,7 @@ export class EventEditorComponent implements OnInit {
   usersOrganizingUnits: OrganizingUnit[] = [];
 
   ngOnInit() {
-    this.organizingUnitService.getUsersOrganizingUnits(1).subscribe(
+    this.organizingUnitService.getUsersOrganizingUnits(null).subscribe(
       organizingUnits => this.usersOrganizingUnits = organizingUnits
     )
   }

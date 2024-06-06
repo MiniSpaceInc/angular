@@ -1,12 +1,27 @@
-@for (post of posts; track post.id) {
-  <div class="post-card">
-    <p-card header="{{post.author}}" subheader="{{post.date}}">
-      <ng-template pTemplate="content">
-        <p>{{post.content}}</p>
-      </ng-template>
-      <ng-template pTemplate="footer">
-        <app-reactions [object]="post"/>
-      </ng-template>
-    </p-card>
+<div>
+  <button class="add-post-button"
+          (click)="addNewPostDialogVisible = true"
+          [hidden]="!isUserOrganizer">
+    Dodaj nowy post
+  </button>
+  @for (post of posts; track post.id) {
+    <div class="post-card">
+      <p-card header="{{post.author}}" subheader="{{post.date}}">
+        <ng-template pTemplate="content">
+          <div [innerHTML]="post.content"></div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <app-reactions [object]="post"/>
+        </ng-template>
+      </p-card>
+    </div>
+  }
+</div>
+
+<p-dialog [(visible)]="addNewPostDialogVisible"
+          [modal]="true" header="Utwórz nowy post">
+  <div>
+    <app-post-form (postCreated)="addNewPostDialogVisible = false; refreshPosts()"
+                   [eventId]="event.id"/>
   </div>
-}
+</p-dialog>
