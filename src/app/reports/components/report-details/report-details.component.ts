@@ -8,6 +8,8 @@ import {isPlatformBrowser, NgStyle} from "@angular/common";
 import {StatusTextMap, StatusTypeEnum} from "../../../core/model/dto/StatusTypeEnum";
 import {MessageService} from "primeng/api";
 import {Location} from '@angular/common';
+import {AuthService} from "../../../core/service/auth/auth.service";
+import {Role} from "../../../core/model/Role";
 
 @Component({
   selector: 'app-report-details',
@@ -21,7 +23,7 @@ import {Location} from '@angular/common';
   styleUrl: './report-details.component.scss'
 })
 export class ReportDetailsComponent implements OnInit {
-
+  authService = inject(AuthService);
   reportService = inject(ReportRestService);
   messageService = inject(MessageService);
   route = inject(ActivatedRoute);
@@ -70,4 +72,5 @@ export class ReportDetailsComponent implements OnInit {
   }
 
   protected readonly StatusTextMap = StatusTextMap;
+  protected readonly Role = Role;
 }

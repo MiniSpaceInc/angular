@@ -5,6 +5,7 @@ import {CommentService} from "./service/comment/comment.service";
 import {FriendService} from "./service/friend/friend.service";
 import {AuthService} from "./service/auth/auth.service";
 import {ReportService} from "./service/report/report.service";
+import {OrganizingUnitService} from "./service/organizing-unit/organizing-unit.service";
 
 export const REQUEST_TOKEN_STORAGE_KEY
   = new InjectionToken<string>('Key for storing request token in local storage.');
@@ -35,3 +36,6 @@ export const AUTH_SERVICE
 
 export const REPORT_SERVICE
   = new InjectionToken<ReportService>('Service for managing user\'s reports');
+
+export const ORGANIZING_UNITS_SERVICE
+  = new InjectionToken<OrganizingUnitService>('Service for managing organizing units');

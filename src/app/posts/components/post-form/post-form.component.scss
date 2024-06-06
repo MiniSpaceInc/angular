@@ -1,0 +1,19 @@
+.content {
+  margin-top: 10px;
+  width: 600px;
+  height: 300px;
+  border: solid lightgray;
+  border-radius: 5px;
+}
+
+.confirm-button {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #73AD21;
+  color: white;
+  font-size: 20px;
+}
+
+:host ::ng-deep .p-datepicker {
+  transform: scale(0.8);
+}

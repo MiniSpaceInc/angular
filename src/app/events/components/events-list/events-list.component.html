@@ -2,7 +2,7 @@
   <p-card (click)="onEventClick(event)" header="{{event.name}}" subheader="{{event.organizingUnit.name}}">
     <ng-template pTemplate="content">
       <div>
-        <b>Data: </b>{{event.date}}
+        <b>Data: </b>{{event.date | date : "dd.MM.YYYY"}}
       </div>
       <div style="margin-top: 30px">
         <b>Zapisanych osób: </b>{{event.participantCount}}

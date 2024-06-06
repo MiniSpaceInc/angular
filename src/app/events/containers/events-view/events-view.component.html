@@ -3,7 +3,11 @@
     <div class="column">
       <app-events-search/>
       @if (authService.userHasRole(Role.ORGANIZER)) {
-        <button class="btn btn-success" (click)="mode = 'edit'">Dodaj wydarzenie</button>
+        <button class="btn btn-success"
+                style="width: 100%; margin: 10px 10px 10px 0"
+                (click)="mode = 'edit'">
+          Dodaj wydarzenie
+        </button>
       }
     </div>
   </div>

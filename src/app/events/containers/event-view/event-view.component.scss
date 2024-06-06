@@ -1,6 +1,4 @@
 .event-container {
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -9,7 +7,7 @@
 
 .details-column {
     width: 60%;
-    margin: 15px;
+    margin: 15px 10px 10px 10px;
 }
 
 .posts-column {

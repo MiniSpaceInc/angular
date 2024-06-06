@@ -16,30 +16,32 @@
       <p>Zgłoszenie utworzył: <i>{{reportDetails?.user?.firstName}} {{reportDetails?.user?.lastName}}</i></p>
       <p>Ostatniej aktualizacji dokonał: <i>{{reportDetails?.updatedBy?.firstName}} {{reportDetails?.updatedBy?.lastName}}</i></p>
     </ng-template>
-    <ng-template pTemplate="footer" class="button-container">
-      <div class="flex-column">
-        <p-button
-          label="W trakcie rozpatrywania"
-          severity="info"
-          [ngStyle]="{'margin-right':'8px'}"
-          [disabled]="status === StatusTypeEnum.IN_PROGRESS"
-          (onClick)="updateStatus(StatusTypeEnum.IN_PROGRESS)"
-        />
-        <p-button
-          label="Odrzucono"
-          severity="warning"
-          [ngStyle]="{'margin-right':'8px'}"
-          [disabled]="status === StatusTypeEnum.REJECTED"
-          (onClick)="updateStatus(StatusTypeEnum.REJECTED)"
-        />
-        <p-button
-          label="Zamknięte"
-          severity="danger"
-          [ngStyle]="{'margin-right':'8px'}"
-          [disabled]="status === StatusTypeEnum.CLOSED"
-          (onClick)="updateStatus(StatusTypeEnum.CLOSED)"
-        />
-      </div>
-    </ng-template>
+    @if (authService.userHasRole(Role.ADMIN)) {
+      <ng-template pTemplate="footer" class="button-container">
+        <div class="flex-column">
+          <p-button
+            label="W trakcie rozpatrywania"
+            severity="info"
+            [ngStyle]="{'margin-right':'8px'}"
+            [disabled]="status === StatusTypeEnum.IN_PROGRESS"
+            (onClick)="updateStatus(StatusTypeEnum.IN_PROGRESS)"
+          />
+          <p-button
+            label="Odrzucono"
+            severity="warning"
+            [ngStyle]="{'margin-right':'8px'}"
+            [disabled]="status === StatusTypeEnum.REJECTED"
+            (onClick)="updateStatus(StatusTypeEnum.REJECTED)"
+          />
+          <p-button
+            label="Zamknięte"
+            severity="danger"
+            [ngStyle]="{'margin-right':'8px'}"
+            [disabled]="status === StatusTypeEnum.CLOSED"
+            (onClick)="updateStatus(StatusTypeEnum.CLOSED)"
+          />
+        </div>
+      </ng-template>
+    }
   </p-card>
 </div>

@@ -8,7 +8,7 @@ import {
   AUTH_SERVICE,
   COMMENT_SERVICE,
   DECODED_JWT_STORAGE_KEY, EVENT_SERVICE, FRIEND_SERVICE,
-  JWT_STORAGE_KEY, POST_SERVICE, REPORT_SERVICE,
+  JWT_STORAGE_KEY, ORGANIZING_UNITS_SERVICE, POST_SERVICE, REPORT_SERVICE,
   REQUEST_TOKEN_SECRET_STORAGE_KEY,
   REQUEST_TOKEN_STORAGE_KEY
 } from "./core/tokens";
@@ -22,6 +22,7 @@ import {CommentRestService} from "./core/service/comment/comment-rest.service";
 import {FriendRestService} from "./core/service/friend/friend-rest.service";
 import {AuthService} from "./core/service/auth/auth.service";
 import {ReportRestService} from "./core/service/report/report-rest.service";
+import {OrganizingUnitRestService} from "./core/service/organizing-unit/organizing-unit-rest.service";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -77,6 +78,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: REPORT_SERVICE,
       useClass: ReportRestService
+    },
+    {
+      provide: ORGANIZING_UNITS_SERVICE,
+      useClass: OrganizingUnitRestService
     }
   ]
 };
