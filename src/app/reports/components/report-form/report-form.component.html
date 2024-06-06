@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
       <form [formGroup]="form">
         <div class="form-group">
           <div>
@@ -13,12 +12,11 @@
                    pInputText
                    type="text">
           </div>
-          <div class="mb-3">
+          <div>
             <label for="reportContent" class="col-md-8 mx-auto d-block">Treść zgłoszenia</label>
             <textarea
               [rows]="5"
               [cols]="50"
-              [autoResize]="true"
               style="height: 200px"
               id="reportContent"
               formControlName="reportContent"
@@ -27,16 +25,15 @@
               pInputTextarea
             ></textarea>
           </div>
-          <div class="text-center">
+          <div class="text-center" style="width: inherit">
             <button type="button"
                     class="btn btn-success"
                     (click)="sendReport()"
-                    [disabled]="form.invalid">
+                    [disabled]="form.invalid" style="width: 460px; margin-top: 10px">
               Zapisz
             </button>
           </div>
         </div>
       </form>
-    </div>
   </div>
 </div>

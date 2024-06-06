@@ -1,14 +1,18 @@
 <div class="container">
   <div class="report-list">
-    <p-card *ngFor="let report of reports" (click)="onReportClick(report)">
-      <ng-template pTemplate="header">
-        <b>{{ report.status }}</b>
-      </ng-template>
-      <ng-template pTemplate="content">
-        <div>
-          <b>Title: </b>{{ report.title }}
-        </div>
-      </ng-template>
-    </p-card>
+    @for (report of reports; track report.id) {
+      <div style="cursor: pointer; width: 500px; margin: 10px">
+        <p-card (click)="onReportClick(report)">
+          <ng-template pTemplate="header">
+            <b>{{StatusTextMap.get(report.status)}}</b>
+          </ng-template>
+          <ng-template pTemplate="content">
+            <div>
+              <b>Title: </b>{{ report.title }}
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+    }
   </div>
 </div>

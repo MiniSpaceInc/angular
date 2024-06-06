@@ -1,15 +1,16 @@
-<div>
+<div style="margin: 10px">
   <p-card header="{{reportDetails?.title}}">
     <ng-template pTemplate="header">
-      <p-button
-        label="Wróć"
-        severity="info"
-        [ngStyle]="{'margin':'8px'}"
-        (onClick)="goBack()"
-      />
+      <div style="padding: 20px">
+        <button class="btn"
+                style="background-color: dodgerblue; color: white; width: 80px; height: 50px; font-weight: bold"
+                (click)="goBack()">
+          Wróć
+        </button>
+      </div>
     </ng-template>
     <ng-template pTemplate="content">
-      <p>Status zgłoszenia: <b>{{reportDetails?.status}}</b></p>
+      <p>Status zgłoszenia: <b>{{reportDetails ? StatusTextMap.get(reportDetails.status) : ''}}</b></p>
       <p>Opis zgłoszenia:</p>
       <p><b>{{reportDetails?.description}}</b></p>
       <p>Zgłoszenie utworzył: <i>{{reportDetails?.user?.firstName}} {{reportDetails?.user?.lastName}}</i></p>

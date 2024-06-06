@@ -5,7 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ReportDetailsDto} from "../../../core/model/dto/ReportDetailsDto";
 import {ButtonModule} from "primeng/button";
 import {isPlatformBrowser, NgStyle} from "@angular/common";
-import {StatusTypeEnum} from "../../../core/model/dto/StatusTypeEnum";
+import {StatusTextMap, StatusTypeEnum} from "../../../core/model/dto/StatusTypeEnum";
 import {MessageService} from "primeng/api";
 import {Location} from '@angular/common';
 
@@ -68,4 +68,6 @@ export class ReportDetailsComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+  protected readonly StatusTextMap = StatusTextMap;
 }
