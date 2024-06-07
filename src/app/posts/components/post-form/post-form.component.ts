@@ -1,5 +1,5 @@
 import {Component, ElementRef, EventEmitter, inject, Input, Output, ViewChild} from '@angular/core';
-import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {CalendarModule} from "primeng/calendar";
 import {POST_SERVICE} from "../../../core/tokens";
 import {MessageService} from "primeng/api";
@@ -22,11 +22,10 @@ export class PostFormComponent {
   private postService = inject(POST_SERVICE);
   private messageService = inject(MessageService);
   private postFactory = inject(PostFactory);
-  form = this.createForm();
 
   createPost(): void {
     const createPostDto =
-      this.postFactory.getCreatePostDto(this.eventId, this.richText.nativeElement.innerHTML, this.form.get('date')?.value!);
+      this.postFactory.getCreatePostDto(this.eventId, this.richText.nativeElement.innerHTML);
 
     this.postService.addNewPost(createPostDto).subscribe({
       error: () => this.messageService.add({
@@ -42,14 +41,6 @@ export class PostFormComponent {
         });
         this.postCreated.emit();
       }
-    })
-  }
-
-  private createForm() {
-    const _ = inject(FormBuilder);
-    return _.group({
-      date: 'date',
-      content: 'content'
     })
   }
 }
