@@ -1,15 +1,9 @@
 <div style="margin-top: 2px">
-  <form [formGroup]="form">
-    <p-calendar
-      formControlName="date"
-      placeholder="Data"
-      [dateFormat]="'dd.mm.yy'"/>
-    <div class="content"
-         contenteditable="true"
-         #richText></div>
-    <button class="btn confirm-button"
-            (click)="createPost()">
-      Dodaj
-    </button>
-  </form>
+  <div class="content"
+       contenteditable="true"
+       #richText></div>
+  <button class="btn confirm-button"
+          (click)="createPost()">
+    Dodaj
+  </button>
 </div>
