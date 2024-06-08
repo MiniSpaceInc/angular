@@ -3,12 +3,11 @@
     <div class="form-group">
       <div class="column">
         <div class="row event-form-container">
-
           <div style="padding: 0;">
             <p-fileUpload
               [multiple]="false"
               (onSelect)="onSelect($event)"
-              (onClear)="onClear($event)"
+              (onClear)="onClear()"
               [showUploadButton]="false"
               [showCancelButton]="true"
               chooseStyleClass="btn btn-primary"
@@ -30,12 +29,13 @@
             type="text"
             pInputText
             formControlName="name"
+            style="width: 800px"
             placeholder="Tytuł..."/>
 
           <p-dropdown [options]="usersOrganizingUnits"
                       placeholder="Wybierz jednostkę organizującą"
                       formControlName="organizingUnit"
-                      [style]="{'width':'300px', 'padding':'0 0 0 0'}">
+                      [style]="{'width':'300px', 'padding':'0 0 0 0', 'margin-left':'-12px'}">
             <ng-template pTemplate="selectedItem" let-organizingUnit>
               <span>{{organizingUnit.name}}</span>
             </ng-template>
@@ -49,8 +49,13 @@
             cols = "50"
             pInputTextarea
             formControlName="description"
-            placeholder="Opis...">
-                    </textarea>
+            placeholder="Opis..."
+            [hidden]="true">
+          </textarea>
+
+          <div contenteditable="true" class="rich-text" #richText>
+
+          </div>
 
           <div class="save-button">
             <button type="button" class="btn btn-success" (click)="saveEvent()">Zapisz</button>

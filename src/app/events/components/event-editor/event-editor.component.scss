@@ -13,3 +13,14 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.rich-text {
+  width: 800px;
+  height: 300px;
+  border: solid lightgray;
+  border-radius: 10px;
+}
+
+:host ::ng-deep .row {
+  padding: 0;
+}

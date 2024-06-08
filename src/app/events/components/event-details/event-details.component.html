@@ -4,7 +4,7 @@
       <img alt="Card" src="{{event.imageUrl || 'https://primefaces.org/cdn/primeng/images/usercard.png'}}" />
     </ng-template>
     <ng-template pTemplate="content">
-      <p>{{event.description}}</p>
+      <div [innerHTML]="event.description"></div>
       <p>{{event.date | date : "dd.MM.YYYY"}}</p>
     </ng-template>
     <ng-template pTemplate="footer">
