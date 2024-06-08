@@ -61,6 +61,10 @@ export class EventMockService implements EventService {
     throw new Error("Not implemented yet");
   }
 
+  postEventImage(eventId: number, photo: File): Observable<string> {
+    throw new Error("Method not implemented.");
+  }
+
   filterMockEvents(eventSearchDetails: EventSearchDetails) {
     return mockEvents
       .filter(event => event.name.toLowerCase().includes(eventSearchDetails.name.toLowerCase()))

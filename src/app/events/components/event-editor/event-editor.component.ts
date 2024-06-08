@@ -44,6 +44,8 @@ export class EventEditorComponent implements OnInit {
 
   usersOrganizingUnits: OrganizingUnit[] = [];
 
+  file: File | null = null;
+
   ngOnInit() {
     this.organizingUnitService.getUsersOrganizingUnits(null).subscribe(
       organizingUnits => this.usersOrganizingUnits = organizingUnits
@@ -54,9 +56,23 @@ export class EventEditorComponent implements OnInit {
     return inject(FormBuilder).group(this.eventFactory.createEmptyEvent());
   }
 
+  onSelect(event: any): void {
+    this.file = event.files[0];
+  }
+
+  onClear(event: any): void {
+    this.file = null;
+  }
+
   saveEvent(): void {
-    this.eventService.addEvent(this.eventForm.value).subscribe(() => {
-      this.eventSaved.emit();
+    this.eventService.addEvent(this.eventForm.value).subscribe((createdEvent: any) => {
+
+      if(this.file == null) {
+        this.eventSaved.emit();
+        return;
+      };
+
+      this.eventService.postEventImage(createdEvent.id, this.file).subscribe(() => this.eventSaved.emit());
     });
   }
 }
