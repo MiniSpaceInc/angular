@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, inject, OnInit, Output, ViewChild} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -35,6 +35,7 @@ import {EventService} from "../../../core/service/event/event.service";
 })
 export class EventEditorComponent implements OnInit {
   @Output() eventSaved = new EventEmitter<void>();
+  @ViewChild("richText") richTextDiv!: ElementRef;
 
   eventFactory = inject(EventFactory);
   eventForm = this.createForm();
@@ -60,17 +61,18 @@ export class EventEditorComponent implements OnInit {
     this.file = event.files[0];
   }
 
-  onClear(event: any): void {
+  onClear(): void {
     this.file = null;
   }
 
   saveEvent(): void {
+    this.eventForm.controls['description'].setValue(this.richTextDiv.nativeElement.innerHTML);
     this.eventService.addEvent(this.eventForm.value).subscribe((createdEvent: any) => {
 
       if(this.file == null) {
         this.eventSaved.emit();
         return;
-      };
+      }
 
       this.eventService.postEventImage(createdEvent.id, this.file).subscribe(() => this.eventSaved.emit());
     });

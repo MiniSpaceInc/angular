@@ -6,4 +6,5 @@ export interface EventSearchDetails {
   dateFrom: string;
   dateTo: string;
   pageable: PageableDto;
+  searchInSubunits: boolean;
 }

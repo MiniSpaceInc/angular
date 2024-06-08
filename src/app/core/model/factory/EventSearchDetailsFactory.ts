@@ -1,5 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {PageableFactory} from "./PageableFactory";
+import {EventSearchDetails} from "../EventSearchDetails";
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,14 @@ import {PageableFactory} from "./PageableFactory";
 export class EventSearchDetailsFactory {
   pageableFactory = inject(PageableFactory);
 
-  createEmptyEventSearchDetails(itemsPerPage: number) {
+  createEmptyEventSearchDetails(itemsPerPage: number): EventSearchDetails {
     return {
       name: '',
       organizer: '',
       dateFrom: '',
       dateTo: '',
-      pageable: this.pageableFactory.createPageableWithNoSorting(itemsPerPage)
+      pageable: this.pageableFactory.createPageableWithNoSorting(itemsPerPage),
+      searchInSubunits: false
     };
   }
 }

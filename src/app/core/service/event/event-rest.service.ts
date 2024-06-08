@@ -72,4 +72,8 @@ export class EventRestService implements EventService {
       toUserId: userId
     });
   }
+
+  deleteEvent(eventId: number): Observable<any> {
+    return this.http.delete(`/api/events/${eventId}`);
+  }
 }

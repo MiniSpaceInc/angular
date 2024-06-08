@@ -7,8 +7,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CalendarModule} from "primeng/calendar";
 import {EventsSearchFormComponent} from "../events-search-form/events-search-form.component";
 import {EventService} from "../../../core/service/event/event.service";
-import {EventRestService} from "../../../core/service/event/event-rest.service";
-import { EventMockService } from '../../../core/service/event/event-mock.service';
 import {EVENT_SERVICE} from "../../../core/tokens";
 
 @Component({
@@ -35,17 +33,21 @@ export class EventsSearchComponent {
 
   eventsPerPage = 4;
 
+  @ViewChild('pagination') pagination!: PaginationComponent;
   @ViewChild('searchForm') searchForm!: EventsSearchFormComponent;
   @ViewChild('eventsList') eventsList!: EventsListComponent;
-  @ViewChild('pagination') pagination!: PaginationComponent;
 
   firstSearch = this.eventService.getEventsPage(
     this.eventSearchDetailsFactory.createEmptyEventSearchDetails(this.eventsPerPage)
   );
 
+  ngAfterViewInit() {
+    this.search();
+  }
+
   search() {
     this.searchForm.eventSearchDetails.pageable.size = this.eventsPerPage;
-    this.searchForm.eventSearchDetails.pageable.page = this.pagination.currentPage;
+    this.searchForm.eventSearchDetails.pageable.page = this.pagination ? this.pagination.currentPage : 0;
 
     this.eventService.getEventsPage(this.searchForm.eventSearchDetails).subscribe(
       page => {
