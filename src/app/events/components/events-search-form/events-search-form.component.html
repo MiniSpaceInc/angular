@@ -3,7 +3,10 @@
     <div class="column" style="width: 100%">
       <div class="row">
         <div style="width: 200px; float: left">
-          <p-calendar formControlName="dateFrom" placeholder="Data od" [dateFormat]="'dd.mm.yy'"/>
+          <p-calendar formControlName="dateFrom"
+                      placeholder="Data od"
+                      [dateFormat]="'dd.mm.yy'"
+                      #dateFromCalendar/>
         </div>
         <div style="width: 200px; float: left">
           <p-calendar formControlName="dateTo" placeholder="Data do" [dateFormat]="'dd.mm.yy'"/>

@@ -1,7 +1,7 @@
-import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, inject, OnInit, Output, ViewChild} from '@angular/core';
 import {EventSearchDetails} from "../../../core/model/EventSearchDetails";
 import {EventSearchDetailsFactory} from "../../../core/model/factory/EventSearchDetailsFactory";
-import {CalendarModule} from "primeng/calendar";
+import {Calendar, CalendarModule} from "primeng/calendar";
 import {PaginatorModule} from "primeng/paginator";
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs";
@@ -22,10 +22,14 @@ import {CheckboxModule} from "primeng/checkbox";
 export class EventsSearchFormComponent implements OnInit {
   @Output() valueChanged = new EventEmitter<EventSearchDetails>();
 
+  @ViewChild("dateFromCalendar") dateFromCalendar!: Calendar;
+
+  private cdr = inject(ChangeDetectorRef);
   eventSearchDetailsFactory = inject(EventSearchDetailsFactory);
   eventSearchDetails = this.eventSearchDetailsFactory.createEmptyEventSearchDetails(0);
 
   searchForm = this.createForm();
+  date = new Date();
 
   ngOnInit() {
     this.searchForm.get('name')?.valueChanges.pipe(
@@ -64,6 +68,14 @@ export class EventsSearchFormComponent implements OnInit {
         this.valueChanged.emit(this.eventSearchDetails);
       }
     )
+  }
+
+  ngAfterViewInit() {
+    const date = new Date();
+    this.dateFromCalendar.value = date;
+    this.dateFromCalendar.updateInputfield();
+    this.cdr.detectChanges();
+    this.eventSearchDetails.dateFrom = date.toISOString();
   }
 
   createForm() {
