@@ -1,21 +1,31 @@
 <form [formGroup]="searchForm">
   <div class="input-group">
-    <div class="column">
+    <div class="column" style="width: 100%">
       <div class="row">
-        <p-calendar formControlName="dateFrom" placeholder="Data od" [dateFormat]="'dd.mm.yy'"/>
-        <p-calendar formControlName="dateTo" placeholder="Data do" [dateFormat]="'dd.mm.yy'"/>
+        <div style="width: 200px; float: left">
+          <p-calendar formControlName="dateFrom" placeholder="Data od" [dateFormat]="'dd.mm.yy'"/>
+        </div>
+        <div style="width: 200px; float: left">
+          <p-calendar formControlName="dateTo" placeholder="Data do" [dateFormat]="'dd.mm.yy'"/>
+        </div>
+      </div>
+      <div class="row">
+        <div style="width: 60%; float: left">
+          <input type="text"
+                 formControlName="organizer"
+                 class="form-control"
+                 placeholder="Szukaj po organizatorze..."/>
+        </div>
+        <div style="float: left; width: 40%; margin-top: 5px">
+          <input class="p-checkbox" type="checkbox" id="subunits" formControlName="searchInSubunits"/>
+          <label for="subunits" style="margin-left: 5px">Szukaj w podjednostkach</label>
+        </div>
+      </div>
+      <div class="row" style="width: 100%; margin-left: 0">
         <input type="text"
                formControlName="name"
                class="form-control"
-               placeholder="Szukaj po nazwie..."
-               style="margin-left: 17px"/>
-      </div>
-      <div class="row">
-        <input type="text"
-               formControlName="organizer"
-               class="form-control"
-               placeholder="Szukaj po organizatorze..."
-               style="margin-left: 17px"/>
+               placeholder="Szukaj po nazwie..."/>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ import {CalendarModule} from "primeng/calendar";
 import {PaginatorModule} from "primeng/paginator";
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime, distinctUntilChanged} from "rxjs";
+import {CheckboxModule} from "primeng/checkbox";
 
 @Component({
   selector: 'app-events-search-form',
@@ -12,7 +13,8 @@ import {debounceTime, distinctUntilChanged} from "rxjs";
   imports: [
     CalendarModule,
     PaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CheckboxModule
   ],
   templateUrl: './events-search-form.component.html',
   styleUrl: './events-search-form.component.scss'
@@ -55,6 +57,13 @@ export class EventsSearchFormComponent implements OnInit {
       this.eventSearchDetails.dateTo = value ? value : '';
       this.valueChanged.emit(this.eventSearchDetails);
     });
+
+    this.searchForm.get('searchInSubunits')?.valueChanges.subscribe(
+      value => {
+        this.eventSearchDetails.searchInSubunits = value ? value : false;
+        this.valueChanged.emit(this.eventSearchDetails);
+      }
+    )
   }
 
   createForm() {
@@ -62,7 +71,8 @@ export class EventsSearchFormComponent implements OnInit {
       name: [''],
       organizer: [''],
       dateFrom: [''],
-      dateTo: ['']
+      dateTo: [''],
+      searchInSubunits: false
     });
   }
 }
