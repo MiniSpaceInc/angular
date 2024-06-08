@@ -9,4 +9,5 @@ export interface Event {
   description: string;
   participantCount: number;
   userRegistered: boolean;
+  imageUrl: string;
 }

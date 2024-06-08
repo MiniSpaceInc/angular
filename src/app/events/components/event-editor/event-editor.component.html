@@ -7,8 +7,12 @@
           <div style="padding: 0;">
             <p-fileUpload
               [multiple]="false"
+              (onSelect)="onSelect($event)"
+              (onClear)="onClear($event)"
               [showUploadButton]="false"
-              [showCancelButton]="false">
+              [showCancelButton]="true"
+              chooseStyleClass="btn btn-primary"
+              cancelStyleClass="btn btn-danger">
               <ng-template let-file pTemplate="file">
                 <p-image [src]="file.objectURL"></p-image>
               </ng-template>

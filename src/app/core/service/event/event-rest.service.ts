@@ -56,6 +56,16 @@ export class EventRestService implements EventService {
     return this.http.delete(`/api/friends/invitations/${invitationId}`);
   }
 
+  postEventImage(eventId: number, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('image', image);
+    return this.http.post(`/api/events/${eventId}/image`, formData);
+  }
+
+  getEventImage(eventId: number): Observable<Blob> {
+    return this.http.get(`/api/events/${eventId}/image`, {responseType: 'blob'});
+  }
+
   inviteFriend(eventId: number, userId: number): Observable<any> {
     return this.http.post('/api/friends/invitations', {
       eventId: eventId,

@@ -1,6 +1,6 @@
 @if (mode === "list") {
   <div class="d-flex justify-content-center">
-    <div class="column">
+    <div class="column" style="width: 60%">
       <app-events-search/>
       @if (authService.userHasRole(Role.ORGANIZER)) {
         <button class="btn btn-success"

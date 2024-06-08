@@ -19,4 +19,6 @@ export interface EventService {
   acceptEventInvitation(invitationId: number): Observable<any>;
   declineEventInvitation(invitationId: number): Observable<any>;
   inviteFriend(eventId:number, userId: number): Observable<any>;
+  postEventImage(eventId: number, photo: File): Observable<string>;
+  getEventImage(eventId: number): Observable<Blob>;
 }

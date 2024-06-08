@@ -1,15 +1,32 @@
 <div *ngFor="let event of events">
-  <p-card (click)="onEventClick(event)" header="{{event.name}}" subheader="{{event.organizingUnit.name}}">
+  <p-card (click)="onEventClick(event)">
     <ng-template pTemplate="content">
-      <div>
-        <b>Data: </b>{{event.date | date : "dd.MM.YYYY"}}
+      <div class="container">
+        <div class="row">
+          <div class="column" style="width: 50%">
+            <div style="margin-bottom: 30px">
+              <h4><b>{{event.name}}</b></h4>
+              <h6 style="color: dimgray; margin-left: 5px">{{event.organizingUnit.name}}</h6>
+            </div>
+            <div>
+              <b>Data: </b>{{event.date | date : "dd.MM.YYYY"}}
+            </div>
+            <div style="margin-top: 30px">
+              <b>Zapisanych osób: </b>{{event.participantCount}}
+              @if(event.userRegistered) {
+                <b style="padding: 7px; background: #a3DDa1" class="marked">Zapisano!</b>
+              }
+            </div>
+          </div>
+          <div class="column" style="width: 48%; margin-right: 0; float: left">
+            <img alt="Card"
+                 src="{{event.imageUrl || 'https://primefaces.org/cdn/primeng/images/usercard.png'}}"
+                 style="width: 100%; float: right"/>
+          </div>
+        </div>
       </div>
-      <div style="margin-top: 30px">
-        <b>Zapisanych osób: </b>{{event.participantCount}}
-        @if(event.userRegistered) {
-          <b style="padding: 7px; background: #a3DDa1" class="marked">Zapisano!</b>
-        }
-      </div>
+
+
     </ng-template>
     <ng-template pTemplate="footer">
       <div class="col" style="display: inline">
