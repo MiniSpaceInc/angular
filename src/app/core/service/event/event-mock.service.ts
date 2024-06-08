@@ -64,6 +64,10 @@ export class EventMockService implements EventService {
   postEventImage(eventId: number, photo: File): Observable<string> {
     throw new Error("Method not implemented.");
   }
+  
+  getEventImage(eventId: number): Observable<Blob> {
+    throw new Error("Method not implemented.");
+  }
 
   filterMockEvents(eventSearchDetails: EventSearchDetails) {
     return mockEvents

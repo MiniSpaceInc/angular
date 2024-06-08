@@ -17,7 +17,8 @@ export class EventFactory {
       date: '',
       description: '',
       participantCount: 0,
-      userRegistered: false
+      userRegistered: false,
+      imageUrl: ''
     };
   }
 }
