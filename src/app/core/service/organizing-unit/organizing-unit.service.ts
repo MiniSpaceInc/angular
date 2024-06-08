@@ -7,4 +7,5 @@ export interface OrganizingUnitService {
   saveOrganizingUnit(organizingUnit: OrganizingUnit): Observable<any>;
   getUsersOrganizingUnits(userId: number | null): Observable<OrganizingUnit[]>;
   changeUserMembership(organizingUnitId: number, userId: number, add: boolean): Observable<any>;
+  isUserAssigned(organizingUnitId: number): Observable<boolean>;
 }

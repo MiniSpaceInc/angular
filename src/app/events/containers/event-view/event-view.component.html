@@ -1,9 +1,18 @@
 @defer {
-  @if (getEvent | async; as event) {
+  @if (event) {
     <div class="event-container">
       <div class="details-column">
         <app-event-details [event]="event"/>
         <app-comments [object]="event"/>
+        @if (isOrganizer) {
+          <div style="margin-top: 10px; width: 100%">
+            <button class="btn btn-danger"
+                    style="width: 100%; font-size: 20px"
+                    (click)="deleteEventDialogVisible = true;">
+              Usuń wydarzenie
+            </button>
+          </div>
+        }
       </div>
       <div class="posts-column">
         <app-posts-list [event]="event"/>
@@ -11,3 +20,20 @@
     </div>
   }
 }
+
+<p-dialog [(visible)]="deleteEventDialogVisible"
+          [modal]="true"
+          header="Czy na pewno chcesz usunąć post?">
+  <div style="width: 400px">
+    <button class="btn btn-danger"
+            style="display: inline-block; margin: 10px; width: 40%"
+            (click)="deleteEvent()">
+      Tak
+    </button>
+    <button class="btn btn-success"
+            style="display: inline-block; margin: 10px; width: 40%"
+            (click)="deleteEventDialogVisible = false">
+      Nie
+    </button>
+  </div>
+</p-dialog>

@@ -64,7 +64,7 @@ export class EventMockService implements EventService {
   postEventImage(eventId: number, photo: File): Observable<string> {
     throw new Error("Method not implemented.");
   }
-  
+
   getEventImage(eventId: number): Observable<Blob> {
     throw new Error("Method not implemented.");
   }
@@ -90,6 +90,10 @@ export class EventMockService implements EventService {
   }
 
   inviteFriend(eventId: number, userId: number): Observable<any> {
+    throw new Error("Not implemented yet!");
+  }
+
+  deleteEvent(eventId: number): Observable<any> {
     throw new Error("Not implemented yet!");
   }
 }

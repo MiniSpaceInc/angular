@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import { OrganizingUnitService } from './organizing-unit.service';
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {OrganizingUnit} from "../../model/OrganizingUnit";
 import {HttpClient} from "@angular/common/http";
 
@@ -8,7 +8,6 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class OrganizingUnitRestService implements OrganizingUnitService {
-
   private http = inject(HttpClient);
 
   changeUserMembership(organizingUnitId: number, userId: number, add: boolean): Observable<any> {
@@ -33,5 +32,11 @@ export class OrganizingUnitRestService implements OrganizingUnitService {
 
   saveOrganizingUnit(organizingUnit: OrganizingUnit): Observable<any> {
     return this.http.post('/api/organizingUnits', organizingUnit)
+  }
+
+  isUserAssigned(organizingUnitId: number): Observable<boolean> {
+    return this.getUsersOrganizingUnits(null).pipe(
+      map(units => units.find(unit => unit.id === organizingUnitId) !== undefined)
+    );
   }
 }
