@@ -8,5 +8,5 @@ COPY . .
 RUN ng build -c production
 
 # Maven base image stage
-FROM maven:3.9.6-amazoncorretto-21-debian
+FROM --platform=linux/amd64 maven:3.9.6-amazoncorretto-21-debian
 COPY --from=build /app/dist/mi-nispace-angular /angular-build
